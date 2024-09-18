@@ -1,6 +1,6 @@
 # Sprint2
 
-<h1>Repositório para organização da sprint 01 do projeto</h1>
+<h1>Repositório para organização da sprint 02 do projeto</h1>
 
 
 <h2>Regras de condução do projeto</h2> 
