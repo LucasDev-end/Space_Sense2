@@ -1,0 +1,123 @@
+,,,SPACE SENSE,,,,,,
+,,,,,,,,,
+,,,REQUISITOS,,DESCRIÇÃO,CLASSIFICAÇÃO,,,
+,,,1. Site Institucional,1.0 Site institucional,1.0. Site Institucional,Essencial,,,
+,,,,,"Este site será a ponte entre os nossos clientes e os dados obtidos através dos sensores, pois será onde o usuário irá obter as informações referente a sua empresa. Ao acessar o site, o usuário será recebido com uma página inicial que destaca os principais benefícios que a SpaceSense oferece, destacando como o sistema pode otimizar a gestão de produtos e aumentar a eficiência de suas operações. Ele será dividido em diferentes seções, começando por uma página de apresentação, a página home, a introdução da SpaceSense. O site contará com uma tela de login que garante acesso seguro aos dados e funcionalidades exclusivas. Aqueles que ainda não possuem uma conta poderão realizar o cadastro de forma rápida e prática, fornecendo as informações essenciais para começar a utilizar a plataforma. Caso o usuário esqueça sua senha, haverá uma seção somente para recuperação de senha. Além disso, o site incluirá uma seção “Minha Conta”, onde os clientes poderão gerenciar suas informações pessoais, como dados de contato e preferências de notificação.",,,,
+,,,,"1.1
+TELA DE CADASTRO",1.1.1. Tela de cadastro (Informações da tela),Essencial,,,
+,,,,,"Página onde o cliente irá inserir suas informações para cadastro em nosso sistema de dashboard. Esta tela terá uma Imagem de background, que está ilustrando prateleira de supermercado. Na parte central direita da página terá todos os campos que o usuário precisa preencher, abaixo dos campos onde o usuário irá inserir as informações terá um botão de cadastro. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.1.2. Tela de cadastro (Campos),,,,
+,,,,,"Os campos estarão localizados na parte central da tela, estes campos terão branca, o cliente deverá preencher: o nome da empresa (com no máximo 45 caracteres); nome do responsável que irá intermediar a comunicação com o cliente (com no máximo 40 caracteres); telefone para contato da empresa (com no máximo 11 caracteres) podendo ser telefone fixo ou celular; CNPJ da empresa (com no máximo 14 caracteres); e-mail da empresa (com no máximo 45 caracteres); senha de acesso (com no máximo 45 caracteres); confirmação de senha (com no máximo 45 caracteres);",,,,
+,,,,,1.1.3. Tela de cadastro (Botão cadastrar),,,,
+,,,,,"O botão de cadastro encontra-se abaixo da área do campo de senha e confirmação de senha, ele terá a cor azul (código da cor do botão: #0C2CBD). Este botão irá cadastrar todas as informações no banco de dados, nas suas respectivas tabelas, após clicar no botão de cadastro o usuário será direcionado para a página de login. ",,,,
+,,,,"1.2. 
+TELA DE LOGIN",1.2.1. Tela de login,Essencial,,,
+,,,,,"Página onde o cliente irá inserir suas informações de login, cadastradas na página de cadastro anteriormente, para ter acendido aos menus de opções. Nesta página o usuário irá visualizar uma imagem de background de uma prateleira de supermercado. Na parte central da página terá dois campos para o usuário inserir suas informações, e abaixo deles terá um botão cadastrar. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.2.2. Tela de login (Campos),,,,
+,,,,,Haverão dois campos que estarão localizados na parte central da tela. O primeiro campo será o email do usuário. O segundo campo será a senha do usuário. ,,,,
+,,,,,1.2.3. Tela de login (Botão cadastre-se),,,,
+,,,,,Este botão irá direcionar o usuário para tela de cadastro. (1.1.1.),,,,
+,,,,,1.2.4. Tela de login (Botão entrar),,,,
+,,,,,Este botão irá direcionar o usuário para tela de relatórios. (campo 1.6),,,,
+,,,,,1.2.5. Tela de login (Redifinir senha),,,,
+,,,,,Este botão irá direcionar o usuário para a tela de refinição de senha. (1.4.1.),,,,
+,,,,,1.2.6. Tela de login (Verificação de dados),,,,
+,,,,,"Após o usuário inserir os dados e clicar em entrar, terá uma função para verificar se os dados são válidos.",,,,
+,,,,"1.3. 
+TELA INICIAL",1.3.1. Tela inicial,Essencial,,,
+,,,,,"Sera a pagina home do site, na parte superior da pagina tera uma barra de navegação (1.3.3.) 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.3.2. Tela inicial (Introdução),,,,
+,,,,,"Onde será mostrado uma breve introdução do sistema, exibindo uma visão geral do projeto e objetivos a serem alcançados na utilização.",,,,
+,,,,,1.3.3. Tela Inicial (Barra de navegação),Essencial,,,
+,,,,,"Espaços separados para cada requisição solicitada pelo cliente, direcionando a ação desejada do mesmo. (Sobre, Serviços, Contato, etc.).
+Essas seções serão uma barra de navegação na parte superior. Na barra de navegação, teremos da esquerda para direita, os seguintes itens: A logo do projeto. Um botão ""Início"" onde o usuário será redirecionado para a página inicial. Um botão ""serviços"", onde o usuário será direcionado para uma tela onde o mesmo poderá visualizar como funcionam nossos serviços e soluções. Um botão ""Contato"", onde o usuário será redirecionado para um tela onde conterá informações de contato. Um botão ""Sobre nós"", onde o usuário será direcionado para uma tela onde irá poder visualizar informações sobre o projeto, a empresa e seus objetivos. Um botão ""Login"", onde o usuário será redirecionado para uma tela onde poderá efetuar o login e iniciar a sessão no site. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.3.4 Tela inicial (Nosso serviço),Essencial,,,
+,,,,,"Quando o usuário pressionar este botão, o mesmo será direcionado para uma parte mais inferior da tela onde terá o seguinte texto:
+
+""   Desenvolvimento de um sistema que emprega sensores ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos produtos nas prateleiras e diversos setores do mercado. O objetivo principal é identificar as regiões mais movimentadas, possibilitando uma análise precisa das áreas de maior valor.
+     Com base nesses dados, o sistema oferecerá insights detalhados sobre os setores, fileiras e prateleiras com maior movimentação de produtos. Essas informações serão cruciais para determinar as áreas mais estratégicas e valiosas para locação por marcas que buscam maximizar sua visibilidade e potencial de vendas. Além disso, o sistema permitirá que os gestores de hipermercados ajustem os preços de aluguel conforme a valorização de cada área, assegurando uma gestão mais eficientes e lucrativas dos espaços comerciais."" 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.3.5 Tela inicial (Sobre nós),Essencial,,,
+,,,,,"Nesta parte da tela inicial terá uma seção apenas sobre nós, nela terá o seguinte texto: 
+""       Desenvolvimento de um sistema que emprega sensores ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos produtos nas prateleiras e diversos setores do mercado. Nosso foco principal é identificar as regiões mais movimentadas, possibilitando uma análise precisa das áreas de maior valor.
+     Com base nesses dados, o sistema oferecerá insights detalhados sobre os setores, fileiras e prateleiras com maior movimentação de produtos. Essas informações serão cruciais para determinar as áreas mais estratégicas e valiosas para locação por marcas que buscam maximizar sua visibilidade e potencial de vendas. Além disso, o sistema permitirá que os gestores de hipermercados ajustem os preços de locação conforme a valorização de cada área, assegurando uma gestão mais eficientes e lucrativas dos espaços comerciais."" 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+  ,,,,,,,,,
+,,,,,1.3.6 Tela inicial (Contato),Importante,,,
+,,,,,"Nesta sessão, exibirá informações sobre Endereço, Email e Telefone para contato no lado esquerdo da sessão.Alem disso, irá exibir o endereço das redes sociais da Space Sense ao lado direito da sessão. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,"1.4. 
+RECUPERAR SENHA",1.4.1. Recuperar senha ( Informações da tela ),Essencial,,,
+,,,,,"Essa tela o usuário poderá alterar sua senha atual. Nessa tela terá um texto central central intruindo o usuário a fazer a recuperação de senha. O texto seria ""Se houver uma conta associada a este e-mail, você receberá um código de acesso dentro de 1 minuto. Não se esqueça de verificar sua caixa de spam ou lixo eletrônico."" Logo abaixo terá um campo para o usuário preencher e um botão ""Enviar"". 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.4.2. Recuperar senha (Campos),,,,
+,,,,,Neste campo o usuário deverá preencher seu e-mail.,,,,
+,,,,,1.4.3. Recuperar senha (Botão enviar),,,,
+,,,,,"Quando o usuário pressionar este botão, será enviado um código de verificação por e-mail, posteriormente será redirecionado a tela de login.",,,,
+,,,,"1.5. 
+MENU - 
+MINHA CONTA ",1.5.1. Tela minha conta (Introdução),Importante,,,
+,,,,,"Nesta tela o usuário poderá ver suas informações inseridas no cadastro, e também alteralas individualmente atraves de um icone no formato de um lápis ilustrado na cor azul claro. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,crescimento_potencial_de_faturamento,,,,
+,,,,,1.5.2. Tela Minha conta (Campos),,,,
+,,,,,"O sistema exibirá uma tela com os campos na seguinte sequencia: Nome da empresa, Nome do responsável, Telefone, CNPJ, E-mail e Senha.",,,,
+,,,,,1.5.3.  Tela Minha conta (Botões para Editar),,,,
+,,,,,"O ícone no formato de LÁPIS, ilustrado na cor azul claro, habilitará a função de edição de determinadas informações nos campos citados no item 1.5.2.",,,,
+,,,,,1.5.4. Tela Minha conta (Botão salvar),,,,
+,,,,,O botão 'SALVAR' irá armazenar todas as edições efetuadas pelos usuários.,,,,
+,,,," 1.6. 
+RELATÓRIOS",1.6.1. Tela de relatórios (Introdução),Essencial,,,
+,,,,,"O sistema exibirá uma tela para o usuário baixar relatórios dos setores mais visitados e dos horários com maior movimento. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.6.2. Tela de relatórios (Botão Top setores),,,,
+,,,,,"Ao cliclar em ""TOP SETORES"" o sistema irá automaticamente baixar um relatório dos melhores setores do mês, em formato PDF.",,,,
+,,,,,1.6.3. Tela de relatórios (Botão top horários),,,,
+,,,,,"Ao cliclar em ""TOP HORÁRIOS"" o sistema irá automaticamente baixar um relatório dos melhores horários do mês, em formato PDF.",,,,
+,,,,"1.7.
+BARRA DE NAVEGAÇÃO LATERAL",1.7.1 Barra de nevagação lateral (introdução),Essencial,,,
+,,,,,"Esse barra de navegação estará presente nas telas: Minha conta, Baixar relatórios e Dashboard. Da parte superior para a inferior, haverá de maneira sequencial: Uma imagem da logo da empresa, abaixo o nome da empresa, um botão de dashboard, um botão de relatório e outro minho conta. Ao final dessa barra de navegação haverá um botão de voltar. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,,1.7.2 Barra de navegação lateral (botão dashboard),,,,
+,,,,,Este botão irá direcionar o usuário para a tela de dashboard(x.x.x),,,,
+,,,,,1.7.3 Barra de navegação lateral (botão relatórios),,,,
+,,,,,Este botão irá direcionar o usuário para a tela de relatórios(1.6),,,,
+,,,,,1.7.4 Barra de navegação lateral (botão minha conta),,,,
+,,,,,Este botão irá direcionar o usuário para a tela de minha conta(1.5),,,,
+,,,,,1.7.5 Barra de navegação lateral (botão voltar),,,,
+,,,,,Este botão irá direcionar o usuário para a tela inicial(1.3),,,,
+,,,,1.8. Rodapé,1.8.1 Rodapé (introdução),Importante,,,
+,,,,,"Uma seção da página inicial, localizada na parte inferior da página, ela conta com o nome da Space Sense na parte de cima, no meio está o logotipo, e em baixo o copyright que indica a proteção legal sobre o conteúdo do site. 
+
+                    Segue a imagem de ilustração abaixo: ",,,,
+,,,,,,,,,
+,,,,1.9 Análise de dados,1.9.1 Análise de dados (Dashboard top prateleiras),Essencial,,,
+,,,,,Esta função irá fazer uma análise de dados e ranquear as prateleiras mais movimentadas.,,,,
+,,,,,1.9.2 Análise de dados (Relatório top setores),,,,
+,,,,,Esta função irá fazer uma análise de dados e definir quais os principais setores e zonas quentes do ambiente.,,,,
+,,,,,1.9.3 Análise de dados (Relatório top horários),,,,
+,,,,,Esta função irá fazer uma análise de dados e definir quais os principais horários de movimentação do ambiente,,,,
