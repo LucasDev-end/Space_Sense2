@@ -10,7 +10,7 @@
 
 As reuniões ocorrerão on-line via Discord as duas vezes por semana. Haverá uma reunião presencial de a cordo com a necessidade. 
 
-As reuniões devem durar entre 1 e 2 horas e meia. 
+As reuniões devem durar entre 15 minutos até no maximo meia hora. 
 
 Os temas das reuniões serão colocados em Atas que ficarão no Trello. 
  
@@ -19,7 +19,7 @@ Os temas das reuniões serão colocados em Atas que ficarão no Trello.
 
 Assuntos que não estão relacionados ao projeto deverão ser evitados. 
 
-Toda ideia é bem-vinda para ser escutada .
+Toda ideia é bem-vinda para ser escutada.
 
 Todas as decisões serão tomadas de forma democrática.
 
