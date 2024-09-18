@@ -1,4 +1,4 @@
-# sprint1
+# Sprint2
 
 <h1>Repositório para organização da sprint 01 do projeto</h1>
 
