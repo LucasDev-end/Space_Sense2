@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    background-color: black;
+    background-image:  url(../assets/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+:root{
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 65px;
+}
+.sobrepor{
+    background-color: #001857BF;
+    height: 120vh;
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.header a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+.header img{
+    width: 90px;
+    height: 120px;
+}
+.navbar{
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: #fff;
+}
+
+.titulo{
+    color: #ffffff;
+    width: fit-content;
+    font-weight: 500;
+    margin-right: 130px;
+}
+.botao{
+    border: none;
+    padding: 10px;
+    color: #fff;
+    width: 120px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #046DE9;
+    font-weight: bold;
+}
+
+/* Seção do conteúdo da página */
+.section-main{
+    text-align: center;
+}
+.section-main .space {
+    font-size: 120px;
+    color: #fff;
+}
+.section-main .space .sense{
+    font-size: 140px;
+    color: #4dbeff;
+    font-weight: bold;
+}
+.section-main .separador{
+    width: 50%;
+    border: 7px solid #fff;
+    border-radius: 10px;
+}
+.section-main p{
+    color: #fff;
+    font-size: 20px;
+}
+
+/* Seção Simulador */
+.simulador{
+    justify-content: center;
+    margin: auto;
+    width: 70%;
+}
+.simulador h1{
+    color: #fff;
+    text-align: center;
+}
+.simulador span{
+    color: #fff;
+    font-size: 20px;
+}
+.simulador input{
+    border: none;
+    border-radius: 5px;
+    width: 18%;
+    padding: 8px;
+    margin-left: 150px;
+}
+.simulador .botao{
+    padding: 10px;
+    background: linear-gradient(#0C2CBD, #061766);
+    width: 25%;
+    font-size: 20px;
+    margin-left: 350px;
+}
+.section-empresa{
+    background-color: #4D54FF;
+    height: 100vh;
+    padding-top: 40px;
+}
+
+.about{
+    text-align: center;
+}
+.about h1{
+    color: #fff;
+}

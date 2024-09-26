@@ -64,8 +64,6 @@ INSERT INTO prateleira (setor_prateleira, status_locacao, tipo_prateleira, altur
 SELECT * FROM prateleira;
 DESC prateleira;
 
-
-
 -- Criando inserts
 
 -- Usuario

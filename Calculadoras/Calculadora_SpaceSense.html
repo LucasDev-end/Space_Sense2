@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calculadora SpaceSense</title>
 </head>
-    <span style="font-size: 40px;"><b> Calculadora financeira</b></span><br><br>
-    <span style="font-size: 20px;">Média de clientes por mês:</span>
-    <input type="number" id="ipt_media_clientes"><br>
-    <span style="font-size: 20px;">Ticket médio mensal por cliente no estabelecimento(em reais):</span>
-    <input type="number" id="ipt_ticket_medio"> <br>
-    <span style="font-size: 20px;">Quantos meses você gostaria de avaliar:</span>
-    <input id="ipt_meses_avaliacao"/><br>
-    <span style="font-size: 20px;">Você possui conhecimento exatado dos pontos quentes e frios de sua loja? (sim ou não)</span>
-    <input type="text" id="ipt_pontos_quentes"><br>
-    <span style="font-size: 20px;">Você possui um layout feito de maneira estratégica para sua loja? (sim ou não)</span>
-    <input type="text" id="ipt_layout"> <br><br>
-    <button onclick="calcular()">Calcular métricas</button>
-
-
+    <div class="container">
+        <span class="title-span"><b> Calculadora financeira</b></span><br><br>
+        <span>Média de clientes por mês:</span>
+        <input type="number" id="ipt_media_clientes"><br>
+        <span>Gasto médio mensal por cliente no estabelecimento(em reais):</span>
+        <input type="number" id="ipt_ticket_medio"> <br>
+        <span>Quantos setores estão deficitários:</span>
+        <input type="number" id="ipt_meses_avaliacao"/><br>
+        <button onclick="calcular()">Calcular métricas</button> <br>
+    </div>
     <div id="div_mensagem"></div>
 </body>
 </html>
