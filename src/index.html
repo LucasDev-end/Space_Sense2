@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/logo.png">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Space Sense | Página Inicial</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/img/logo.png">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Space Sense | Página Inicial</title>
 </head>
+
 <body>
   <div class="sobrepor">
-    <!-- Header e acesso as outras páginas e página de login -->
+    <!-- Header e acesso as outras páginas e página de login por meio do link-->
     <div class="header">
       <div class="container">
-          <img src="./assets/logo.png" alt="Logo da Empresa">
-          <h2 class="titulo"><b>SPACE</b><br> SENSE</h2>
+        <img src="./assets/img/logo.png" alt="Logo da Empresa">
+        <h2 class="titulo"><b>SPACE</b><br> SENSE</h2>
         <ul class="navbar">
           <li class="agora">
             <a href="index.html">Início</a>
@@ -25,12 +27,12 @@
             <a href="servicos.html">Serviços</a>
           </li>
           <li>
-              <a href="contato.html">Contato</a>
-            </li>
+            <a href="contato.html">Contato</a>
+          </li>
           <li>
             <a href="about.html">Sobre Nós</a>
           </li>
-          <button class="botao">LOGIN</button>
+          <button class="botao"><a href="login.html">LOGIN</a></button>
         </ul>
       </div>
     </div>
@@ -41,6 +43,7 @@
       <p> Com a SpaceSense, controle seu setor logístico da <br> melhor maneira e de forma mais eficiente.</p>
     </div>
 
+    <!-- Simulador da empresa -->
     <div class="section-empresa">
       <div class="simulador">
         <h1>SIMULE PARA O SEU NEGÓCIO</h1>
@@ -48,32 +51,74 @@
         <span>Média de clientes por mês</span>
         <input type="number" placeholder="Ex:100"> <br> <br>
         <span>Ticket médio por cliente no estabelecimento(em reais)</span>
-        <input type="text"  placeholder="Ex:100"> <br> <br>
+        <input type="text" placeholder="Ex:100"> <br> <br>
         <span>Número de meses para avaliação</span>
-        <input type="text"  placeholder="Ex:100"> <br><br>
+        <input type="text" placeholder="Ex:100"> <br><br>
         <span>Você possui conhecimento exato dos <br>
           pontos quentes e frios de sua loja? (sim ou não)</span>
-        <input type="text"  placeholder="Ex:100"> <br><br>
+        <input type="text" placeholder="Ex:100"> <br><br>
         <span>Você possui um layout feito de <br>
           maneira estratégica para sua loja? (sim ou não)</span>
-        <input type="text"  placeholder="Ex:100"> <br><br><br><br>
-        <button class="botao">Calcular métricas</button> 
-        <hr>
+        <input type="text" placeholder="Ex:100"> <br><br><br><br>
+        <button class="botao">Calcular métricas</button>
+      </div>
+      <!-- Nossos Serviços e Sobre nós -->
+      <div class="about">
+        <div class="campos">
+        </div>
+        <h1>NOSSO SERVIÇO</h1>
+        <span>Desenvolvimento de um sistema que emprega sensores
+          ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos
+          produtos nas prateleiras e diversos setores do mercado.
+          Nosso foco principal é identificar as regiões mais movimentadas, possibilitando
+          uma análise precisa das áreas de maior valor.</span> <br>
+        <span>Com base nesses dados, o sistema oferecerá insights detalhados
+          sobre os setores, fileiras e prateleiras com maior movimentação de produtos. Essas informações serão cruciais
+          para determinar as áreas
+          mais estratégicas e valiosas para locação por marcas que buscam maximizar sua visibilidade e potencial de
+          vendas. Além disso, o sistema permitirá que os gestores de hipermercados ajustem os preços de locação conforme
+          a valorização de cada área, assegurando uma gestão mais eficientes e lucrativas dos espaços comerciais.</span><br><br>
+        <!-- Área sobre nós -->
+        <h1>SOBRE NÓS</h1>
+        <span> Somos uma empresa especializada em soluções inteligentes 
+          para o setor varejista, utilizando sensores ultrassônicos para 
+          monitorar o fluxo de pessoas em prateleiras e áreas estratégicas. 
+          Com base nesses dados, oferecemos insights sobre as áreas mais 
+          valorizadas, permitindo otimizar a disposição de produtos e ajustar 
+          os preços de locação das prateleiras. Nosso dashboard intuitivo 
+          proporciona análises detalhadas para ajudar gestores a aumentar a 
+          rentabilidade e melhorar o direcionamento de produtos. <br><br>
+          <span>Além do aspecto financeiro, nossa abordagem estratégica 
+            transforma a gestão de layouts comerciais, tornando-a mais 
+            dinâmica e lucrativa. Nossas tecnologias ajudam empresas a 
+            maximizar sua visibilidade, impactando positivamente o mercado.</span> <br><br>
+          <!-- Área de Contato -->
+          <h1>Contato</h1>
+          <div class="section-contato">
+            <div class="contato-info">
+              <span><img src="./assets/icons/gps.png" alt="">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</span>
+              <span><img src="./assets/icons/o-email.png" alt="">contato@spacesense.com</span>
+              <span><img src="./assets/icons/phone.png" alt="">(11) 98765-4321</span>
+            </div>
+            <div class="linha-separadora"></div>
+              <div class="contato-redes">
+                <img src="./assets/icons/instagram.png" alt="Página do Instagram da Empresa">
+                <img src="./assets/icons/facebook.png" alt="Página do Facebook da Empresa">
+                <img src="./assets/icons/logotipo-do-linkedin.png" alt="Página do Linkedin da Empresa">
+                <span>SPACE SENSE OFICIAL</span>
+              </div>
+          </div>
+      </div>
     </div>
-    <div class="about">
-      <h1>NOSSO SERVIÇO</h1>
-      <span>  Desenvolvimento de um sistema que emprega sensores <br>
-      ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos <br>
-      produtos nas prateleiras e diversos setores do mercado. <br>
-      Nosso foco principal é identificar as regiões mais movimentadas, possibilitando <br>
-      uma análise precisa das áreas de maior valor.</span>
-    </div>
-    <div cas>
+    <footer class="footer">
+      <h2>Space Sense</h2>
+      <p>Sua solução varejista!</p>
+      <img src="./assets/img/logo_black.png" alt="">
+      <p>Copyright © 2024 Space Sense</p>
+    </footer>
 
-    </div>
-    </div>
-    
   </div>
-    
+
 </body>
+
 </html>

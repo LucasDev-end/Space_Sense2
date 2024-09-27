@@ -1,20 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Página no Geral */
 body{
     margin: 0;
     padding: 0;
     font-family: 'Montserrat';
-    background-color: black;
-    background-image:  url(../assets/background.png);
+    background-color: #4D54FF;
+    background-image:  url(../assets/img/background.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
-:root{
-    --tamanho-header: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-footer: 65px;
-}
+
 .sobrepor{
     background-color: #001857BF;
     height: 120vh;
@@ -27,6 +23,7 @@ body{
     margin: auto;
 }
 
+/* Seção destinada para fazer o header */
 .header .container {
     justify-content: space-between;
     align-items: center;
@@ -121,13 +118,88 @@ body{
 }
 .section-empresa{
     background-color: #4D54FF;
-    height: 100vh;
+    height: 230vh;
     padding-top: 40px;
 }
 
+/* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
 .about{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 80%;
+    margin-left: 140px;
 }
+
 .about h1{
     color: #fff;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+}
+.about span{
+    color: #fff;
+    font-size: 20px;
+}
+/* Seção destinada para a parte do Contato */
+.section-contato{
+    padding: 40px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+.section-contato .contato-info{
+    width: 40%;
+    text-align: left;
+}
+.section-contato .contato-info img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.section-contato span{
+    font-size: 18px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+.section-contato .linha-separadora {
+    width: 1px;
+    background-color: #ffffff;
+    height: 200px;
+    margin: 0 40px;
+}
+.contato-redes{
+    width: 40%;
+    text-align: left;
+}
+.section-contato .contato-redes img{
+    width: 40px;
+    height: 40px;
+    margin-left:50px;
+}
+.section-contato .contato-redes span{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 60px; 
+}
+/* Seção destinada para o Footer */
+.footer{
+    background-color: #fff;
+    height: 35vh;
+    padding-top: 20px;
+    text-align: center;
+}
+.footer h2{
+    color: #170F49;
+}
+.footer p{
+    font-size: 12px;
+    color: #6F6C90;
+}
+.footer img{
+    height: 40%;
+    width: 8%;
 }
