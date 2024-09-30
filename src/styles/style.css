@@ -11,6 +11,7 @@ body{
     background-size: cover;
 }
 
+/* Adicionar a cor azul transparente sobre a imagem */
 .sobrepor{
     background-color: #001857BF;
     height: 120vh;
@@ -68,13 +69,15 @@ body{
 /* Seção do conteúdo da página */
 .section-main{
     text-align: center;
+    height: 65%;
 }
 .section-main .space {
     font-size: 120px;
     color: #fff;
+    height: 250px;
 }
 .section-main .space .sense{
-    font-size: 140px;
+    font-size: 150px;
     color: #4dbeff;
     font-weight: bold;
 }
@@ -89,6 +92,18 @@ body{
 }
 
 /* Seção Simulador */
+.section-empresa{
+    background-color: #4D54FF;
+    height: 70vh;
+    padding-top: 40px;
+    text-align: center;
+}
+.section-empresa .botao{
+    padding: 10px;
+    background: linear-gradient(#0C2CBD, #061766);
+    width: 20%;
+    font-size: 20px;
+}
 .simulador{
     display: flex;
     flex-direction: column;
@@ -96,6 +111,7 @@ body{
     justify-content: center;
     margin: auto;
     width: 70%;
+    text-align: start;
 }
 .simulador h1{
     color: #fff;
@@ -110,19 +126,6 @@ body{
     border-radius: 5px;
     width: 18%;
     padding: 8px;
-    margin-left: 150px;
-}
-.simulador .botao{
-    padding: 10px;
-    background: linear-gradient(#0C2CBD, #061766);
-    width: 25%;
-    font-size: 20px;
-    margin-left: 350px;
-}
-.section-empresa{
-    background-color: #4D54FF;
-    height: 230vh;
-    padding-top: 40px;
 }
 
 /* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
@@ -140,10 +143,12 @@ body{
     margin-top: 0;
     text-align: center;
 }
+
 .about span{
     color: #fff;
     font-size: 20px;
 }
+
 /* Seção destinada para a parte do Contato */
 .section-contato{
     padding: 40px;
@@ -191,7 +196,6 @@ body{
 /* Seção destinada para o Footer */
 .footer{
     background-color: #fff;
-    height: 35vh;
     padding-top: 20px;
     text-align: center;
 }
