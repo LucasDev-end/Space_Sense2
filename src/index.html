@@ -48,20 +48,27 @@
         <div class="simulador">
         <h1>SIMULE PARA O SEU NEGÓCIO</h1>
 
-        <span>Média de clientes por mês</span>
-        <input type="number" placeholder="Ex:100"> <br> <br>
-        <span>Ticket médio por cliente no estabelecimento(em reais)</span>
-        <input type="text" placeholder="Ex:100"> <br> <br>
-        <span>Número de meses para avaliação</span>
-        <input type="text" placeholder="Ex:100"> <br><br>
-        <span>Você possui conhecimento exato dos <br>
-          pontos quentes e frios de sua loja? (sim ou não)</span>
-        <input type="text" placeholder="Ex:100"> <br><br>
-        <span>Você possui um layout feito de <br>
-          maneira estratégica para sua loja? (sim ou não)</span>
-        <input type="text" placeholder="Ex:100"> <br><br><br><br>
+        <span>Escolha um Setor:</span>
+        <select id="select_setor">
+          <option value="carnes">Carnes</option>
+          <option value="enlatados">Enlatados</option>
+          <option value="congelados">Congelados</option>
+          <option value="hortifruti">Hortifruti</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="adega">Adega</option>
+          <option value="limpeza">Produtos de Limpeza</option>
+          <option value="#" disabled selected>Selecione...</option>
+        </select>
+        <span>Nome do Produto:</span>
+        <input id="input_nome_produto" type="text" placeholder="Ex:Coca-Cola">
+        <span>Média de vendas do produto:</span>
+        <input id="input_vendas" type="text" placeholder="Ex:Coca-Cola">
+        <span>Quantidade de pessoas que passam por essa prateleira:</span>
+        <input id="input_popularidade" type="text" placeholder="Ex:100">
         </div>
-      <button class="botao">Calcular métricas</button>
+      <button class="botao" onclick="analisar()">Calcular métricas</button>
+
+      <div id="div_mensagem_calculadora"></div>
     </div>
 
       <!-- Nossos Serviços e Sobre nós -->
@@ -121,3 +128,26 @@
 </body>
 
 </html>
+
+<script>
+  function analisar() {
+    var setor = select_setor.value;
+    var nome_produto = input_nome_produto.value;
+    var vendas = Number(input_vendas.value);
+    var popularidade = Number(input_popularidade.value);
+
+    var conversao = (vendas / popularidade) * 100;
+
+    var mensagem = ``;
+
+    if(conversao >= 30) {
+      mensagem = `O produto está muito demandado, com ${conversao.toFixed(2)}% de popularidade, <br> e pode ser movido para um local com menor tráfego, <br>liberando espaço nobre para outros produtos.`;
+    } else if(conversao <= 5) {
+      mensagem = `Produto mal posicionado`;
+    } else {
+      mensagem = `Produto atende, porém é possivel melhorar em ${conversao.toFixed(2)}%`;
+    }
+
+    div_mensagem_calculadora.innerHTML = mensagem;
+  }
+</script>
