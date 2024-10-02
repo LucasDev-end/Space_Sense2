@@ -210,3 +210,62 @@ body{
     height: 40%;
     width: 8%;
 }
+
+/* PÁGINA DE LOGIN */
+
+.img-logo {
+    width: 5%;
+    height: 5%;
+}
+
+
+.container-login {
+    display: flex;
+    justify-content: center;
+}
+
+.sobrepor-login {
+    background-color: #001857BF;
+    height: 100%;
+    width: 100%;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card-mensagem {
+    background-color: #ffffff;
+}
+
+.card-login {
+    display: flex;
+    flex-direction: column;
+    background-color: #4D54FF; 
+}
+
+.formulario .campo { 
+    margin: 5px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+
+.botoes {
+    background-color:#0C2CBD;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+
+
