@@ -12,15 +12,27 @@ body{
     padding: 0;
     font-family: 'Montserrat';
     background-color: #4D54FF;
-    background-image:  url(../src/assets/img/background.png);
+    background-image:  url(../assets/img/background.png);
     background-size: cover;
 }
+/* Header da Página Login */
+.sobrepor-login {
+    background-color: #001857BF;
+    height: 100vh;
+    width: 100%;
+}
 
+.container-login {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}
 .img-logo {
     width: 5%;
     height: 5%;
 }
 
+/* Conteúdo da Pagína Principal do Login */
 .login {
     height: var(--tamanho-login);
     display: flex;
@@ -38,12 +50,6 @@ body{
 }
 
 
-.container-login {
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-}
-
 .card-login {
     display: flex;
     justify-content: center;
@@ -51,21 +57,16 @@ body{
     height: 50%;
     border-radius: 20px;
 }
-
-.sobrepor-login {
-    background-color: #001857BF;
-    height: 100vh;
-    width: 100%;
-}
-
-
 .card {
-    height: 100%;
+    margin: 1px;
+    border-radius: 30px;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    background-color: #4D54FF; 
 }
 
+
+/* Painel do Container da Esquerda */
 .card-mensagem {
     background-color: #ffffff;
     width: 30%;
@@ -76,12 +77,19 @@ body{
     border-radius: 20px;
     text-align: center;
 }
+.card {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 
 .card-mensagem h1 {
     color: #0C2CBD;
     font-size: 50px;
 }
 
+/* Painel do Container da Direita */
 .card-direita {
     align-items: center;
 }
@@ -90,15 +98,13 @@ body{
     align-self: center;
     color: aliceblue;
 }
+.card-direita a{
+    color: #fff;
+    font-weight: 600;
 
-.card {
-    margin: 1px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: flex-start;
-    background-color: #4D54FF; 
 }
 
+/* Formulario com Input e Button */
 .formulario {
     display: flex;
     justify-content: center;
@@ -124,17 +130,16 @@ input {
 span {
     color: #ffffff;
     font-size: 12px;
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
 }
-
 
 .botoes {
     font-size: 30px;
     color: #ffffff;
     text-align: center;
     border-radius: 10px;
-    margin: 5px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -144,8 +149,9 @@ span {
     width: 60%;
     height: 10%;
 }
-
-footer {
-    margin: auto;
-    padding: 5px;
+.possui_conta{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 10px;
 }

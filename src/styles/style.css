@@ -28,7 +28,7 @@ body{
 .header .container {
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    text-align: center;
 }
 
 .header a{
@@ -41,7 +41,7 @@ body{
     height: 120px;
 }
 .navbar{
-    width: 900px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +51,6 @@ body{
 
 .titulo{
     color: #ffffff;
-    width: fit-content;
     font-weight: 500;
     margin-right: 130px;
 }
