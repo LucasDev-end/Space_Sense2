@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Página no Geral */
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat';
     background-color: #4D54FF;
-    background-image:  url(../assets/img/background.png);
+    background-image: url(../assets/img/background.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -14,20 +14,21 @@ body{
 /* Adicionar a cor azul transparente sobre a imagem */
 :root {
     --tamanho-header: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-banner: calc(100vh - var(--tamanho-header));
+    --tamanho-pagina: calc(100vh - var(--tamanho-footer));
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
     --tamanho-footer: 180px;
 }
 
 .header {
     height: var(--tamanho-header);
+    background-color: #001957f4;
 }
 
-.container{
+.container {
     display: flex;
-    width: 100%;
+    width: 80%;
     margin: auto;
-    border: 2px solid red;
 }
 
 /* Seção destinada para fazer o header */
@@ -37,17 +38,18 @@ body{
     height: 100%;
 }
 
-.header a{
+.header a {
     text-decoration: none;
     color: #fff;
     font-size: 20px;
 }
-.header img{
+
+.header img {
     width: 90px;
     height: 120px;
 }
 
-.navbar{
+.navbar {
     width: 60%;
     display: flex;
     align-items: center;
@@ -56,57 +58,45 @@ body{
     color: #fff;
 }
 
-.titulo{
+.titulo {
     color: #ffffff;
     font-weight: 500;
 }
 
 /* Seção do conteúdo da página */
-.banner{
+.banner {
     height: var(--tamanho-banner);
-    background-color: #001857BF;
-    height: 100%;
+    background-color: #001957d0;
     width: 100%;
 }
 
 .banner .container {
     justify-content: center;
     align-items: center;
-    height: 80%;
-}
-
-.banner .container .space {
-    margin: 20px;
-    font-size: 120px;
-    color: #fff;
     height: 100%;
-    flex-direction: column;
-}
-
-.banner .container .sense{
-    font-size: 100px;
-    color: #4dbeff;
-    font-weight: bold;
-    flex-direction: column;
-}
-
-.banner .container .separador{
-    width: 50%;
-    border: 7px solid #fff;
-    border-radius: 10px;
-    flex-direction: column;
 }
 
 .banner .container p {
-    width: 50%;
+    width: 80%;
+    margin: 0;
     padding: 0;
     font-size: 36px;
     color: #ffffff;
-    text-align: center;
-    flex-direction: column;
 }
 
-.botao{
+.banner .container h1 {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 80px;
+}
+
+#span_azul {
+    color: #1e87ff;
+}
+
+.botao {
     border: none;
     padding: 10px;
     color: #fff;
@@ -118,111 +108,96 @@ body{
 }
 
 /* Seção Simulador */
-.section-empresa{
+.simulador {
     background-color: #4D54FF;
-    height: 70vh;
-    padding-top: 40px;
-    text-align: center;
+    height: var(--tamanho-pagina);
 }
-.section-empresa .botao{
+
+.simulador .botao {
     padding: 10px;
     background: linear-gradient(#0C2CBD, #061766);
     width: 20%;
     font-size: 20px;
 }
-.simulador{
-    display: flex;
+
+.simulador .container {
+    height: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: auto;
-    width: 70%;
-    text-align: start;
 }
-.simulador h1{
+
+.simulador .container h1 {
+    justify-self: flex-start;
     color: #fff;
+    font-size: 50px;
+}
+
+.formulario {
+    height: 75%;
+    width: 100%;
+}
+
+.formulario .container {
+    height: 100%;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.campo {
+    height: 18%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo input {
+    padding: 10px;
+    border: none;
+    border-radius: 9px;
     text-align: center;
 }
-.simulador span{
-    color: #fff;
-    font-size: 20px;
-}
-.simulador input{
-    border: none;
-    border-radius: 5px;
-    width: 18%;
-    padding: 8px;
+
+.campo span {
+    font-size: 18px;
 }
 
 /* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
-.about{
-    flex-direction: column;
-}
-
-.about .container{
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-}
-
-.about h1{
-    color: #fff;
-    font-weight: bold;
-    margin-top: 0;
+.about {
+    color: #ffffff;
+    background-color: #4D54FF;
+    height: var(--tamanho-pagina);
     text-align: center;
 }
 
-.about span{
-    color: #fff;
+.about .container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.about .container span {
+    width: 80%;
+    margin: 0;
+    padding: 0;
     font-size: 20px;
+    color: #ffffff;
+}
+
+.about .container h1 {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 40px;
 }
 
 /* Seção destinada para a parte do Contato */
-.section-contato{
-    padding: 40px;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-top: 20px;
-    margin-left: 35px;
-}
-.section-contato .contato-info{
-    width: 40%;
-    text-align: left;
-}
-.section-contato .contato-info img{
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-.section-contato span{
-    font-size: 18px;
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-}
-.section-contato .linha-separadora {
-    width: 1px;
-    background-color: #ffffff;
-    height: 200px;
-    margin: 0 40px;
-}
-.contato-redes{
-    width: 40%;
-    text-align: left;
-}
-.section-contato .contato-redes img{
-    width: 40px;
-    height: 40px;
-    margin-left:50px;
-}
-.section-contato .contato-redes span{
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 60px; 
-}
+
+
 /* Seção destinada para o Footer */
-.footer{
+.footer {
     height: var(--tamanho-footer);
     background-color: #fff;
     padding-top: 20px;
@@ -235,17 +210,18 @@ body{
     align-items: center;
 }
 
-.footer .container p{
+.footer .container p {
     font-size: 12px;
     color: #6F6C90;
 }
-.footer .container img{
+
+.footer .container img {
     height: 50%;
     width: 5%;
 }
 
 /* PÁGINA DE LOGIN */
-
+/* 
 .img-logo {
     width: 5%;
     height: 5%;
@@ -281,10 +257,10 @@ body{
 .card-login {
     display: flex;
     flex-direction: column;
-    background-color: #4D54FF; 
+    background-color: #4D54FF;
 }
 
-.formulario .campo { 
+.formulario .campo {
     margin: 5px;
     border-radius: 50px;
     display: flex;
@@ -294,8 +270,8 @@ body{
 
 
 .botoes {
-    background-color:#0C2CBD;
+    background-color: #0C2CBD;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-}
+} */
