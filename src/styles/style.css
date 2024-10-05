@@ -12,23 +12,29 @@ body{
 }
 
 /* Adicionar a cor azul transparente sobre a imagem */
-.sobrepor{
-    background-color: #001857BF;
-    height: 120vh;
-    width: 100%;
+:root {
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 180px;
+}
+
+.header {
+    height: var(--tamanho-header);
 }
 
 .container{
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
+    border: 2px solid red;
 }
 
 /* Seção destinada para fazer o header */
 .header .container {
     justify-content: space-between;
     align-items: center;
-    text-align: center;
+    height: 100%;
 }
 
 .header a{
@@ -40,11 +46,12 @@ body{
     width: 90px;
     height: 120px;
 }
+
 .navbar{
-    width: 100%;
+    width: 60%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     list-style: none;
     color: #fff;
 }
@@ -52,8 +59,53 @@ body{
 .titulo{
     color: #ffffff;
     font-weight: 500;
-    margin-right: 130px;
 }
+
+/* Seção do conteúdo da página */
+.banner{
+    height: var(--tamanho-banner);
+    background-color: #001857BF;
+    height: 100%;
+    width: 100%;
+}
+
+.banner .container {
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.banner .container .space {
+    margin: 20px;
+    font-size: 120px;
+    color: #fff;
+    height: 100%;
+    flex-direction: column;
+}
+
+.banner .container .sense{
+    font-size: 100px;
+    color: #4dbeff;
+    font-weight: bold;
+    flex-direction: column;
+}
+
+.banner .container .separador{
+    width: 50%;
+    border: 7px solid #fff;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.banner .container p {
+    width: 50%;
+    padding: 0;
+    font-size: 36px;
+    color: #ffffff;
+    text-align: center;
+    flex-direction: column;
+}
+
 .botao{
     border: none;
     padding: 10px;
@@ -63,31 +115,6 @@ body{
     font-size: 16px;
     background-color: #046DE9;
     font-weight: bold;
-}
-
-/* Seção do conteúdo da página */
-.section-main{
-    text-align: center;
-    height: 65%;
-}
-.section-main .space {
-    font-size: 120px;
-    color: #fff;
-    height: 250px;
-}
-.section-main .space .sense{
-    font-size: 150px;
-    color: #4dbeff;
-    font-weight: bold;
-}
-.section-main .separador{
-    width: 50%;
-    border: 7px solid #fff;
-    border-radius: 10px;
-}
-.section-main p{
-    color: #fff;
-    font-size: 20px;
 }
 
 /* Seção Simulador */
@@ -129,11 +156,13 @@ body{
 
 /* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
 .about{
-    display: flex;
     flex-direction: column;
-    margin-top: 100px;
-    width: 80%;
-    margin-left: 140px;
+}
+
+.about .container{
+    justify-content: center;
+    align-items: center;
+    height: 80%;
 }
 
 .about h1{
@@ -194,20 +223,25 @@ body{
 }
 /* Seção destinada para o Footer */
 .footer{
+    height: var(--tamanho-footer);
     background-color: #fff;
     padding-top: 20px;
     text-align: center;
 }
-.footer h2{
-    color: #170F49;
+
+.footer .container {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
-.footer p{
+
+.footer .container p{
     font-size: 12px;
     color: #6F6C90;
 }
-.footer img{
-    height: 40%;
-    width: 8%;
+.footer .container img{
+    height: 50%;
+    width: 5%;
 }
 
 /* PÁGINA DE LOGIN */
