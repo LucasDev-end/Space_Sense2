@@ -145,3 +145,10 @@ input {
     width: 60%;
     height: 10%;
 }
+
+.inputs_senhas {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px 34px;
+}
