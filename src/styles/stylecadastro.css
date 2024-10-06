@@ -97,6 +97,7 @@ body{
 
 /* Painel da Direita do Card */
 .card-direita {
+    height: 100%;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -106,7 +107,7 @@ body{
 .card-direita h2 {
     align-self: center;
     color: aliceblue;
-    font-size: 40px;
+    font-size: 30px;
 }
 .card-direita span{
     color: #fff;
@@ -125,13 +126,11 @@ body{
     width: 100%;
     text-align: center;
 }
-input {
-    width: 80%;
+.card-direita input {
+    width: 90%;
     font-size: 20px;
     padding: 10px;
-    border-radius: 10px;
-    margin: 5px;
-    margin: 20px;
+    border-radius: 20px;
 }
 .botao {
     font-size: 30px;
@@ -147,8 +146,9 @@ input {
 }
 
 .inputs_senhas {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 5px 34px;
+    padding: 10px;
 }

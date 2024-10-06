@@ -55,7 +55,7 @@ body{
     display: flex;
     justify-content: center;
     width: 60%;
-    height: 50%;
+    height: 40%;
     border-radius: 20px;
 }
 .card {
@@ -79,7 +79,7 @@ body{
     text-align: center;
 }
 .card {
-    height: 120%;
+    height: 110%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
