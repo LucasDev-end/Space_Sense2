@@ -81,12 +81,12 @@ body {
 }
 
 .banner .container {
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    text-align: center;
+    /* text-align: center; */
     height: 100%;
 }
-.section-main{
+/* .section-main{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -95,10 +95,10 @@ body {
 .section-main h1 {
     display: flex;
     flex-direction: column;
-}
+} */
 .separador{
-    width: 60%;
-    border: 6px solid white;
+    width: 100%;
+    border: 2px solid white;
     border-radius: 10px;
 }
 .banner .container p {
@@ -114,15 +114,16 @@ body {
     margin: 0;
     padding: 0;
     color: #ffffff;
-    font-size: 80px;
+    font-size: 100px;
+    
 }
 #span_branco{
     color: #fff;
-    font-size: 128px;
+    /* font-size: 128px; */
 }
 #span_azul {
     color: #1e87ff;
-    font-size: 148px;
+    /* font-size: 148px; */
 }
 
 .botao {
@@ -151,9 +152,9 @@ body {
 }
 
 .simulador .container {
-    height: 100%;
+    height: var(--tamanho-pagina);
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .simulador .container h1 {
@@ -192,6 +193,7 @@ body {
 
 /* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
 .about {
+    height: var(--tamanho-pagina);
     color: #ffffff;
     background-color: #4D54FF;
     height: 4   00%;
