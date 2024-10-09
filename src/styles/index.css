@@ -41,7 +41,6 @@ body {
     font-size: 24px;
     color: #fff;
     font-weight: 600;
-    margin-right: 200px;
 }
 .header h1{
     display: flex;
@@ -60,7 +59,7 @@ body {
 }
 
 .navbar {
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -223,19 +222,18 @@ body {
     font-size: 40px;
 }
 
-/* Seção destinada para a parte do Contato */
-
-
 /* Seção destinada para o Footer */
 .footer {
     height: var(--tamanho-footer);
     background-color: #fff;
     padding-top: 20px;
     text-align: center;
+    display: flex;
 }
 
 .footer .container {
     height: 100%;
+    width: 100%;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -249,61 +247,28 @@ body {
 
 .footer .container img {
     height: 50%;
-    width: 10%;
+    width: 15%;
 }
-
-/* PÁGINA DE LOGIN */
-/* 
-.img-logo {
-    width: 5%;
-    height: 5%;
-}
-
-
-.container-login {
-    display: flex;
-    justify-content: center;
-}
-
-.sobrepor-login {
-    background-color: #001857BF;
-    height: 100%;
-    width: 100%;
-}
-
-.login {
-    display: flex;
-    justify-content: center;
-}
-
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.card-mensagem {
-    background-color: #ffffff;
-}
-
-.card-login {
+/* Parte da Esquerda do Footer - Contato */
+.section-contato{
     display: flex;
     flex-direction: column;
-    background-color: #4D54FF;
+    align-items: center;
+    width: 50%;
 }
-
-.formulario .campo {
-    margin: 5px;
-    border-radius: 50px;
+.contato-info{
     display: flex;
-    justify-content: flex-end;
     flex-direction: column;
 }
-
-
-.botoes {
-    background-color: #0C2CBD;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-} */
+.contato-info img{
+    height: 20px;
+    width: 20px;
+}
+/* Parte da Direita do Footer - Redes */
+.contato-redes{
+    width: 50%;
+}
+.contato-redes img{
+    height: 50px;
+    width: 50px;
+}
