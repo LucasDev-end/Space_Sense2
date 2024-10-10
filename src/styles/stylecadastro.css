@@ -121,7 +121,13 @@ body{
     height: 100%;
     width: 70%;
 }
-
+.formulario span{
+    font-size: 16px;
+}
+.formulario a{
+    color: #fff;
+    font-weight: bold;
+}
 .campo {
     width: 100%;
     text-align: center;

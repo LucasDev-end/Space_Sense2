@@ -17,7 +17,7 @@ body {
     --tamanho-banner: calc(100vh - var(--tamanho-header));
     --tamanho-pagina: calc(100vh - var(--tamanho-footer));
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-footer: 180px;
+    --tamanho-footer: 200px;
 }
 
 .header {
@@ -27,7 +27,7 @@ body {
 
 .container {
     display: flex;
-    width: 80%;
+    width: 85%;
     margin: auto;
 }
 
@@ -125,22 +125,39 @@ body {
 }
 
 .botao {
-    border: none;
+    border: 1px solid #fff;
     padding: 10px;
     color: #fff;
     width: 120px;
     border-radius: 10px;
     font-size: 16px;
-    background-color: #046DE9;
+    background-color:transparent;
     font-weight: bold;
+}
+/* fica com uma cor diferente quando passa en cima do botao */
+.botao:hover{
+    transition: 0.5s;
+    background-color: #9e9797;
+}
+.botaoCadastro {
+    margin-left: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #4D54FF;
+    width: 200px;
+    border: none;
+    padding: 10px;
+}
+.botaoCadastro:hover{
+    background-color: #6d71f4;
 }
 
 /* Seção Simulador */
 .simulador {
+    align-items: center;
     background-color: #4D54FF;
-    height: var(--tamanho-pagina);
+    height: 100vh;
 }
-
 .simulador .botao {
     padding: 10px;
     background: linear-gradient(#0C2CBD, #061766);
@@ -193,9 +210,30 @@ body {
 .about {
     color: #ffffff;
     background-color: #4D54FF;
-    height: 4   00%;
+    height: 100vh;
     text-align: center;
 }
+.servicos{
+    color: #ffffff;
+    background-color: #4D54FF;
+    height: 100vh;
+    text-align: center;
+}
+.servicos span{
+    font-size: 36px;
+    font-weight: bold;
+}
+.container span{
+    font-size: 20px;
+    font-weight: normal;
+}
+.servicos .container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+}
+
 
 .about .container {
     justify-content: center;
@@ -212,7 +250,10 @@ body {
     font-size: 20px;
     color: #ffffff;
 }
-
+#servico .container img {
+    width: 500px;
+    border-radius: 120px;
+}
 .about .container h1 {
     width: 50%;
     margin: 0;
@@ -220,6 +261,26 @@ body {
     color: #ffffff;
     margin: 20px;
     font-size: 40px;
+}
+
+/* Seção destinada para o Sobre Nós e Nossos Valores */
+
+.social {
+    display: flex;
+    width: 100%;
+}
+.social .container .boxes{
+    display: flex;
+    width: 150%;
+    padding: 30px 0;
+}
+.box{
+    background-color: #949393;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+.box img {
+    width: 100px;
 }
 
 /* Seção destinada para o Footer */
@@ -247,16 +308,19 @@ body {
 
 .footer .container img {
     height: 50%;
-    width: 15%;
+    width: 25%;
 }
 /* Parte da Esquerda do Footer - Contato */
 .section-contato{
     display: flex;
+    justify-content: center;
+    text-align: center;
     flex-direction: column;
-    align-items: center;
-    width: 50%;
+    width: 100%;
+    margin-left: 120px;
 }
 .contato-info{
+    text-align: start;
     display: flex;
     flex-direction: column;
 }
@@ -267,6 +331,7 @@ body {
 /* Parte da Direita do Footer - Redes */
 .contato-redes{
     width: 50%;
+    padding-bottom: 40px;
 }
 .contato-redes img{
     height: 50px;
