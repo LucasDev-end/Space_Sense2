@@ -14,7 +14,7 @@ body {
 /* Adicionar a cor azul transparente sobre a imagem */
 :root {
     --tamanho-header: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header));
+    --tamanho-banner: calc(100vh + var(--tamanho-header));
     --tamanho-pagina: calc(100vh + var(--tamanho-header) - 2px);
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
     --tamanho-footer: 200px;
@@ -147,7 +147,7 @@ body {
 /* Seção Simulador */
 .simulador {
     height: var(--tamanho-pagina);
-    background-color: #4D54FF;
+    background-color: #14187f;
 }
 
 .simulador .container {
@@ -230,7 +230,7 @@ body {
 }
 
 .servicos img {
-    width: 600px;
+    width: 1200px;
     box-shadow: 8px 5px 10px 3px rgba(0, 0, 0, 0.268);
 }
 
@@ -260,7 +260,7 @@ body {
 .about {
     height: var(--tamanho-pagina);
     color: #ffffff;
-    background-color: #4D54FF;
+    background-color: #14187f;
     height: 100vh;
     text-align: center;
 }
