@@ -15,7 +15,7 @@ body {
 :root {
     --tamanho-header: 80px;
     --tamanho-banner: calc(100vh - var(--tamanho-header));
-    --tamanho-pagina: calc(100vh - var(--tamanho-footer));
+    --tamanho-pagina: calc(100vh + var(--tamanho-header) - 2px);
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
     --tamanho-footer: 200px;
 }
@@ -37,12 +37,14 @@ body {
     align-items: center;
     height: 100%;
 }
-.header span{
+
+.header span {
     font-size: 24px;
     color: #fff;
     font-weight: 600;
 }
-.header h1{
+
+.header h1 {
     display: flex;
     flex-direction: column;
 }
@@ -80,49 +82,31 @@ body {
 }
 
 .banner .container {
-    /* justify-content: center; */
-    align-items: center;
-    /* text-align: center; */
+    justify-content: center; 
+    flex-direction: column;
+    align-items: flex-start; 
     height: 100%;
+    color: #fff;
+    text-align: left; 
 }
-/* .section-main{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;    
-}
-.section-main h1 {
-    display: flex;
-    flex-direction: column;
-} */
-.separador{
+
+.separador {
     width: 100%;
+    align-self: flex-start;
     border: 2px solid white;
     border-radius: 10px;
 }
+
 .banner .container p {
-    width: 80%;
+    width: 90%;
     margin: 0;
     padding: 0;
     font-size: 36px;
     color: #ffffff;
 }
 
-.banner .container h1 {
-    width: 50%;
-    margin: 0;
-    padding: 0;
-    color: #ffffff;
-    font-size: 100px;
-    
-}
-#span_branco{
-    color: #fff;
-    /* font-size: 128px; */
-}
-#span_azul {
-    color: #1e87ff;
-    /* font-size: 148px; */
+.banner .container span { 
+    font-size: 90px;
 }
 
 .botao {
@@ -132,14 +116,16 @@ body {
     width: 120px;
     border-radius: 10px;
     font-size: 16px;
-    background-color:transparent;
+    background-color: transparent;
     font-weight: bold;
 }
+
 /* fica com uma cor diferente quando passa en cima do botao */
-.botao:hover{
-    transition: 0.5s;
+.botao:hover {
+    transition: 2s;
     background-color: #9e9797;
 }
+
 .botaoCadastro {
     margin-left: 20px;
     font-weight: bold;
@@ -149,49 +135,58 @@ body {
     border: none;
     padding: 10px;
 }
-.botaoCadastro:hover{
+
+.botaoCadastro:hover {
     background-color: #6d71f4;
 }
 
 /* Seção Simulador */
 .simulador {
-    align-items: center;
+    height: var(--tamanho-pagina);
     background-color: #4D54FF;
-    height: 100vh;
-}
-.simulador .botao {
-    padding: 10px;
-    background: linear-gradient(#0C2CBD, #061766);
-    width: 20%;
-    font-size: 20px;
-    margin: 20px;
 }
 
 .simulador .container {
-    height: var(--tamanho-pagina);
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-end;
+    height: 100%;
 }
 
-.simulador .container h1 {
-    justify-self: flex-start;
-    color: #fff;
-    font-size: 50px;
-}
-
-.formulario {
-    height: 75%;
-    width: 100%;
-}
-
-.formulario .container {
+.boxSimulador {
+    display: flex;
+    flex-direction: row;
     height: 100%;
     width: 100%;
 }
 
+.card {
+    border-radius: 10px;
+    background-color: #cccdfc; 
+}
+
+.simulador .container h1 {
+    color: #fff;
+    align-self: center;
+    font-size: 50px;
+}
+
+.formulario {
+    width: 50%;
+    height: 70%;
+}
+
+.simulador .formulario .container {
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
 .campo {
+    color: #ffffff;
     height: 18%;
-    width: 40%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
@@ -207,7 +202,57 @@ body {
     font-size: 18px;
 }
 
-/* Seção destinado para o Sobre Nós, Nosso Serviço e Contato */
+.simulador .botao {
+    padding: 10px;
+    background: linear-gradient(#0C2CBD, #061766);
+    width: 20%;
+    font-size: 20px;
+    margin: 20px;
+}
+
+/* SERVIÇO */
+
+.servicos {
+    color: #091d54;
+    background-color: #ffffff;
+    height: var(--tamanho-pagina);
+    text-align: center;
+}
+
+.img_titulo {
+   display: flex; 
+   flex-direction: column;
+   align-items: center;
+}
+
+.servicos img {
+    width: 600px;
+    box-shadow: 8px 5px 10px 3px rgba(0, 0, 0, 0.268);
+}
+
+.servicos h1 {
+    margin: 15px;
+}
+
+.texto_servico {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto_servico .container {
+    align-items: center;
+    justify-content: center;
+}
+
+.texto_servico .container p {
+    width: 50%;
+    font-size: 24px;
+    text-align: justify;
+}
+
+/* SOBRE NÓS */
+
 .about {
     height: var(--tamanho-pagina);
     color: #ffffff;
@@ -215,27 +260,6 @@ body {
     height: 100vh;
     text-align: center;
 }
-.servicos{
-    color: #ffffff;
-    background-color: #4D54FF;
-    height: 100vh;
-    text-align: center;
-}
-.servicos span{
-    font-size: 36px;
-    font-weight: bold;
-}
-.container span{
-    font-size: 20px;
-    font-weight: normal;
-}
-.servicos .container {
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    display: flex;
-}
-
 
 .about .container {
     justify-content: center;
@@ -252,10 +276,7 @@ body {
     font-size: 20px;
     color: #ffffff;
 }
-#servico .container img {
-    width: 500px;
-    border-radius: 120px;
-}
+
 .about .container h1 {
     width: 50%;
     margin: 0;
@@ -271,16 +292,19 @@ body {
     display: flex;
     width: 100%;
 }
-.social .container .boxes{
+
+.social .container .boxes {
     display: flex;
     width: 150%;
     padding: 30px 0;
 }
-.box{
+
+.box {
     background-color: #949393;
     margin-right: 20px;
     border-radius: 10px;
 }
+
 .box img {
     width: 100px;
 }
@@ -312,8 +336,9 @@ body {
     height: 50%;
     width: 25%;
 }
+
 /* Parte da Esquerda do Footer - Contato */
-.section-contato{
+.section-contato {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -321,21 +346,25 @@ body {
     width: 100%;
     margin-left: 120px;
 }
-.contato-info{
+
+.contato-info {
     text-align: start;
     display: flex;
     flex-direction: column;
 }
-.contato-info img{
+
+.contato-info img {
     height: 20px;
     width: 20px;
 }
+
 /* Parte da Direita do Footer - Redes */
-.contato-redes{
+.contato-redes {
     width: 50%;
     padding-bottom: 40px;
 }
-.contato-redes img{
+
+.contato-redes img {
     height: 50px;
     width: 50px;
 }
