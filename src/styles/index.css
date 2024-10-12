@@ -21,8 +21,10 @@ body {
 }
 
 .header {
+    width: 100%;
     height: var(--tamanho-header);
     background-color: #001957f4;
+    position: fixed;
 }
 
 .container {
@@ -121,10 +123,6 @@ body {
 }
 
 /* fica com uma cor diferente quando passa en cima do botao */
-.botao:hover {
-    transition: 2s;
-    background-color: #9e9797;
-}
 
 .botaoCadastro {
     margin-left: 20px;
@@ -136,7 +134,13 @@ body {
     padding: 10px;
 }
 
+.botao:hover {
+    transition: 0.5s;
+    background-color: #4e9d00;
+}
+
 .botaoCadastro:hover {
+    transition: 0.5s;
     background-color: #6d71f4;
 }
 
