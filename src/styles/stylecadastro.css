@@ -152,6 +152,9 @@ input {
     width: 60%;
     height: 10%;
 }
+.botao a{
+    text-decoration: none;
+}
 
 .inputs_senhas {
     display: flex;
