@@ -60,7 +60,7 @@ body{
 }
 .card {
     margin: 1px;
-    border-radius: 30px;
+    border-radius: 5px;
     display: flex;
     justify-content: flex-start;
     background-color: #4D54FF; 
@@ -75,7 +75,7 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 5px;
     text-align: center;
 }
 .card {
@@ -150,6 +150,9 @@ span {
     background: linear-gradient(#0C2CBD, #061766);
     width: 60%;
     height: 10%;
+}
+.botoes a{
+    text-decoration: none;
 }
 .possui_conta{
     color: #fff;
