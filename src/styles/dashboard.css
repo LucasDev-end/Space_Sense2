@@ -144,10 +144,13 @@ a span{
     align-items: flex-start;
     justify-content: space-between;
 }
-.kpi div{
+.kpi .box-kpi{
     background-color: grey;
     width: 30%;
     height: 20vh;
+}
+.box-kpi div{
+    background-color:#2F5F98;
 }
 .grafico{
     background-color: #504336;
