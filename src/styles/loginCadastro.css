@@ -32,6 +32,10 @@
     justify-content: center;
 }
 
+.card-login .container {
+    justify-content: space-evenly;
+}
+
 .card {
     background-color: rgb(255, 255, 255);
 }
@@ -46,6 +50,7 @@
 }
 
 .card-login h5 {
+    height: 5%;
     font-size: 45px;
     margin: auto;
     color: #1b307b;
@@ -55,7 +60,6 @@
 .formulario {
     width: 100%;
     height: 90%;
-    /* border: 2px solid red; */
 }
 
 .formulario .container {
@@ -64,7 +68,6 @@
 }
 
 .campo {
-    height: 25%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -106,10 +109,44 @@ input {
     border: 4px solid #0026b0;
 }
 
-
 .possui_conta {
     color: #1e2f48;
     font-size: 16px;
     text-decoration: none;
     margin: 10px;
+}
+
+/* CADASTRO */
+
+.cadastro {
+    height: var(--tamanho-login);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.cadastro .container {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cadastro {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+}
+
+.card-cadastro h5 {
+    height: 10%;
+    font-size: 45px;
+    margin: auto;
+    color: #1b307b;
+}
+
+.card-cadastro .container {
+    justify-content: space-evenly;
 }

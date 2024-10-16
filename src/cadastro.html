@@ -4,22 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/stylecadastro.css">
+    <link rel="stylesheet" href="./styles/loginCadastro.css">
+    <link rel="stylesheet" href="./styles/index.css">
     <title>Space Sense | Cadastre-se</title>
-    <style>
-        .campo input {
-            width: 80%;
-            font-size: 20px;
-            margin: 5px;
-            padding: 10px;
-            border-radius: 20px;
-        }
-
-        .card-direita h2 {
-            font-size: 22px;
-
-        }
-    </style>
 </head>
 
 <body>
@@ -29,34 +16,36 @@
         <div class="header-login">
             <div class="container-login">
                 <img src="./assets/img/logo.png" alt="Logo da Empresa" class="img-logo">
-                <h2 class="titulo"><b>SPACE</b><br> SENSE</h2>
             </div>
         </div>
 
         <!-- CONTEÚDO DA PÁGINA -->
-        <div class="login">
-            <div class="card card-login">
-                <div class="left-painel-cadastro" style="width: 52%">
-                    <h1>Bem vindo</h1>
-                    <div class="painel">
-                        <h2>Cadastre-se ao lado</h2>
-                        <img src="./assets/icons/seta-direita.png" alt="">
-                    </div>
-                </div>
-                <div class="card-direita">
-                    <h2>Insira as informações a seguir:</h2>
+        <div class="cadastro">
+            <div class="container">
+                <div class="card card-cadastro">
+                    <h5>Cadastro</h5>
                     <div class="formulario">
-                        <div class="campo">
-                            <input type="text" id="input_nome" placeholder="Nome Completo" required>
-                            <input type="text" id="input_telefone" placeholder="Telefone" maxlength="11" required>
-                            <input type="text" id="input_email" placeholder="E-mail" required>
-                            <input type="password" id="input_senha" placeholder="Senha" required>
-                            <input type="password" id="input_confirmacao_senha" placeholder="Confirme sua senha"
-                                required>
+                        <div class="container">
+                            <div class="campo">
+                                <input type="text" id="input_nome" placeholder="Nome Completo" required>
+                            </div>
+                            <div class="campo">
+                                <input type="text" id="input_telefone" placeholder="Telefone" maxlength="11" required>
+                            </div>
+                            <div class="campo">
+                                <input type="text" id="input_email" placeholder="E-mail" required>
+                            </div>
+                            <div class="campo">
+                                <input type="password" id="input_senha" placeholder="Senha" required>
+                            </div>
+                            <div class="campo">
+                                <input type="password" id="input_confirmacao_senha" placeholder="Confirme sua senha"
+                                    required>
+                            </div>
+                            <button onclick="cadastrar()">Cadastre-se</button>
+                            <span>Já possui conta?<a href="login.html">Faça seu login</a></span>
+                            <div id="div_mensagem"></div>
                         </div>
-                        <button class="botao" onclick="cadastrar()">Cadastre-se</button>
-                        <span>Já possui conta?<a href="login.html">Faça seu login</a></span>
-                        <div id="div_mensagem"></div>
                     </div>
                 </div>
             </div>
