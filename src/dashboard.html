@@ -33,32 +33,74 @@
                 <div class="grafico-esquerda">
                     <div class="kpi">
                         <div class="box-kpi">
-                            <div>
-                                <h2>Setor mais Popular</h2>
+                            <div class="titulo">
+                                <h2>Setor <strong> mais Popular</strong></h2>
                             </div>
-                            5.872
-                            <h4>carnes</h4>
+                            <div class="kpi-num" style="color: green;">
+                                5.872
+                            </div>
+                            <div class="kpi-sub-texto">
+                                <h4>Carnes</h4>
+                                <span class="seta-cima"></span>
+                            </div>
                         </div>
                         <div class="box-kpi">
-                            <div>
-                                <h2>Setor menos Popular</h2>
+                            <div class="titulo">
+                                <h2>Setor <span>menos Popular</span></h2>
                             </div>
-                            788
-                            <h4>Limpeza</h4>
+                            <div class="kpi-num" style="color: red;">
+                                788
+                            </div>
+                            <div class="kpi-sub-texto">
+                                <h4>Limpeza</h4>
+                                <span class="seta-baixo"></span>
+                            </div>
                         </div>
                         <div class="box-kpi">
-                            <div>
-                                <h2>Setor mais Constante</h2>
+                            <div class="titulo">
+                                <h2>Setor <span> mais Constante</span></h2>
                             </div>
-                            1.505
-                            <h4>Hortifruti</h4>
+                            <div class="kpi-num" style="color: #2F5F98;">
+                                1.505
+                            </div>
+                            <div class="kpi-sub-texto">
+                                <h4>Hortifruti</h4>
+                            </div>
                         </div>
                     </div>
-                    <div class="grafico"><canvas id="myChart-grafico"></canvas></div>
+                    <div class="grafico"><h2>Popularidade Geral ao Mês</h2>
+                        <canvas id="myChart-grafico"></canvas></div>
                 </div>
                 <div class="grafico-direita">
-                    <div class="insights"><canvas id="myChart-grafico2"></canvas></div>
-                    <div class="insights2">tabela</canvas></div>
+                    <div class="insights">
+                        <h2>Popularidade Geral ao Mês</h2>
+                        <div class="myChart-grafico2">
+                            <canvas id="myChart-grafico2"></canvas>
+                        </div>
+                    </div>
+                    <div class="insights2">
+                        <h2><b>Quantidade de pessoas</b></h2>
+                        <div>
+                            <div class="insights2-box"><h2>Bebidas:</h2></div>
+                            <div class="insights2-box2">3.841</div>
+                        </div>
+                        <div>
+                            <div class="insights2-box"><h2>Carnes:</h2></div>
+                            <div class="insights2-box2">5.872</div>
+                        </div>
+                        <div>
+                            <div class="insights2-box"><h2>Limpeza:</h2></div>
+                            <div class="insights2-box2">788</div>
+                        </div>
+                        <div>
+                            <div class="insights2-box"><h2>Hortifruti:</h2></div>
+                            <div class="insights2-box2">1.505</div>
+                        </div>
+                        <div>
+                            <div class="insights2-box"><h2>Congelados:</h2></div>
+                            <div class="insights2-box2">2.367</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +142,6 @@
     };
 
 
-    // Grafico de Barras
     const labels2 = [
         'Janeiro',
         'Fevereiro',
