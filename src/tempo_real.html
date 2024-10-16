@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="dashboard-grafico">
-            <div class="grafico-unico"><h2>Fluxo de Pessoas por Setor</h2>
+            <div class="grafico-unico"><h2>Horário de Pico</h2>
             <div class="canva-tempo-real">
                 <canvas id="myChart-grafico"></canvas>
             </div>
@@ -42,56 +42,31 @@
 </html>
 <script>
     const labels = [
-        'Segunda',
-        'Terça',
-        'Quarta',
-        'Quinta',
-        'Sexta',
-        'Sábado',
-        'Domingo',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Bebidas',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [60, 30, 18, 20, 70, 45,40],
+        label: 'Fluxo de Pessoas pelo Horário',
+        backgroundColor: '#00c176',
+        borderColor: '#00c176',
+        data: [30, 25, 20, 28, 40, 45,70,65,65,35,30],
         },
-        
-        {
-        label: 'Carne',
-        backgroundColor: 'rgb(54, 162, 235)',
-        borderColor: 'rgb(54, 162, 235)',
-        data: [70, 30,40, 40, 80, 55,50],
-        },
-        
-        {
-        label: 'Limpeza',
-        backgroundColor: '#ffbc11',
-        borderColor: '#ffbc11',
-        data: [10, 15,20, 20, 30, 55,65],
-        },
-        {
-        label: 'Hortifruti',
-        backgroundColor: '#0a837f',
-        borderColor: '#0a837f',
-        data: [60, 30,32, 20, 70, 25,40],
-        },
-        {
-        label: 'Congelados',
-        backgroundColor: '#bf2a23',
-        borderColor: '#bf2a23',
-        data: [75, 35,37, 36, 75, 45,45],
-        }
-        
-        
     ]
     };
-
     const config = {
-        type: 'bar',
+        type: 'line',
         data: data,
         options: {}
     };
