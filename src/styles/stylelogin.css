@@ -150,10 +150,9 @@ span {
     background: linear-gradient(#0C2CBD, #061766);
     width: 60%;
     height: 10%;
+    cursor: pointer;
 }
-.botoes a{
-    text-decoration: none;
-}
+
 .possui_conta{
     color: #fff;
     font-size: 16px;

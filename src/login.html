@@ -29,22 +29,100 @@
                     </div>
                     <div class="card-direita formulario">
                         <h2>Insira as informações a seguir:</h2>
-                            <div class="campo">
-                                <input type="text" id="ipt_email" placeholder="E-mail">
-                            </div>
-                            <div class="campo">
-                                <input type="password" id="ipt_senha" placeholder="Senha">
-                            </div>
-                             <a href="esqueceu_senha.html">Esqueceu a senha?</a>
-                        
-                            <button onclick="entrar()" class="botoes"><a href="dashboard.html">ENTRAR</a></button>
-                            <span class="possui_conta">Não possui uma conta? <a href="cadastro.html">Cadastre-se aqui</a></span>
+                        <div class="campo">
+                            <input type="text" id="ipt_email" placeholder="E-mail">
+                        </div>
+                        <div class="campo">
+                            <input type="password" id="ipt_senha" placeholder="Senha">
+                        </div>
+                        <a href="esqueceu_senha.html">Esqueceu a senha?</a>
+
+                        <button onclick="entrar()" class="botoes">ENTRAR</button>
+                        <span class="possui_conta">Não possui uma conta? <a href="cadastro.html">Cadastre-se
+                                aqui</a></span>
+                                <div id="div_mensagem"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
+<script>
+    function entrar() {
+        var login = ipt_email.value;
+        var senha = ipt_senha.value;
+        var tamanho_senha = senha.length;
+
+        var mensagem = "";
+        var verifica_num_tmp;
+        
+        var emailVálido = false;
+        var senhaVálida = true;
+
+        div_mensagem.innerHTML = '';
+        if (login.includes('.') && login.includes('@')) {
+            if (!(login.indexOf('.') == (login.indexOf('@') + 1))) {
+                div_mensagem.innerHTML += `E-mail válido<br>`;
+                emailVálido = true;
+            }
+        } else {
+            div_mensagem.innerHTML += 'E-mail inválido<br>';
+        }
+
+        if (senha.toUpperCase() == senha && senha.toLowerCase() == senha) {
+            div_mensagem.innerHTML += `Senha não possui letras<br>`;
+
+        } else {
+
+            if (senha.toLowerCase() == senha) {
+                div_mensagem.innerHTML += `Senha não possui caracteres maiúsculos<br>`;
+                senhaVálida = false;
+            }
+
+            if (senha.toUpperCase() == senha) {
+                div_mensagem.innerHTML += `Senha não possui caracteres minúsculos<br> `;
+                senhaVálida = false;
+            }
+        }
+
+        if (tamanho_senha < 8) {
+            div_mensagem.innerHTML += `Senha não possui menos de 8 caracteres<br>`;
+            senhaVálida = false;
+        }
+
+        for (var i = 0; i < tamanho_senha; i++) {
+            verifica_num_tmp = Number(senha[i]);
+            if (!isNaN(verifica_num_tmp)) {
+                mensagem = "";
+                i = tamanho_senha;
+            } else {
+                mensagem = `Senha não possui números<br>`;
+                senhaVálida = false;
+            }
+
+        }
+
+        if (senha.includes('!') || senha.includes('"') || senha.includes('#') || senha.includes('$') ||
+            senha.includes('%') || senha.includes('&') || senha.includes("'") || senha.includes('(') || senha.includes(')')
+            || senha.includes('*') || senha.includes('+') || senha.includes(',') || senha.includes('-') || senha.includes('.')
+            || senha.includes('/') || senha.includes(':') || senha.includes(';') || senha.includes('<') || senha.includes('<')
+            || senha.includes('=') || senha.includes('>') || senha.includes('?') || senha.includes('@') || senha.includes('[')
+            || senha.includes('\\') || senha.includes(']') || senha.includes('^') || senha.includes('_') || senha.includes('`')
+            || senha.includes('`') || senha.includes('{') || senha.includes('|') || senha.includes('}') || senha.includes('~')
+        ) {
+            div_mensagem.innerHTML += `Senha contém cararactere especial<br>`;
+            senhaVálida = true;
+        } else {
+            div_mensagem.innerHTML += `Senha não contém cararactere especial<br>`;
+            senhaVálida = false;
+        }
+
+        if(emailVálido && senhaVálida){
+            window.location.href = 'dashboard.html';
+        }
+        div_mensagem.innerHTML += mensagem;
+
+    }
+</script>

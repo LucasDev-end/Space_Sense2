@@ -151,10 +151,9 @@ input {
     background: linear-gradient(#0C2CBD, #061766);
     width: 60%;
     height: 10%;
+    cursor: pointer;
 }
-.botao a{
-    text-decoration: none;
-}
+
 
 .inputs_senhas {
     display: flex;
