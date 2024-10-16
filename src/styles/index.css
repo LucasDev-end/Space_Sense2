@@ -194,7 +194,9 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+#select_setor{
+    height: 40%;
+}
 .simulador .campo input {
     padding: 10px;
     border: none;
