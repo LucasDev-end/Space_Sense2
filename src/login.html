@@ -64,41 +64,50 @@
         div_mensagem.innerHTML = '';
         if (login.includes('.') && login.includes('@')) {
             if (!(login.indexOf('.') == (login.indexOf('@') + 1))) {
-                div_mensagem.innerHTML += `E-mail válido<br>`;
+                div_mensagem.innerHTML += `<span style='color:green'>E-mail válido</span> <br>`;
                 emailVálido = true;
             }
         } else {
-            div_mensagem.innerHTML += 'E-mail inválido<br>';
+            div_mensagem.innerHTML += `<span style='color:red'>E-mail inválido</span> <br>`
         }
 
         if (senha.toUpperCase() == senha && senha.toLowerCase() == senha) {
-            div_mensagem.innerHTML += `Senha não possui letras<br>`;
+            div_mensagem.innerHTML += `<span style='color:red'>Senha não possui letras</span><br>`;
 
         } else {
 
             if (senha.toLowerCase() == senha) {
-                div_mensagem.innerHTML += `Senha não possui caracteres maiúsculos<br>`;
+                div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres maiúsculos</span><br>`;
                 senhaVálida = false;
+            } else {
+                div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres maiúsculos</span><br>`;
+                senhaVálida = true;
             }
 
             if (senha.toUpperCase() == senha) {
-                div_mensagem.innerHTML += `Senha não possui caracteres minúsculos<br> `;
+                div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres minúsculos</span><br> `;
                 senhaVálida = false;
+            } else {
+                div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres minúsculos</span><br> `;
+                senhaVálida = true;
             }
         }
 
         if (tamanho_senha < 8) {
-            div_mensagem.innerHTML += `Senha não possui menos de 8 caracteres<br>`;
+            div_mensagem.innerHTML += `<span style='color:red'>Senha não possui menos de 8 caracteres</span><br>`;
             senhaVálida = false;
+        } else {
+            div_mensagem.innerHTML += `<span style='color:green'>Senha possui pelo menos 8 caracteres</span><br>`;
+            senhaVálida = true;
         }
 
         for (var i = 0; i < tamanho_senha; i++) {
             verifica_num_tmp = Number(senha[i]);
             if (!isNaN(verifica_num_tmp)) {
-                mensagem = "";
+                mensagem = "<span style='color:green'>Senha possui números</span>";
                 i = tamanho_senha;
             } else {
-                mensagem = `Senha não possui números<br>`;
+                mensagem = `<span style='color:red'>Senha não possui números</span><br>`;
                 senhaVálida = false;
             }
 
@@ -112,10 +121,10 @@
             || senha.includes('\\') || senha.includes(']') || senha.includes('^') || senha.includes('_') || senha.includes('`')
             || senha.includes('`') || senha.includes('{') || senha.includes('|') || senha.includes('}') || senha.includes('~')
         ) {
-            div_mensagem.innerHTML += `Senha contém cararactere especial<br>`;
+            div_mensagem.innerHTML += `<span style='color:green'>Senha contém cararactere especial</span><br>`;
             senhaVálida = true;
         } else {
-            div_mensagem.innerHTML += `Senha não contém cararactere especial<br>`;
+            div_mensagem.innerHTML += `<span style="color:red">Senha não contém cararactere especial</span><br>`;
             senhaVálida = false;
         }
 
