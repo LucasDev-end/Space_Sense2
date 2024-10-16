@@ -136,7 +136,7 @@ body {
 
 .botao:hover {
     transition: 0.5s;
-    background-color: #4e9d00;
+    background-color: #EDCE1F;
 }
 
 .botaoCadastro:hover {
@@ -165,7 +165,7 @@ body {
     width: 100%;
 }
 
-.card {
+.simulador .card {
     border-radius: 10px;
     background-color: #cccdfc; 
 }
@@ -176,7 +176,7 @@ body {
     font-size: 50px;
 }
 
-.formulario {
+.simulador .formulario {
     width: 50%;
     height: 70%;
 }
@@ -187,7 +187,7 @@ body {
     flex-direction: column;
 }
 
-.campo {
+.simulador .campo {
     color: #ffffff;
     height: 18%;
     width: 80%;
@@ -195,14 +195,14 @@ body {
     flex-direction: column;
 }
 
-.campo input {
+.simulador .campo input {
     padding: 10px;
     border: none;
     border-radius: 9px;
     text-align: center;
 }
 
-.campo span {
+.simulador .campo span {
     font-size: 18px;
 }
 
@@ -360,15 +360,4 @@ body {
 .contato-info img {
     height: 20px;
     width: 20px;
-}
-
-/* Parte da Direita do Footer - Redes */
-.contato-redes {
-    width: 50%;
-    padding-bottom: 40px;
-}
-
-.contato-redes img {
-    height: 50px;
-    width: 50px;
 }
