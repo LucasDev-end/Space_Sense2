@@ -78,12 +78,13 @@ body .side{
     background-color: #2F5F98;
     color: #ffffff;
     border-radius: var(--tamanho-border-radius);
-    height: 5vh;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vh;
+}
+.menu a:hover{
+    color: #fff;
 }
 ul{
     list-style: none;
@@ -105,16 +106,17 @@ a span{
 }
 .sair div:hover{
     background-color: #2F5F98;
-    color: #ffffff;
+    color: #fff;
     border-radius: var(--tamanho-border-radius);
-    height: 8vh;
     width: 50%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
 
 }
-
+.sair a:hover {
+    color: #fff;
+}
 .dashboard{
     width: 80%;
     height: 100vh;

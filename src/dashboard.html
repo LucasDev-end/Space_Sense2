@@ -18,12 +18,12 @@
             </div>
             <div class="box">
                 <div class="menu">
-                    <div>Dashboard</div>
-                    <div>Tempo Real</div>
+                    <div> <a href="dashboard.html">Dashboard</a></div>
+                    <div><a href="tempo_real.html">Tempo Real</a></div>
                 </div>
                 <div class="sair">
                     <div>
-                        <h2>SAIR</h2>
+                        <h2><a href="index.html">SAIR</a></h2>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grafico"><h2>Popularidade Geral ao Mês</h2>
+                    <div class="grafico"><h2>Horário de Pico</h2>
                         <canvas id="myChart-grafico"></canvas></div>
                 </div>
                 <div class="grafico-direita">
@@ -115,23 +115,21 @@
         '15:00',
         '16:00',
         '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Temperatura',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [30, 29, 28, 25, 22, 23],
+        label: 'Fluxo de Pessoas pelo Horário',
+        backgroundColor: '#00c176',
+        borderColor: '#00c176',
+        data: [30, 25, 20, 28, 40, 45,70,65,65,35,30],
         },
-        
-        {
-        label: 'Umidade',
-        backgroundColor: 'rgb(54, 162, 235)',
-        borderColor: 'rgb(54, 162, 235)',
-        data: [80, 82,80, 85, 80, 83],
-        }
     ]
     };
 
@@ -143,19 +141,24 @@
 
 
     const labels2 = [
-        'Janeiro',
-        'Fevereiro',
+        'Bebidas',
+        'Carne',
+        'Limpeza',
+        'Hortifruti',
+        'Congelados'
     ];
 
     const data2 = {
         labels: labels2,
         datasets: [{
     label: 'My First Dataset',
-    data: [300, 50, 100],
+    data: [3841,5872,788,1505,2367],
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#ffbc11',
+      '#0a837f',
+      '#bf2a23',
     ],
     hoverOffset: 4
   }
