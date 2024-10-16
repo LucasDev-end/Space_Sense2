@@ -132,10 +132,14 @@
         }
 
         if (emailVálido && senhaVálida) {
-            div_mensagem.innerHTML = `<span style='color:green; 'font-weight:bold';>Email e senha válida</span>`
+            div_mensagem.innerHTML = `<span style='color:green; 'font-weight:bold';>Email e senha válida</span>`;
             window.location.href = 'dashboard.html';
+        } else if (emailVálido && !senhaVálida) {
+            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Senha inválida</span>`;
+        } else if (!emailVálido && senhaVálida) {
+            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email inválido</span>`;
         } else {
-            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email e senha inválida</span>`
+            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email e senha inválidos</span>`;
         }
     }
 </script>
