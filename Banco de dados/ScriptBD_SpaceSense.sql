@@ -1,28 +1,28 @@
-create database spacesense;
-use spacesense;
+create database spacesense; -- CRIAÇÃO DO BANCO DE DADOS
+use spacesense; -- SELEÇÃO DO BANCO DE DADOS
 
-create table empresa (
+create table empresa (  -- CRIAÇÃO DA TABELA 'EMPRESA'
 idEmpresa int primary key auto_increment,
 nome varchar(45),
 cnpj char(14)
 );
 
-create table usuario (
+create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
 idUsuario int primary key auto_increment,
 nome varchar(80),
 telefone varchar(16),
 email varchar(100),
 senha varchar(50),
-fkEmpresa int,
+fkEmpresa int, -- CHAVE ESTRANGEIRA 
 constraint fkEmpresaUsuario foreign key (fkEmpresa)
-references empresa(idEmpresa)
+references empresa(idEmpresa) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
 
-create table unidade (
+create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
-fkEmpresa int,
-constraint fkEmpresaUnidade foreign key (fkEmpresa)
-references empresa(idEmpresa),
+fkEmpresa int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
+constraint fkEmpresaUnidade foreign key (fkEmpresa) 
+references empresa(idEmpresa), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 logradouro varchar(50),
 numero int,
 complemento varchar(45),
@@ -32,26 +32,26 @@ bairro varchar(45),
 cep char(8)
 );
 
-create table setor (
+create table setor ( -- CRIAÇÃO DA TABELA 'SETOR'
 idSetor int primary key auto_increment,
-fkUnidade int,
+fkUnidade int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkUnidadeSetor foreign key (fkUnidade)
-references unidade(idUnidade),
+references unidade(idUnidade), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 categoria varchar(45)
 );
 
-create table sensor (
+create table sensor (  -- CRIAÇÃO DA TABELA 'SENSOR'
 idSensor int primary key auto_increment,
-fkSetor int,
+fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSetorSensor foreign key (fkSetor)
-references setor(idSetor)
+references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
 
-create table medicao (
+create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
 idMedicao int primary key auto_increment,
-fkSensor int,
+fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSensorMedicao foreign key (fkSensor)
-references sensor(idSensor),
+references sensor(idSensor), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 distancia float,
 data_hora datetime
 );
@@ -183,3 +183,145 @@ join unidade
 on fkUnidade = idUnidade
 join empresa
 on fkEmpresa = idEmpresa;
+
+insert into sensor values
+(default, 1),
+(default, 1),
+(default, 2),
+(default, 2),
+(default, 3),
+(default, 3),
+(default, 4),
+(default, 4),
+(default, 5),
+(default, 5),
+(default, 6),
+(default, 6),
+(default, 7),
+(default, 7),
+(default, 8),
+(default, 8),
+(default, 9),
+(default, 9),
+(default, 10),
+(default, 10),
+(default, 11),
+(default, 11),
+(default, 12),
+(default, 12),
+(default, 13),
+(default, 13),
+(default, 14),
+(default, 14),
+(default, 15),
+(default, 15),
+(default, 16),
+(default, 16),
+(default, 17),
+(default, 17),
+(default, 18),
+(default, 18),
+(default, 19),
+(default, 19),
+(default, 20),
+(default, 20),
+(default, 21),
+(default, 21),
+(default, 22),
+(default, 22),
+(default, 23),
+(default, 23),
+(default, 24),
+(default, 24),
+(default, 25),
+(default, 25),
+(default, 26),
+(default, 26),
+(default, 27),
+(default, 27),
+(default, 28),
+(default, 28),
+(default, 29),
+(default, 29),
+(default, 30),
+(default, 30),
+(default, 31),
+(default, 31),
+(default, 32),
+(default, 32),
+(default, 33),
+(default, 33),
+(default, 34),
+(default, 34),
+(default, 35),
+(default, 35),
+(default, 36),
+(default, 36),
+(default, 37),
+(default, 37),
+(default, 38),
+(default, 38),
+(default, 39),
+(default, 39),
+(default, 40),
+(default, 40),
+(default, 41),
+(default, 41),
+(default, 42),
+(default, 42),
+(default, 43),
+(default, 43),
+(default, 44),
+(default, 44),
+(default, 45),
+(default, 45),
+(default, 46),
+(default, 46),
+(default, 47),
+(default, 47),
+(default, 48),
+(default, 48),
+(default, 49),
+(default, 49),
+(default, 50),
+(default, 50),
+(default, 51),
+(default, 51),
+(default, 52),
+(default, 52),
+(default, 53),
+(default, 53),
+(default, 54),
+(default, 54),
+(default, 55),
+(default, 55),
+(default, 56),
+(default, 56),
+(default, 57),
+(default, 57),
+(default, 58),
+(default, 58),
+(default, 59),
+(default, 59),
+(default, 60),
+(default, 60),
+(default, 61),
+(default, 61),
+(default, 62),
+(default, 62),
+(default, 63),
+(default, 63),
+(default, 64),
+(default, 64),
+(default, 65),
+(default, 65),
+(default, 66),
+(default, 66),
+(default, 67),
+(default, 67),
+(default, 68),
+(default, 68);
+
+select * from sensor
+join setor
+on fkSetor = idSetor;
