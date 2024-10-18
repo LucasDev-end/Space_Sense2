@@ -83,6 +83,9 @@ body .side{
     justify-content: center;
     align-items: center;
 }
+.menu div a {
+    color: #2F5F98;
+}
 .menu a:hover{
     color: #fff;
 }
@@ -113,6 +116,9 @@ a span{
     align-items: flex-start;
     justify-content: center;
 
+}
+.sair div h2 a{
+    color: #2F5F98;
 }
 .sair a:hover {
     color: #fff;
