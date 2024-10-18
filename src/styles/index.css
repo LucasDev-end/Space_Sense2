@@ -252,18 +252,21 @@ body {
 }
 
 .texto_servico .container p {
-    width: 50%;
-    font-size: 24px;
+    width: 60%;
+    font-size: 28px;
     text-align: justify;
+}
+
+.texto_servico .container span {
+    padding-inline-start: 5%;
 }
 
 /* SOBRE NÓS */
 
 .about {
-    height: var(--tamanho-pagina);
+    height: 70vh;
     color: #ffffff;
     background-color: #14187f;
-    height: 100vh;
     text-align: center;
 }
 
@@ -283,6 +286,14 @@ body {
     color: #ffffff;
 }
 
+.about .container p {
+    color: #000000;
+}
+
+.about .container h4 {
+    color: #000000;
+}
+
 .about .container h1 {
     width: 50%;
     margin: 0;
@@ -295,7 +306,6 @@ body {
 /* Seção destinada para o Sobre Nós e Nossos Valores */
 
 .social {
-    display: flex;
     width: 100%;
 }
 
@@ -306,7 +316,8 @@ body {
 }
 
 .box {
-    background-color: #949393;
+    box-shadow: 10px 8px 14px 6px rgba(0, 0, 0, 0.268);
+    background-color: #f8f2e0;
     margin-right: 20px;
     border-radius: 10px;
 }
@@ -319,8 +330,6 @@ body {
 .footer {
     height: var(--tamanho-footer);
     background-color: #fff;
-    padding-top: 20px;
-    text-align: center;
     display: flex;
 }
 
@@ -328,7 +337,6 @@ body {
     height: 100%;
     width: 100%;
     justify-content: center;
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -340,7 +348,7 @@ body {
 
 .footer .container img {
     height: 50%;
-    width: 25%;
+    width: 20%;
 }
 
 /* Parte da Esquerda do Footer - Contato */
@@ -350,7 +358,7 @@ body {
     text-align: center;
     flex-direction: column;
     width: 100%;
-    margin-left: 120px;
+    margin-left: 30px;
 }
 
 .contato-info {
