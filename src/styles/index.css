@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Página no Geral */
+
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -84,12 +89,12 @@ body {
 }
 
 .banner .container {
-    justify-content: center; 
+    justify-content: center;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
     height: 100%;
     color: #fff;
-    text-align: left; 
+    text-align: left;
 }
 
 .separador {
@@ -107,24 +112,30 @@ body {
     color: #ffffff;
 }
 
-.banner .container span { 
+.banner .container span {
     font-size: 90px;
 }
 
 .botao {
-    border: 1px solid #fff;
+    height: 40px;
+    border: 2px solid #fff;
     padding: 10px;
-    color: #fff;
     width: 120px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: transparent;
     font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 /* fica com uma cor diferente quando passa en cima do botao */
 
 .botaoCadastro {
+    height: 42px;
     margin-left: 20px;
     font-weight: bold;
     border-radius: 10px;
@@ -132,11 +143,13 @@ body {
     width: 200px;
     border: none;
     padding: 10px;
+    font-size: 18px;
 }
 
 .botao:hover {
     transition: 0.5s;
-    background-color: #EDCE1F;
+    background-color: #d2e5ff;
+    color: black;
 }
 
 .botaoCadastro:hover {
@@ -167,7 +180,7 @@ body {
 
 .simulador .card {
     border-radius: 10px;
-    background-color: #cccdfc; 
+    background-color: #cccdfc;
 }
 
 .simulador .container h1 {
@@ -194,9 +207,11 @@ body {
     display: flex;
     flex-direction: column;
 }
-#select_setor{
+
+#select_setor {
     height: 40%;
 }
+
 .simulador .campo input {
     padding: 10px;
     border: none;
@@ -226,9 +241,9 @@ body {
 }
 
 .img_titulo {
-   display: flex; 
-   flex-direction: column;
-   align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .servicos img {
@@ -320,6 +335,7 @@ body {
     background-color: #f8f2e0;
     margin-right: 20px;
     border-radius: 10px;
+    padding: 10px;
 }
 
 .box img {

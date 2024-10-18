@@ -27,12 +27,9 @@
         <li>
           <a href="#about">Sobre Nós</a>
         </li>
-        <li>
-          <a href="#footer">Contato</a>
-        </li>
       </ul>
-      <button class="botao"><a href="login.html">LOGIN</a></button>
-      <button class="botaoCadastro"><a href="cadastro.html">Cadastre-se</a></button>
+      <button class="botao" onclick="login()">Login</button>
+      <button class="botaoCadastro" onclick="cadastro()">Cadastre-se</button>
     </div>
   </div>
 
@@ -118,7 +115,7 @@
     </div>
   </div>
   <!-- Sobre Nós e Nossos Valores -->
-  <div class="about">
+  <div class="about" id="about">
     <div class="container">
       <h1>SOBRE NÓS</h1>
       <span> Somos uma empresa especializada em soluções inteligentes
@@ -197,5 +194,13 @@
     }
 
     div_mensagem_calculadora.innerHTML = mensagem;
+  }
+
+  function login() {
+    window.location = "login.html"
+  }
+
+  function cadastro() {
+    window.location = "cadastro.html"
   }
 </script>
