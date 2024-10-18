@@ -63,6 +63,7 @@ insert into empresa values
 (default, 'Mercado da Economia', 12345678000190);
 
 select * from empresa;
+select nome from empresa;
 
 insert into usuario values
 (default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1),
@@ -79,9 +80,9 @@ select * from usuario
 join empresa
 on fkEmpresa = idEmpresa;
 
-select usuario.nome as funcionario, empresa.nome as empresa from usuario
-join empresa
-on fkEmpresa = idEmpresa;
+select u.nome as 'Funcionário', e.nome as 'Empresa' from usuario as u
+join empresa as e
+on u.fkEmpresa = e.idEmpresa;
 
 insert into unidade values
 (default, 1, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020),
@@ -325,3 +326,11 @@ insert into sensor values
 select * from sensor
 join setor
 on fkSetor = idSetor;
+
+select ss.idSensor, st.idSetor, st.categoria, u.logradouro, e.nome as empresa from sensor as ss
+join setor as st
+on ss.fkSetor = st.idSetor
+join unidade as u
+on st.fkUnidade = u.idUnidade
+join empresa as e
+on u.fkEmpresa = e.idEmpresa;
