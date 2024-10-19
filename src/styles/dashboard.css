@@ -86,8 +86,7 @@ body .side {
 .menu div:hover {
     background-color: #2F5F98;
     color: #ffffff;
-    border-radius: var(--tamanho-border-radius);
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
