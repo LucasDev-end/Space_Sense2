@@ -57,9 +57,9 @@
                                     required>
                             </div>
                             <button onclick="cadastrar()">Cadastre-se</button>
-                            <span>Já possui conta?<a href="login.html">Faça seu login</a></span>
-                            <div id="div_mensagem"></div>
+                            <span class="possui_conta_cadastro">Já possui conta?<a href="login.html">Faça seu login</a></span>
                         </div>
+                        <div id="div_mensagem" class="mensagem_cadastro"></div>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
             mensagem = `<span style='color:red'>A senha é diferente</span>`;
         }
         if (emailVálido && senhaVálida && senhaConfirmadaVálida) {
-            window.location.href = 'login.html';
+            window.location = 'login.html';
         }
 
         div_mensagem.innerHTML += mensagem;
