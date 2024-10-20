@@ -75,6 +75,7 @@ body .side {
 }
 
 .menu {
+    color: #2F5F98;
     height: 22vh;
     font-size: 3vh;
     display: flex;
@@ -82,15 +83,16 @@ body .side {
     align-items: center;
     justify-content: space-evenly;
 }
-
+/*
 .menu div:hover {
     background-color: #2F5F98;
     color: #ffffff;
-    width: 100%;
+    width: 50%;
+    border-radius: var(--tamanho-border-radius);
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
 .menu div a {
     color: #2F5F98;

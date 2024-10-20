@@ -15,7 +15,7 @@
     <div class="container">
       <img src="./assets/img/logo.png" alt="Logo da Empresa">
       <ul class="navbar">
-        <li class="agora">
+        <li>
           <a href="#">Início</a>
         </li>
         <li>
@@ -74,13 +74,13 @@
             </div>
             <div class="campo">
               <span>Média de vendas do produto:</span>
-              <input id="input_vendas" type="text" placeholder="Ex:Coca-Cola">
+              <input id="input_vendas" type="number" placeholder="Ex:Coca-Cola">
             </div>
             <div class="campo">
               <span>Quantidade de pessoas que passam por essa prateleira:</span>
-              <input id="input_popularidade" type="text" placeholder="Ex:100">
+              <input id="input_popularidade" type="number" placeholder="Ex:100">
             </div>
-            <button class="botao" onclick="analisar()">Calcular métricas</button>
+            <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
           </div>
         </div>
       </div>
@@ -183,11 +183,11 @@
     var mensagem = ``;
 
     if (conversao >= 30) {
-      mensagem = `O produto está muito demandado, com ${conversao.toFixed(2)}% de popularidade, <br> e pode ser movido para um local com menor tráfego, <br>liberando espaço nobre para outros produtos.`;
+      mensagem = `O produto ${nome_produto} está muito demandado, com ${conversao.toFixed(2)}% de popularidade, <br> e pode ser movido para um local com menor tráfego, <br>liberando espaço nobre para outros produtos.`;
     } else if (conversao <= 5) {
-      mensagem = `Produto mal posicionado`;
+      mensagem = `O produto está mal posicionado`;
     } else {
-      mensagem = `Produto atende, porém é possivel melhorar em ${conversao.toFixed(2)}%`;
+      mensagem = `Produto atende a demanda, porém é possivel melhorar em ${conversao.toFixed(2)}%`;
     }
 
     div_mensagem_calculadora.innerHTML = mensagem;
