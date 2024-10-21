@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grafico"><h2>Fluxo de Pessoas na Semana</h2>
+                    <div class="grafico"><h2>Fluxo de Pessoas no Mês</h2>
                         <canvas id="myChart-grafico"></canvas></div>
                 </div>
                 <div class="grafico-direita">
@@ -109,19 +109,21 @@
 </html>
 <script>
     const labels = [
-        'Semana 1',
-        'Semana 2',
-        'Semana 3',
-        'Semana 4',
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Bebidas',
-        backgroundColor: 'rgb(255, 99, 132)',
+        label: 'Mercado',
+        backgroundColor: 'rgb(255, 30, 100)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [67, 50, 48, 60],
+        data: [67, 50, 48, 60,45,32],
         },
     ]
     };

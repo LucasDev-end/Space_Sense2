@@ -179,11 +179,10 @@ select * from setor
 join unidade
 on fkUnidade = idUnidade;
 
-select setor.categoria, unidade.logradouro, empresa.nome as empresa from setor
-join unidade 
-on fkUnidade = idUnidade
-join empresa
-on fkEmpresa = idEmpresa;
+select empresa.nome as 'Nome da Empresa',
+	unidade.logradouro as 'Nome da Unidade',
+    setor.categoria as Setor from setor join unidade  on fkUnidade = idUnidade
+join empresa on unidade.fkEmpresa = empresa.idEmpresa;
 
 insert into sensor values
 (default, 1),
@@ -327,10 +326,10 @@ select * from sensor
 join setor
 on fkSetor = idSetor;
 
-select ss.idSensor, st.idSetor, st.categoria, u.logradouro, e.nome as empresa from sensor as ss
-join setor as st
-on ss.fkSetor = st.idSetor
-join unidade as u
-on st.fkUnidade = u.idUnidade
-join empresa as e
-on u.fkEmpresa = e.idEmpresa;
+select empresa.nome, unidade.logradouro,setor.categoria,sensor.idSensor, setor.idSetor from sensor
+join setor
+on sensor.fkSetor = setor.idSetor
+join unidade
+on setor.fkUnidade = unidade.idUnidade
+join empresa
+on unidade.fkEmpresa = empresa.idEmpresa WHERE unidade.logradouro = 'Avenida Aricanduva' and empresa.nome = 'Assaí Atacadista';
