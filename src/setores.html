@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <link rel="stylesheet" href="./styles/setores.css">
+    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <title>Space Sense | Tempo Real</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="user">
+                <div class="line">
+                    <div class="foto"><img src="/Space_Sense2/src/assets/img/file.png"></div>
+                    <h3>Olá, Boas Vindas!</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="menu">
+                    <div><a href="dashboard.html">Dashboard</a></div>
+                    <div><a href="tempo_real.html">Tempo Real</a></div>
+                </div>
+                <div class="sair">
+                    <div>
+                        <h2><a href="index.html">SAIR</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-grafico">
+            <div class="grafico-unico"><h2>Horário de Pico</h2>
+            <div class="canva-tempo-real">
+                <canvas id="myChart-grafico"></canvas>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+        label: 'Fluxo de Pessoas pelo Horário',
+        backgroundColor: '#00c176',
+        borderColor: '#00c176',
+        data: [30, 25, 20, 28, 40, 45,70,65,65,35,30],
+        },
+    ]
+    };
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+<script>
+    const myChart = new Chart(
+      document.getElementById('myChart-grafico'),
+      config
+    );
+  </script>

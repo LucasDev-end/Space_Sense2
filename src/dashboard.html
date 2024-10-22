@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
     <title>Space Sense | DashBoard</title>
 </head>
+
 <body>
     <div class="container">
         <div class="side">
@@ -29,83 +31,66 @@
             </div>
         </div>
         <div class="dashboard">
-            <div class="dash">
-                <div class="grafico-esquerda">
-                    <div class="kpi">
-                        <div class="box-kpi">
-                            <div class="titulo">
-                                <h2>Setor <strong> mais Popular</strong></h2>
-                            </div>
-                            <div class="kpi-num" style="color: green;">
-                                5.872
-                            </div>
-                            <div class="kpi-sub-texto">
-                                <h4>Carnes</h4>
-                                <span class="seta-cima"></span>
-                            </div>
-                        </div>
-                        <div class="box-kpi">
-                            <div class="titulo">
-                                <h2>Setor <span>menos Popular</span></h2>
-                            </div>
-                            <div class="kpi-num" style="color: red;">
-                                788
-                            </div>
-                            <div class="kpi-sub-texto">
-                                <h4>Limpeza</h4>
-                                <span class="seta-baixo"></span>
-                            </div>
-                        </div>
-                        <div class="box-kpi">
-                            <div class="titulo">
-                                <h2>Setor <span> mais Constante</span></h2>
-                            </div>
-                            <div class="kpi-num" style="color: #2F5F98;">
-                                1.505
-                            </div>
-                            <div class="kpi-sub-texto">
-                                <h4>Hortifruti</h4>
-                            </div>
-                        </div>
+            <div class="kpi">
+                <div class="box-kpi">
+                    <div class="titulo">
+                        <h2>Setor <strong> mais Popular</strong></h2>
                     </div>
-                    <div class="grafico"><h2>Fluxo de Pessoas no Mês</h2>
-                        <canvas id="myChart-grafico"></canvas></div>
+                    <div class="kpi-num">
+                        <span>5.872</span>
+                    </div>
+                    <div class="kpi-sub-texto">
+                        <h4>Carnes</h4>
+                        <span class="seta-cima"></span>
+                    </div>
                 </div>
-                <div class="grafico-direita">
-                    <div class="insights">
-                        <h2>Popularidade Geral ao Mês</h2>
-                        <div class="myChart-grafico2">
-                            <canvas id="myChart-grafico2"></canvas>
-                        </div>
+                <div class="box-kpi">
+                    <div class="titulo">
+                        <h2>Setor <span>menos Popular</span></h2>
                     </div>
-                    <div class="insights2">
-                        <h2><b>Quantidade de pessoas</b></h2>
-                        <div>
-                            <div class="insights2-box"><h2>Bebidas:</h2></div>
-                            <div class="insights2-box2">3.841</div>
-                        </div>
-                        <div>
-                            <div class="insights2-box"><h2>Carnes:</h2></div>
-                            <div class="insights2-box2">5.872</div>
-                        </div>
-                        <div>
-                            <div class="insights2-box"><h2>Limpeza:</h2></div>
-                            <div class="insights2-box2">788</div>
-                        </div>
-                        <div>
-                            <div class="insights2-box"><h2>Hortifruti:</h2></div>
-                            <div class="insights2-box2">1.505</div>
-                        </div>
-                        <div>
-                            <div class="insights2-box"><h2>Congelados:</h2></div>
-                            <div class="insights2-box2">2.367</div>
-                        </div>
+                    <div class="kpi-num">
+                        <span>788</span>
                     </div>
+                    <div class="kpi-sub-texto">
+                        <h4>Limpeza</h4>
+                        <span class="seta-baixo"></span>
+                    </div>
+                </div>
+                <div class="box-kpi">
+                    <div class="titulo">
+                        <h2>Setor <span> mais Constante</span></h2>
+                    </div>
+                    <div class="kpi-num">
+                        <span>1.505</span>
+                    </div>
+                    <div class="kpi-sub-texto">
+                        <h4>Hortifruti</h4>
+                    </div>
+                </div>
+                <div class="box-kpi">
+                    <div class="titulo">
+                        <h2>Setor <span> mais Constante</span></h2>
+                    </div>
+                    <div class="kpi-num" style="color: #2F5F98;">
+                        1.505
+                    </div>
+                    <div class="kpi-sub-texto">
+                        <h4>Hortifruti</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="grafico">
+                <div class="container">
+                    <h2>Fluxo de Pessoas no Mês</h2>
+                    <canvas id="myChart-grafico"></canvas>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
 </body>
+
 </html>
 <script>
     const labels = [
@@ -120,37 +105,12 @@
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Mercado',
-        backgroundColor: 'rgb(255, 30, 100)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [67, 50, 48, 60,45,32],
+            label: 'Mercado',
+            backgroundColor: 'rgb(255, 30, 100)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [67, 50, 48, 60, 45, 32],
         },
-    ]
-    };
-
-    const labels2 = [
-        'Bebidas',
-        'Carne',
-        'Limpeza',
-        'Hortifruti',
-        'Congelados'
-    ];
-
-    const data2 = {
-        labels: labels2,
-        datasets: [{
-    label: 'Setores',
-    data: [3841,5872,788,1505,2367],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      '#ffbc11',
-      '#0a837f',
-      '#bf2a23',
-    ],
-    hoverOffset: 4
-  }
-    ]
+        ]
     };
 
 
@@ -160,21 +120,11 @@
         options: {}
     };
 
-    const config2 = {
-        type: 'pie',
-        data: data2,
-        options: {}
-    };
 
 </script>
 <script>
     const myChart = new Chart(
-      document.getElementById('myChart-grafico'),
-      config
+        document.getElementById('myChart-grafico'),
+        config
     );
-
-    const myChart2 = new Chart(
-      document.getElementById('myChart-grafico2'),
-      config2
-    );
-  </script>
+</script>
