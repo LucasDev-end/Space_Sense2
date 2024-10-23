@@ -92,10 +92,10 @@ body {
     height: 3vh;
 }
 
-.navbar li:hover{
-    background-color: #4D54FF;
-    color: black;
+.navbar li a:hover{
+    color: #4a50fd;
     text-align: center;
+    text-decoration: underline;
     border-radius: 2px;
     width: 10%;
     height: 3vh;
@@ -250,7 +250,7 @@ body {
 }
 
 .simulador .campo span {
-    font-size: 18px;
+    font-size: 26px;
 }
 
 .simulador .botao {
@@ -388,7 +388,7 @@ body {
 }
 
 .footer .container p {
-    font-size: 12px;
+    font-size: 18px;
     color: #6F6C90;
 }
 
@@ -410,6 +410,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.contato-info span {
+    font-size: 20px;
 }
 
 .contato-info img {

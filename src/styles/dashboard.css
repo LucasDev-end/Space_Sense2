@@ -159,9 +159,10 @@ a span{
 .kpi .box-kpi{
     width: 21%;
 }
+
 .box-kpi .titulo{
     color: #ffffff;
-    font-size: 55%;
+    font-size: 100%;
     width: auto;
     height: 3vh;
     display: flex;
@@ -236,7 +237,7 @@ a span{
 .grafico{
     background-color: #ffffff;
     width: 97%;
-    height: 64vh;
+    height: 62vh;
     border-radius: var(--tamanho-border-radius);
     display: flex;
     flex-direction: column;
@@ -246,7 +247,7 @@ a span{
 .grafico h2{
     width: 80%;
     color: #2F5F98;
-    font-size: 4vh;
+    font-size: 6vh;
     border-bottom: 1px solid #2F5F98;
     display: flex;
     justify-content: center;
