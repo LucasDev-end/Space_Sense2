@@ -49,36 +49,22 @@
       <div class="boxSimulador">
         <div class="formulario card">
           <div class="container">
-            <h2>Resultado:</h2>
-            <div id="div_mensagem_calculadora"></div>
+            <div id="div_resultado"><span id="resultado">Preencha os campos ao lado...</span></div>
           </div>
         </div>
         <div class="formulario">
           <div class="container">
             <div class="campo">
-              <span>Escolha um Setor:</span>
-              <select id="select_setor">
-                <option value="carnes">Carnes</option>
-                <option value="enlatados">Enlatados</option>
-                <option value="congelados">Congelados</option>
-                <option value="hortifruti">Hortifruti</option>
-                <option value="bebidas">Bebidas</option>
-                <option value="adega">Adega</option>
-                <option value="limpeza">Produtos de Limpeza</option>
-                <option value="#" disabled selected>Selecione...</option>
-              </select>
+              <span>Quantos corredores seu supermercado possui?</span>
+              <input id="input_corredoresTotais" type="text" placeholder="Ex:Coca-Cola">
             </div>
             <div class="campo">
-              <span>Nome do Produto:</span>
-              <input id="input_nome_produto" type="text" placeholder="Ex:Coca-Cola">
+              <span>Em quantos corredores você deseja instalar?</span>
+              <input id="input_corredoresInstalados" type="text" placeholder="Ex:Coca-Cola">
             </div>
             <div class="campo">
-              <span>Média de vendas do produto:</span>
-              <input id="input_vendas" type="number" placeholder="Ex:Coca-Cola">
-            </div>
-            <div class="campo">
-              <span>Quantidade de pessoas que passam por essa prateleira:</span>
-              <input id="input_popularidade" type="number" placeholder="Ex:100">
+              <span>Qual seu faturamento mensal?</span>
+              <input id="input_lucroMensal" type="number" placeholder="Ex:Coca-Cola">
             </div>
             <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
           </div>
@@ -173,24 +159,41 @@
 
 <script>
   function analisar() {
-    var setor = select_setor.value;
-    var nome_produto = input_nome_produto.value;
-    var vendas = Number(input_vendas.value);
-    var popularidade = Number(input_popularidade.value);
+        //Declaração de variaveis
+        var corredoresTotais = Number(input_corredoresTotais.value);
+        var corredoresInstalados = Number(input_corredoresInstalados.value);
+        var lucro = Number(input_lucroMensal.value)
+        var porcLucro = (corredoresInstalados * 0.15) / corredoresTotais
 
-    var conversao = (vendas / popularidade) * 100;
+        if (input_corredoresTotais.value == ``) {
+            alert(`Digite a quantidade de corredores totais`)
+            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
+        }
+        else if (input_corredoresInstalados.value == ``) {
+            alert(`Digite a quantidade de corredores para instalar`)
+            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
+        }
+        else if (input_lucroMensal.value == ``) {
+            alert(`Digite o lucro`)
+            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
+        }
+        else if (corredoresInstalados > corredoresTotais) {
+            alert(`O valor de corredores que você deseja instalar é maior ao número total de corredores`)
+            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
 
-    var mensagem = ``;
 
-    if (conversao >= 30) {
-      mensagem = `O produto ${nome_produto} está muito demandado, com ${conversao.toFixed(2)}% de popularidade, <br> e pode ser movido para um local com menor tráfego, <br>liberando espaço nobre para outros produtos.`;
-    } else if (conversao <= 5) {
-      mensagem = `O produto está mal posicionado`;
-    } else {
-      mensagem = `Produto atende a demanda, porém é possivel melhorar em ${conversao.toFixed(2)}%`;
-    }
+        }
+        else if (corredoresInstalados == corredoresTotais) {
 
-    div_mensagem_calculadora.innerHTML = mensagem;
+            div_resultado.innerHTML = `Seu lucro aumentará em até 33%, chegando em R$${lucro + (lucro * 0.33)} mensais.`
+
+        }
+        else if (corredoresInstalados < corredoresTotais) {
+            div_resultado.innerHTML = `Seu lucro aumentará em até <span style="color: green">${porcLucro * 100}%,</span> chegando em <b>R$${lucro + (lucro * porcLucro)}</b> mensais.<br><br>`
+            div_resultado.innerHTML += `Caso instalasse em todos os corredores, seu lucro aumentaria em até <span style="color: green">15%,</span> chegando em <b>R$${lucro + (lucro * 0.15)}</b> mensais.`
+        }
+
+        //Validações de campo vazio e campos irregulares
   }
 
   function login() {

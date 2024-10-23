@@ -7,17 +7,6 @@ nome varchar(45),
 cnpj char(14)
 );
 
-create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
-idUsuario int primary key auto_increment,
-nome varchar(80),
-telefone varchar(16),
-email varchar(100),
-senha varchar(50),
-fkEmpresa int, -- CHAVE ESTRANGEIRA 
-constraint fkEmpresaUsuario foreign key (fkEmpresa)
-references empresa(idEmpresa) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
-);
-
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
 fkEmpresa int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
@@ -30,6 +19,20 @@ cidade varchar(45),
 estado varchar(45),
 bairro varchar(45),
 cep char(8)
+);
+
+create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
+idUsuario int primary key auto_increment,
+nome varchar(80),
+telefone varchar(16),
+email varchar(100),
+senha varchar(50),
+fkEmpresa int, -- CHAVE ESTRANGEIRA 
+constraint fkEmpresaUsuario foreign key (fkEmpresa)
+references empresa(idEmpresa), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
+fkUnidade int, -- CHAVE ESTRANGEIRA
+constraint fkUnidadeUsuario foreign key (fkUnidade)
+references unidade(idUnidade) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
 
 create table setor ( -- CRIAÇÃO DA TABELA 'SETOR'
@@ -62,28 +65,6 @@ insert into empresa values
 (default, 'Pão de Açúcar', 47508411000156),
 (default, 'Mercado da Economia', 12345678000190);
 
-select * from empresa;
-select nome from empresa;
-
-insert into usuario values
-(default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1),
-(default, 'Sofia Ribeiro', 11998765432, 'sofiaribeiro@assai.com', '@Ssai098', 1),
-(default, 'Breno Santos', 11912345678, 'bruno.santos@chama.com', 'Ch4ma@123', 2),
-(default, 'Carla Martins', 11923456789, 'carlam@chama.com', 'Chama035!', 2),
-(default, 'Flávio Costa', 11934567890, 'flaviocosta@paoacucar.com', 'P4od3açucar', 3),
-(default, 'Ana Oliveira', 11945678901, 'anaoliver@paoacucar.com', 'PaodeAcucar123#', 3),
-(default, 'Mariana Pires', 11956789012, 'mariana.pires1997@email.com', 'M4rian4&', 4);
-
-select * from usuario;
-
-select * from usuario
-join empresa
-on fkEmpresa = idEmpresa;
-
-select u.nome as 'Funcionário', e.nome as 'Empresa' from usuario as u
-join empresa as e
-on u.fkEmpresa = e.idEmpresa;
-
 insert into unidade values
 (default, 1, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020),
 (default, 1, 'Rua Manilha', 42, null, 'São Paulo', 'São Paulo', 'Vila Carrão', 03445050),
@@ -93,15 +74,14 @@ insert into unidade values
 (default, 3, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200),
 (default, 4, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567);
 
-select * from unidade;
-
-select * from unidade
-join empresa
-on fkEmpresa = idEmpresa;
-
-select unidade.logradouro, empresa.nome as empresa from unidade
-join empresa
-on fkEmpresa = idEmpresa;
+insert into usuario values
+(default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1, 1),
+(default, 'Sofia Ribeiro', 11998765432, 'sofiaribeiro@assai.com', '@Ssai098', 1, 2),
+(default, 'Breno Santos', 11912345678, 'bruno.santos@chama.com', 'Ch4ma@123', 2, 3),
+(default, 'Carla Martins', 11923456789, 'carlam@chama.com', 'Chama035!', 2, 4),
+(default, 'Flávio Costa', 11934567890, 'flaviocosta@paoacucar.com', 'P4od3açucar', 3, 5),
+(default, 'Ana Oliveira', 11945678901, 'anaoliver@paoacucar.com', 'PaodeAcucar123#', 3, 6),
+(default, 'Mariana Pires', 11956789012, 'mariana.pires1997@email.com', 'M4rian4&', 4, 7);
 
 insert into setor values
 (default, 1, 'Açougue'),
@@ -172,17 +152,6 @@ insert into setor values
 (default, 7, 'Higiene e limpeza'),
 (default, 7, 'Hortifruti e mercearia'),
 (default, 7, 'Padaria');
-
-select * from setor;
-
-select * from setor
-join unidade
-on fkUnidade = idUnidade;
-
-select empresa.nome as 'Nome da Empresa',
-	unidade.logradouro as 'Nome da Unidade',
-    setor.categoria as Setor from setor join unidade  on fkUnidade = idUnidade
-join empresa on unidade.fkEmpresa = empresa.idEmpresa;
 
 insert into sensor values
 (default, 1),
@@ -322,14 +291,19 @@ insert into sensor values
 (default, 68),
 (default, 68);
 
-select * from sensor
-join setor
-on fkSetor = idSetor;
-
-select empresa.nome, unidade.logradouro,setor.categoria,sensor.idSensor, setor.idSetor from sensor
-join setor
-on sensor.fkSetor = setor.idSetor
-join unidade
-on setor.fkUnidade = unidade.idUnidade
-join empresa
+-- MOSTRA QUAIS SENSORES DO ASSAÍ ATACADISTA DA AVENIDA ARICANDUVA ESTÃO COM PROBLEMAS E SUAS RESPECTIVAS LOCALIZAÇÕES
+select empresa.nome, unidade.logradouro,setor.categoria,sensor.idSensor, 
+	CASE
+    WHEN sensor.idSensor in(2,3,6,7,10) THEN 'Não está Funcionando'
+    ELSE 'Funcionando'
+    END AS Situação
+from sensor join setor on sensor.fkSetor = setor.idSetor join unidade
+on setor.fkUnidade = unidade.idUnidade join empresa
 on unidade.fkEmpresa = empresa.idEmpresa WHERE unidade.logradouro = 'Avenida Aricanduva' and empresa.nome = 'Assaí Atacadista';
+
+-- MOSTRA OS FUNCIONÁRIOS CADASTRADOS, AS EMPRESAS QUE OPERAM E SEUS RESPECTIVOS LOGRADOUROS DE TRABALHO 
+select usuario.nome as Funcionário, empresa.nome as Empresa, unidade.logradouro from usuario
+join empresa
+on usuario.fkEmpresa = empresa.idEmpresa
+join unidade
+on usuario.fkUnidade = unidade.idUnidade;
