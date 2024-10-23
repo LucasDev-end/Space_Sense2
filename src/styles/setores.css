@@ -1,0 +1,68 @@
+
+.navbar {
+    width: 25%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.titulo {
+    height: 10%;
+    color: #ffffff;
+}
+
+.banner {
+    height: 80%;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aglomerado {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafico-carnes {
+    height: 100%;
+    width: 50%;
+    align-self: center;
+}
+
+.grafico-hortifruti {
+    height: 100%;
+    width: 50%;
+    align-self: center;
+}
+
+.grafico-limpeza {
+    height: 100%;
+    width: 50%;
+    align-self: center;
+}
+
+.nome-setor {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nome-setor span {
+    font-size: 50px;
+    color: #2b5484;
+}
+
+.card {
+    height: 30%;
+    width: 95%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}

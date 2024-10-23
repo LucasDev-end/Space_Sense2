@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,22 @@
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
     <title>Space Sense | Tempo Real</title>
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
             <div class="user">
                 <div class="line">
-                    <div class="foto"><img src="/Space_Sense2/src/assets/img/file.png"></div>
+                    <div class="foto">
+                        <img src="assets/icons/imgPerfil.png">
+                    </div>
                     <h3>Olá, Boas Vindas!</h3>
                 </div>
             </div>
             <div class="box">
                 <div class="menu">
                     <div><a href="dashboard.html">Dashboard</a></div>
-                    <div><a href="tempo_real.html">Tempo Real</a></div>
+                    <div><a href="setores.html">Setores</a></div>
                 </div>
                 <div class="sair">
                     <div>
@@ -30,17 +34,45 @@
                 </div>
             </div>
         </div>
-        <div class="dashboard-grafico">
-            <div class="grafico-unico"><h2>Horário de Pico</h2>
-            <div class="canva-tempo-real">
-                <canvas id="myChart-grafico"></canvas>
+        <div class="aglomerado">
+            <div class="titulo">
+                <h1>Fluxo por Mês e Setores</h1>
             </div>
+            <div class="banner">
+                <div class="card" style="border-left: 50px solid #37ad74">
+                    <div class="nome-setor">
+                        <span>Carnes</span>
+                    </div>
+                    <div class="grafico-carnes">
+                        <canvas id="myChart-grafico"></canvas>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 50px solid #c40000;">
+                    <div class="nome-setor">
+                        <span>Hortifruti</span>
+                    </div>
+                    <div class="grafico-hortifruti">
+                        <canvas id="myChart-grafico2"></canvas>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 50px solid #ddd05e;">
+                    <div class="nome-setor">
+                        <span>Limpeza</span>
+                    </div>
+                    <div class="grafico-limpeza">
+                        <canvas id="myChart-grafico3"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 <script>
+
+    // GRAFICO 1
+
     const labels = [
         '12:00',
         '13:00',
@@ -58,22 +90,103 @@
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Fluxo de Pessoas pelo Horário',
-        backgroundColor: '#00c176',
-        borderColor: '#00c176',
-        data: [30, 25, 20, 28, 40, 45,70,65,65,35,30],
+            label: 'Setor 01',
+            backgroundColor: '#37ad74',
+            borderColor: '#37ad74',
+            data: [30, 25, 20, 28, 40, 45, 70, 65, 65, 35, 30],
         },
-    ]
+        ]
     };
+
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            maintainAspectRatio: false, 
+            responsive: true
+        }
     };
-</script>
-<script>
+    
     const myChart = new Chart(
-      document.getElementById('myChart-grafico'),
-      config
+        document.getElementById('myChart-grafico'),
+        config
     );
-  </script>
+    
+    // GRAFICO 2
+    const labels2 = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Setor 02',
+            backgroundColor: '#c40000',
+            borderColor: '#c40000',
+            data: [30, 25, 20, 28, 40, 45, 70, 65, 65, 35, 30],
+        },
+        ]
+    };
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+            maintainAspectRatio: false, 
+            responsive: true
+        }
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart-grafico2'),
+        config2
+    );
+
+    // GRAFICO 3
+    const labels3 = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+    ];
+
+    const data3 = {
+        labels: labels3,
+        datasets: [{
+            label: 'Setor 03',
+            backgroundColor: '#ddd05e',
+            borderColor: '#ddd05e',
+            data: [30, 25, 20, 28, 40, 45, 70, 65, 65, 35, 30],
+        },
+        ]
+    };
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+            maintainAspectRatio: false, 
+            responsive: true
+        }
+    };
+
+    const myChart3 = new Chart(
+        document.getElementById('myChart-grafico3'),
+        config3
+    );
+</script>
