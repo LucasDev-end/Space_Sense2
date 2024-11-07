@@ -27,9 +27,6 @@ nome varchar(80),
 telefone varchar(16),
 email varchar(100),
 senha varchar(50),
-fkEmpresa int, -- CHAVE ESTRANGEIRA 
-constraint fkEmpresaUsuario foreign key (fkEmpresa)
-references empresa(idEmpresa), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 fkUnidade int, -- CHAVE ESTRANGEIRA
 constraint fkUnidadeUsuario foreign key (fkUnidade)
 references unidade(idUnidade) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
@@ -75,13 +72,13 @@ insert into unidade values
 (default, 4, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567);
 
 insert into usuario values
-(default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1, 1),
-(default, 'Sofia Ribeiro', 11998765432, 'sofiaribeiro@assai.com', '@Ssai098', 1, 2),
-(default, 'Breno Santos', 11912345678, 'bruno.santos@chama.com', 'Ch4ma@123', 2, 3),
-(default, 'Carla Martins', 11923456789, 'carlam@chama.com', 'Chama035!', 2, 4),
-(default, 'Flávio Costa', 11934567890, 'flaviocosta@paoacucar.com', 'P4od3açucar', 3, 5),
-(default, 'Ana Oliveira', 11945678901, 'anaoliver@paoacucar.com', 'PaodeAcucar123#', 3, 6),
-(default, 'Mariana Pires', 11956789012, 'mariana.pires1997@email.com', 'M4rian4&', 4, 7);
+(default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1),
+(default, 'Sofia Ribeiro', 11998765432, 'sofiaribeiro@assai.com', '@Ssai098', 2),
+(default, 'Breno Santos', 11912345678, 'bruno.santos@chama.com', 'Ch4ma@123', 3),
+(default, 'Carla Martins', 11923456789, 'carlam@chama.com', 'Chama035!', 4),
+(default, 'Flávio Costa', 11934567890, 'flaviocosta@paoacucar.com', 'P4od3açucar', 5),
+(default, 'Ana Oliveira', 11945678901, 'anaoliver@paoacucar.com', 'PaodeAcucar123#', 6),
+(default, 'Mariana Pires', 11956789012, 'mariana.pires1997@email.com', 'M4rian4&', 7);
 
 insert into setor values
 (default, 1, 'Açougue'),
@@ -300,10 +297,3 @@ select empresa.nome, unidade.logradouro,setor.categoria,sensor.idSensor,
 from sensor join setor on sensor.fkSetor = setor.idSetor join unidade
 on setor.fkUnidade = unidade.idUnidade join empresa
 on unidade.fkEmpresa = empresa.idEmpresa WHERE unidade.logradouro = 'Avenida Aricanduva' and empresa.nome = 'Assaí Atacadista';
-
--- MOSTRA OS FUNCIONÁRIOS CADASTRADOS, AS EMPRESAS QUE OPERAM E SEUS RESPECTIVOS LOGRADOUROS DE TRABALHO 
-select usuario.nome as Funcionário, empresa.nome as Empresa, unidade.logradouro from usuario
-join empresa
-on usuario.fkEmpresa = empresa.idEmpresa
-join unidade
-on usuario.fkUnidade = unidade.idUnidade;
