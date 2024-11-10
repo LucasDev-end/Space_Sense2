@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/loginCadastro.css">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="../styles/loginCadastro.css">
+    <link rel="stylesheet" href="../styles/index.css">
     <title>Space Sense | Cadastre-se</title>
 </head>
 
@@ -57,7 +57,8 @@
                                     required>
                             </div>
                             <button onclick="cadastrar()">Cadastre-se</button>
-                            <span class="possui_conta_cadastro">Já possui conta?<a href="login.html">Faça seu login</a></span>
+                            <span class="possui_conta_cadastro">Já possui conta?<a href="login.html">Faça seu
+                                    login</a></span>
                         </div>
                         <div id="div_mensagem" class="mensagem_cadastro"></div>
                     </div>
@@ -72,6 +73,7 @@
 <script>
     function cadastrar() {
         var nome = input_nome.value;
+        var telefone = input_telefone.value;
         var email = input_email.value;
         var senha = input_senha.value;
         var confirmarSenha = input_confirmacao_senha.value;
@@ -158,10 +160,49 @@
             mensagem = `<span style='color:red'>A senha é diferente</span>`;
         }
         if (emailVálido && senhaVálida && senhaConfirmadaVálida) {
-            window.location = 'login.html';
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nome,
+                    telefoneServer: telefone,
+                    emailServer: email,
+                    senhaServer: senha
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+            return false;
+
+
+            div_mensagem.innerHTML += mensagem;
+
         }
-
-        div_mensagem.innerHTML += mensagem;
-
     }
 </script>
