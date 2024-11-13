@@ -65,7 +65,7 @@
 </html>
 <script>
     function entrar() {
-        var login = ipt_email.value;
+        var email = ipt_email.value;
         var senha = ipt_senha.value;
         var tamanho_senha = senha.length;
 
@@ -76,8 +76,8 @@
         var senhaVálida = true;
 
         div_mensagem.innerHTML = '';
-        if (login.includes('.') && login.includes('@')) {
-            if (!(login.indexOf('.') == (login.indexOf('@') + 1))) {
+        if (email.includes('.') && email.includes('@')) {
+            if (!(email.indexOf('.') == (email.indexOf('@') + 1))) {
                 emailVálido = true;
             }
         }
@@ -132,13 +132,11 @@
             div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Senha inválida</span>`;
         } else if (!emailVálido && senhaVálida) {
             div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email inválido</span>`;
-        } else {
-            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email e senha inválidos</span>`;
         }
 
         if (emailVálido && senhaVálida) {
-            console.log("FORM LOGIN: ", emailVar);
-            console.log("FORM SENHA: ", senhaVar);
+            console.log("FORM LOGIN: ", email);
+            console.log("FORM SENHA: ", senha);
 
             fetch("/usuarios/autenticar", {
                 method: "POST",
@@ -146,14 +144,15 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    emailServer: emailVar,
-                    senhaServer: senhaVar
+                    emailServer: email,
+                    senhaServer: senha
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
 
                 if (resposta.ok) {
                     console.log(resposta);
+                    div_mensagem.innerHTML = `<span style='color:green'; 'font-weight:bold';>Email e senha válidos</span>`;
 
                     resposta.json().then(json => {
                         console.log(json);
@@ -163,6 +162,7 @@
                         sessionStorage.ID_USUARIO = json.id;
 
                         setTimeout(function () {
+
                             window.location = "./dashboard.html";
                         }, 1000); // apenas para exibir o loading
 
