@@ -42,10 +42,14 @@ references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
 
 create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
-idMedicao int primary key auto_increment,
+idMedicao int auto_increment,
+fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSensorMedicao foreign key (fkSensor)
 references sensor(idSensor), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
+constraint fkSetorMedicao foreign key (fkSetor)
+references setor(idSetor),
+constraint pkComposta primary key (idMedicao, fkSetor, fkSensor),
 distancia float,
 data_hora datetime
 );
