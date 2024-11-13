@@ -10,16 +10,16 @@ codigo_ativacao VARCHAR(50)
 
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
-fkEmpresa int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
-constraint fkEmpresaUnidade foreign key (fkEmpresa) 
-references empresa(idEmpresa), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
+empresa varchar(45),
+cnpj_empresa char(14),
 logradouro varchar(50),
 numero int,
 complemento varchar(45),
 cidade varchar(45),
 estado varchar(45),
 bairro varchar(45),
-cep char(8)
+cep char(8),
+codigo_ativacao char(6)
 );
 
 create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
@@ -48,28 +48,26 @@ references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
 
 create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
-idMedicao int primary key auto_increment,
+idMedicao int auto_increment,
+fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSensorMedicao foreign key (fkSensor)
 references sensor(idSensor), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
+constraint fkSetorMedicao foreign key (fkSetor)
+references setor(idSetor),
+constraint pkComposta primary key (idMedicao, fkSetor, fkSensor),
 distancia float,
 data_hora datetime
 );
 
-insert into empresa values
-(default, 'Assaí Atacadista', 06057223000171),
-(default, 'Chama Supermercados', 67624577000145),
-(default, 'Pão de Açúcar', 47508411000156),
-(default, 'Mercado da Economia', 12345678000190);
-
 insert into unidade values
-(default, 1, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020),
-(default, 1, 'Rua Manilha', 42, null, 'São Paulo', 'São Paulo', 'Vila Carrão', 03445050),
-(default, 2, 'Av. Waldemar Carlos Pereira', 76, null, 'São Paulo', 'São Paulo', 'Vila Dalila', 03533000),
-(default, 2, 'Av. Osvaldo Valle Cordeiro', 152, null, 'São Paulo', 'São Paulo', 'Jardim Brasília', 03584000),
-(default, 3, 'Av. Regente Feijó', 1425, null, 'São Paulo', 'São Paulo', 'Anália Franco', 03342000),
-(default, 3, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200),
-(default, 4, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567);
+(default, 'Assaí Atacadista', 06057223000171, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020, '1A2B3C'),
+(default, 'Assaí Atacadista', 06057223000171, 'Rua Manilha', 42, null, 'São Paulo', 'São Paulo', 'Vila Carrão', 03445050, '4D5E6F'),
+(default, 'Chama Supermercados', 67624577000145, 'Av. Waldemar Carlos Pereira', 76, null, 'São Paulo', 'São Paulo', 'Vila Dalila', 03533000, '7G8H9I'),
+(default, 'Chama Supermercados', 67624577000145, 'Av. Osvaldo Valle Cordeiro', 152, null, 'São Paulo', 'São Paulo', 'Jardim Brasília', 03584000, '123ABC'),
+(default, 'Pão de Açúcar', 47508411000156, 'Av. Regente Feijó', 1425, null, 'São Paulo', 'São Paulo', 'Anália Franco', 03342000, '456DEF'),
+(default, 'Pão de Açúcar', 47508411000156, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200, '789GHI'),
+(default, 'Mercado da Economia', 12345678000190, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567, 'ABC123');
 
 insert into usuario values
 (default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1),
@@ -287,13 +285,3 @@ insert into sensor values
 (default, 67),
 (default, 68),
 (default, 68);
-
--- MOSTRA QUAIS SENSORES DO ASSAÍ ATACADISTA DA AVENIDA ARICANDUVA ESTÃO COM PROBLEMAS E SUAS RESPECTIVAS LOCALIZAÇÕES
-select empresa.nome, unidade.logradouro,setor.categoria,sensor.idSensor, 
-	CASE
-    WHEN sensor.idSensor in(2,3,6,7,10) THEN 'Não está Funcionando'
-    ELSE 'Funcionando'
-    END AS Situação
-from sensor join setor on sensor.fkSetor = setor.idSetor join unidade
-on setor.fkUnidade = unidade.idUnidade join empresa
-on unidade.fkEmpresa = empresa.idEmpresa WHERE unidade.logradouro = 'Avenida Aricanduva' and empresa.nome = 'Assaí Atacadista';
