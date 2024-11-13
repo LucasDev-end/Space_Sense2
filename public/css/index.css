@@ -166,6 +166,7 @@ body {
     border-radius: 10px;
     background-color: #4a50fd;
     width: 200px;
+    cursor: pointer;
     border: none;
     padding: 10px;
     font-size: 18px;

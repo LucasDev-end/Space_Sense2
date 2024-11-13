@@ -2,201 +2,259 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/loginCadastro.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <title>Space Sense | Cadastre-se</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Space Sense | Cadastre-se</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/loginCadastro.css" />
+  <link rel="icon" href="./assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body>
-
-    <!-- HEADER -->
-    <div class="sobrepor-login">
-        <div class="header-login">
-            <div class="container-login">
-                <img src="./assets/img/logo.png" alt="Logo da Empresa" class="img-logo">
-                <ul class="navbar">
-                    <li class="agora">
-                        <a href="index.html">Início</a>
-                    </li>
-                    <li>
-                        <a href="index.html#simulador">Simulador</a>
-                    </li>
-                    <li>
-                        <a href="index.html#servico">Serviços</a>
-                    </li>
-                    <li>
-                        <a href="index.html#about">Sobre Nós</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- CONTEÚDO DA PÁGINA -->
-        <div class="cadastro">
-            <div class="container">
-                <div class="card card-cadastro">
-                    <h5>Cadastro</h5>
-                    <div class="formulario">
-                        <div class="container">
-                            <div class="campo">
-                                <input type="text" id="input_nome" placeholder="Nome Completo" required>
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="input_telefone" placeholder="Telefone" maxlength="11" required>
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="input_email" placeholder="E-mail" required>
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="input_senha" placeholder="Senha" required>
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="input_confirmacao_senha" placeholder="Confirme sua senha"
-                                    required>
-                            </div>
-                            <button onclick="cadastrar()">Cadastre-se</button>
-                            <span class="possui_conta_cadastro">Já possui conta?<a href="login.html">Faça seu
-                                    login</a></span>
-                        </div>
-                        <div id="div_mensagem" class="mensagem_cadastro"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body onload="listar()">
+  <!--header inicio-->
+  <div class="sobrepor-login">
+    <div class="header-login">
+      <div class="container-login">
+        <img src="./assets/img/logo.png" alt="Logo da Empresa" class="img-logo">
+        <ul class="navbar">
+          <li class="agora">
+            <a href="index.html">Início</a>
+          </li>
+          <li>
+            <a href="index.html#simulador">Simulador</a>
+          </li>
+          <li>
+            <a href="index.html#servico">Serviços</a>
+          </li>
+          <li>
+            <a href="index.html#about">Sobre Nós</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    <!--header fim-->
 
+    <div class="cadastro">
+      <div class="container">
+        <div class="card card-cadastro">
+          <h5>Cadastro</h5>
+          <div class="formulario">
+            <div class="container">
+              <div class="campo">
+                <input type="text" id="nome_input" placeholder="Nome Completo" required>
+              </div>
+              <div class="campo">
+                <input type="text" id="telefone_input" placeholder="Telefone" maxlength="11" required>
+              </div>
+              <div class="campo">
+                <input type="text" id="codigo_input" placeholder="Código de Ativação" required>
+              </div>
+              <div class="campo">
+                <input type="text" id="email_input" placeholder="E-mail" required>
+              </div>
+              <div class="campo">
+                <input type="text" id="senha_input" placeholder="Senha" required>
+              </div>
+              <div class="campo">
+                <input type="text" id="confirmacao_senha_input" placeholder="Confirme sua senha" required>
+              </div>
+              <button onclick="cadastrar()">Cadastre-se</button>
+              <span class="possui_conta_cadastro">Já possui conta?<a href="login.html">Faça seu
+                  login</a></span>
+            </div>
+            <div id="div_mensagem" class="mensagem_cadastro"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
+
 <script>
-    function cadastrar() {
-        var nome = input_nome.value;
-        var telefone = input_telefone.value;
-        var email = input_email.value;
-        var senha = input_senha.value;
-        var confirmarSenha = input_confirmacao_senha.value;
-        var tamanho_senha = senha.length;
 
-        var mensagem = "";
-        var verifica_num_tmp;
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  let listaEmpresasCadastradas = [];
 
-        var emailVálido = false;
-        var senhaVálida = true;
-        var senhaConfirmadaVálida = false;
+  function cadastrar() {
+    // aguardar();
 
-        div_mensagem.innerHTML = "";
-        if (email.includes('.') && email.includes('@')) {
-            if (!(email.indexOf('.') == (email.indexOf('@') + 1))) {
-                div_mensagem.innerHTML += `<span style='color:green'>E-mail válido</span> <br>`;
-                emailVálido = true;
-            }
-        } else {
-            div_mensagem.innerHTML += `<span style='color:red'>E-mail inválido</span> <br>`
-        }
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var telefoneVar = telefone_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var codigoVar = codigo_input.value;
+    var idEmpresaVincular
+    var tamanho_senha = senhaVar.length;
 
-        if (senha.toUpperCase() == senha && senha.toLowerCase() == senha) {
-            div_mensagem.innerHTML += `<span style='color:red'>Senha não possui letras</span><br>`;
+    var mensagem = "";
+    var verifica_num_tmp;
 
-        } else {
+    var emailVálido = false;
+    var senhaVálida = true;
+    var senhaConfirmadaVálida = false;
 
-            if (senha.toLowerCase() == senha) {
-                div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres maiúsculos</span><br>`;
-                senhaVálida = false;
-            } else {
-                div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres maiúsculos</span><br>`;
-                senhaVálida = true;
-            }
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      codigoVar == ""
+    ) {
+      div_mensagem.innerHTML =
+        "Preencha todos os campos para prosseguir";
 
-            if (senha.toUpperCase() == senha) {
-                div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres minúsculos</span><br> `;
-                senhaVálida = false;
-            } else {
-                div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres minúsculos</span><br> `;
-                senhaVálida = true;
-            }
-        }
-
-        if (tamanho_senha < 8) {
-            div_mensagem.innerHTML += `<span style='color:red'>Senha não possui menos de 8 caracteres</span><br>`;
-            senhaVálida = false;
-        } else {
-            div_mensagem.innerHTML += `<span style='color:green'>Senha possui pelo menos 8 caracteres</span><br>`;
-            senhaVálida = true;
-        }
-
-        for (var i = 0; i < tamanho_senha; i++) {
-            verifica_num_tmp = Number(senha[i]);
-            if (!isNaN(verifica_num_tmp)) {
-                mensagem = "<span style='color:green'>Senha possui números</span>";
-                i = tamanho_senha;
-            } else {
-                mensagem = `<span style='color:red'>Senha não possui números</span><br>`;
-                senhaVálida = false;
-            }
-
-        }
-
-        if (senha.includes('!') || senha.includes('"') || senha.includes('#') || senha.includes('$') ||
-            senha.includes('%') || senha.includes('&') || senha.includes("'") || senha.includes('(') || senha.includes(')')
-            || senha.includes('*') || senha.includes('+') || senha.includes(',') || senha.includes('-') || senha.includes('.')
-            || senha.includes('/') || senha.includes(':') || senha.includes(';') || senha.includes('<') || senha.includes('<')
-            || senha.includes('=') || senha.includes('>') || senha.includes('?') || senha.includes('@') || senha.includes('[')
-            || senha.includes('\\') || senha.includes(']') || senha.includes('^') || senha.includes('_') || senha.includes('`')
-            || senha.includes('`') || senha.includes('{') || senha.includes('|') || senha.includes('}') || senha.includes('~')
-        ) {
-            div_mensagem.innerHTML += `<span style='color:green'>Senha contém cararactere especial</span><br>`;
-            senhaVálida = true;
-        } else {
-            div_mensagem.innerHTML += `<span style="color:red">Senha não contém cararactere especial</span><br>`;
-            senhaVálida = false;
-        }
-
-        if (senha == confirmarSenha) {
-            mensagem = `<span style='color:green'>A senha é igual</span>`;
-            senhaConfirmadaVálida = true;
-        } else {
-            mensagem = `<span style='color:red'>A senha é diferente</span>`;
-        }
-        if (emailVálido && senhaVálida && senhaConfirmadaVálida) {
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nome,
-                    telefoneServer: telefone,
-                    emailServer: email,
-                    senhaServer: senha
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                        setTimeout(() => {
-                            window.location = "./login.html";
-                        }, "2000");
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-
-            return false;
-
-
-            div_mensagem.innerHTML += mensagem;
-
-        }
+      return false;
     }
+
+    div_mensagem.innerHTML = "";
+    if (emailVar.includes('.') && emailVar.includes('@')) {
+      if (!(emailVar.indexOf('.') == (emailVar.indexOf('@') + 1))) {
+        div_mensagem.innerHTML += `<span style='color:green'>E-mail válido</span> <br>`;
+        emailVálido = true;
+      }
+    } else {
+      div_mensagem.innerHTML += `<span style='color:red'>E-mail inválido</span> <br>`
+    }
+
+    if (senhaVar.toUpperCase() == senhaVar && senhaVar.toLowerCase() == senhaVar) {
+      div_mensagem.innerHTML += `<span style='color:red'>Senha não possui letras</span><br>`;
+
+    } else {
+
+      if (senhaVar.toLowerCase() == senhaVar) {
+        div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres maiúsculos</span><br>`;
+        senhaVálida = false;
+      } else {
+        div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres maiúsculos</span><br>`;
+        senhaVálida = true;
+      }
+
+      if (senhaVar.toUpperCase() == senhaVar) {
+        div_mensagem.innerHTML += `<span style='color:red'>Senha não possui caracteres minúsculos</span><br> `;
+        senhaVálida = false;
+      } else {
+        div_mensagem.innerHTML += `<span style='color:green'>Senha possui caracteres minúsculos</span><br> `;
+        senhaVálida = true;
+      }
+    }
+
+    if (tamanho_senha < 8) {
+      div_mensagem.innerHTML += `<span style='color:red'>Senha não possui menos de 8 caracteres</span><br>`;
+      senhaVálida = false;
+    } else {
+      div_mensagem.innerHTML += `<span style='color:green'>Senha possui pelo menos 8 caracteres</span><br>`;
+      senhaVálida = true;
+    }
+
+    for (var i = 0; i < tamanho_senha; i++) {
+      verifica_num_tmp = Number(senhaVar[i]);
+      if (!isNaN(verifica_num_tmp)) {
+        mensagem = "<span style='color:green'>Senha possui números</span>";
+        i = tamanho_senha;
+      } else {
+        mensagem = `<span style='color:red'>Senha não possui números</span><br>`;
+        senhaVálida = false;
+      }
+
+    }
+
+    if (senhaVar.includes('!') || senhaVar.includes('"') || senhaVar.includes('#') || senhaVar.includes('$') ||
+      senhaVar.includes('%') || senhaVar.includes('&') || senhaVar.includes("'") || senhaVar.includes('(') || senhaVar.includes(')')
+      || senhaVar.includes('*') || senhaVar.includes('+') || senhaVar.includes(',') || senhaVar.includes('-') || senhaVar.includes('.')
+      || senhaVar.includes('/') || senhaVar.includes(':') || senhaVar.includes(';') || senhaVar.includes('<') || senhaVar.includes('<')
+      || senhaVar.includes('=') || senhaVar.includes('>') || senhaVar.includes('?') || senhaVar.includes('@') || senhaVar.includes('[')
+      || senhaVar.includes('\\') || senhaVar.includes(']') || senhaVar.includes('^') || senhaVar.includes('_') || senhaVar.includes('`')
+      || senhaVar.includes('`') || senhaVar.includes('{') || senhaVar.includes('|') || senhaVar.includes('}') || senhaVar.includes('~')
+    ) {
+      div_mensagem.innerHTML += `<span style='color:green'>Senha contém cararactere especial</span><br>`;
+      senhaVálida = true;
+    } else {
+      div_mensagem.innerHTML += `<span style="color:red">Senha não contém cararactere especial</span><br>`;
+      senhaVálida = false;
+    }
+
+    if (senhaVar == confirmacaoSenhaVar) {
+      mensagem = `<span style='color:green'>A senha é igual</span>`;
+      senhaConfirmadaVálida = true;
+    } else {
+      mensagem = `<span style='color:red'>A senha é diferente</span>`;
+    }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        idEmpresaVincular = listaEmpresasCadastradas[i].id
+        console.log("Código de ativação válido.");
+        break;
+      }
+    }
+    if (emailVálido && senhaVálida && senhaConfirmadaVálida) {
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          telefoneServer: telefoneVar,
+          idEmpresaVincularServer: idEmpresaVincular
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            div_mensagem.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+  
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+  
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+  
+      return false;
+    }
+  }
+
+  // Listando empresas cadastradas 
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresasCadastradas.push(empresa);
+
+            console.log("listaEmpresasCadastradas")
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
 </script>

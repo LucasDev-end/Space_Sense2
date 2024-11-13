@@ -1,162 +1,165 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
-  <title>Space Sense | Página Inicial</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Space Sense | Página Inicial</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./assets/img/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-  <!-- Header e acesso as outras páginas e página de login por meio do link-->
-  <div class="header">
-    <div class="container">
-      <img src="./assets/img/logo.png" alt="Logo da Empresa">
-      <ul class="navbar">
-        <li>
-          <a href="#">Início</a>
-        </li>
-        <li>
-          <a href="#simulador">Simulador</a>
-        </li>
-        <li>
-          <a href="#servico">Serviços</a>
-        </li>
-        <li>
-          <a href="#about">Sobre Nós</a>
-        </li>
-      </ul>
-      <button class="botao" onclick="login()">Login</button>
-      <button class="botaoCadastro" onclick="cadastro()">Cadastre-se</button>
+    <div class="header">
+      <div class="container">
+        <img src="./assets/img/logo.png" alt="">
+        <ul class="navbar">
+          <li class="agora">
+            <a href="#">Inicial</a>
+          </li>
+          <li>
+            <a href="simulador.html">Simulador</a>
+          </li>
+          <li>
+            <a href="login.html">Serviços</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Sobre nós</a>
+          </li>
+        </ul>
+        <button class="botao" onclick="login()">Login</button>
+        <button class="botaoCadastro" onclick="cadastrar()">Cadastre-se</button>
+      </div>
     </div>
-  </div>
-
-  <!-- Conteudo principal da página-->
-  <div class="banner">
-    <div class="container">
-      <h1><span>SPACE</span> <span style="color: #1e87ff;">SENSE</span></h1>
+  
+    <div class="banner">
+      <div class="container">
+        <h1><span>SPACE</span> <span style="color: #1e87ff;">SENSE</span></h1>
       <hr class="separador"> <!-- hr = linha horizontal-->
       <p> Inteligência para Transformar o Movimento em Oportunidades! Impulsione seus lucros com dados de fluxo.</p>
-    </div>
-  </div>
-
-  <!-- Simulador da empresa -->
-  <div class="simulador" id="simulador">
-    <div class="container">
-      <h1>Simule seu negócio</h1>
-      <div class="boxSimulador">
-        <div class="formulario card">
-          <div class="container">
-            <div id="div_resultado"><span id="resultado">Preencha os campos ao lado...</span></div>
-          </div>
-        </div>
-        <div class="formulario">
-          <div class="container">
-            <div class="campo">
-              <span>Quantos corredores seu supermercado possui?</span>
-              <input id="input_corredoresTotais" type="text" placeholder="Ex: 20">
-            </div>
-            <div class="campo">
-              <span>Em quantos corredores você deseja instalar?</span>
-              <input id="input_corredoresInstalados" type="text" placeholder="Ex: 13">
-            </div>
-            <div class="campo">
-              <span>Qual seu faturamento mensal?</span>
-              <input id="input_lucroMensal" type="number" placeholder="Ex: 25000">
-            </div>
-            <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-  <!-- Sobre nós -->
-  <div class="servicos" id="servico">
-    <div class="img_titulo">
-      <h1><span>NOSSO SERVIÇO</span></h1>
-      <img
-        src="https://ecommercenapratica.com/wp-content/uploads/2021/05/Vender-no-Mercado-Livre-sem-estoque-2.png.webp"
-        alt="">
-    </div>
-    <div class="texto_servico">
+  
+    <div class="simulador" id="simulador">
       <div class="container">
-        <p>
-          <span>Desenvolvimento de um sistema que emprega sensores
-            ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos
-            produtos nas prateleiras e diversos setores do mercado.
-            Nosso foco principal é identificar as regiões mais movimentadas, possibilitando
-            uma análise precisa das áreas de maior valor.</span> <br>
-          <span>Com base nesses dados, o sistema oferecerá insights detalhados
-            sobre o fluxo de pessoas em cada setor. Essas informações serão cruciais
-            para determinar as áreas
-            mais estratégicas e valiosas para regular o preço e buscar maximizar sua visibilidade e potencial de
-            vendas.</span> <br>
-          <span>Além disso, o sistema permitirá que os gestores de hipermercados ajustem os preços conforme
-            a valorização de cada área, assegurando uma gestão mais eficientes e lucrativas dos espaços
-            comerciais.</span>
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- Sobre Nós e Nossos Valores -->
-  <div class="about" id="about">
-    <div class="container">
-      <h1>SOBRE NÓS</h1>
-      <span> Somos uma empresa especializada em soluções inteligentes
-        para o setor varejista, utilizando sensores ultrassônicos para
-        monitorar o fluxo de pessoas cada setor.
-        <div class="social">
-          <div class="container">
-            <div class="boxes">
-              <div class="box">
-                <img src="./assets/icons/missao.png">
-                <h4>Missão</h4>
-                <p>A nossa missão é fornecer para o cliente dados valiosos sobre o seu negócio
-                  , através de uma dashboard ao qual o usuário pode tomar decisões estratégicas sobre
-                  como o seu negócio está sendo gerido e como ele pode melhorar.</p>
+        <h1>Simule seu negócio</h1>
+        <div class="boxSimulador">
+          <div class="formulario card">
+            <div class="container">
+              <div id="div_resultado"><span id="resultado">Preencha os campos ao lado...</span></div>
+            </div>
+          </div>
+          <div class="formulario">
+            <div class="container">
+              <div class="campo">
+                <span>Quantos corredores seu supermercado possui?</span>
+                <input id="input_corredoresTotais" type="text" placeholder="Ex: 20">
               </div>
-              <div class="box">
-                <img src="./assets/icons/visao-compartilhada.png">
-                <h4>Visão</h4>
-                <p>Nossa abordagem estratégica
-                  transforma a gestão de layouts comerciais, tornando-a mais
-                  dinâmica e lucrativa. Nossas tecnologias ajudam empresas a
-                  maximizar sua visibilidade, impactando positivamente o mercado.</p>
+              <div class="campo">
+                <span>Em quantos corredores você deseja instalar?</span>
+                <input id="input_corredoresInstalados" type="text" placeholder="Ex: 13">
               </div>
-              <div class="box">
-                <img src="./assets/icons/valor.png">
-                <h4>Valores</h4>
-                <p>Valorizamos e priorizamos sempre o cliente, acreditamos que o cliente é a chave
-                  para uma boa gestão de negócio, buscando entender como a nossa solução pode ajudar na sua tomada de
-                  decisão </p>
+              <div class="campo">
+                <span>Qual seu faturamento mensal?</span>
+                <input id="input_lucroMensal" type="number" placeholder="Ex: 25000">
               </div>
+              <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
             </div>
           </div>
         </div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="container">
-      <p>Sua solução varejista!</p>
-      <img src="./assets/img/logo_black.png" alt="">
-      <p>Copyright © 2024 Space Sense</p>
-    </div>
-    <div class="section-contato">
-      <h2>Contato</h2>
-      <div class="contato-info">
-        <span><img src="./assets/icons/gps.png" alt="">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP,
-          01414-001</span>
-        <span><img src="./assets/icons/o-email.png" alt="">contato@spacesense.com</span>
-        <span><img src="./assets/icons/phone.png" alt="">(11) 98765-4321</span>
       </div>
     </div>
-  </div>
-</body>
+    <!-- Sobre nós -->
+    <div class="servicos" id="servico">
+      <div class="img_titulo">
+        <h1><span>NOSSO SERVIÇO</span></h1>
+        <img
+          src="https://ecommercenapratica.com/wp-content/uploads/2021/05/Vender-no-Mercado-Livre-sem-estoque-2.png.webp"
+          alt="">
+      </div>
+      <div class="texto_servico">
+        <div class="container">
+          <p>
+            <span>Desenvolvimento de um sistema que emprega sensores
+              ultrassônicos HC SR04 para monitorar a movimentação e fluxo dos
+              produtos nas prateleiras e diversos setores do mercado.
+              Nosso foco principal é identificar as regiões mais movimentadas, possibilitando
+              uma análise precisa das áreas de maior valor.</span> <br>
+            <span>Com base nesses dados, o sistema oferecerá insights detalhados
+              sobre o fluxo de pessoas em cada setor. Essas informações serão cruciais
+              para determinar as áreas
+              mais estratégicas e valiosas para regular o preço e buscar maximizar sua visibilidade e potencial de
+              vendas.</span> <br>
+            <span>Além disso, o sistema permitirá que os gestores de hipermercados ajustem os preços conforme
+              a valorização de cada área, assegurando uma gestão mais eficientes e lucrativas dos espaços
+              comerciais.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Sobre Nós e Nossos Valores -->
+    <div class="about" id="about">
+      <div class="container">
+        <h1>SOBRE NÓS</h1>
+        <span> Somos uma empresa especializada em soluções inteligentes
+          para o setor varejista, utilizando sensores ultrassônicos para
+          monitorar o fluxo de pessoas cada setor.
+          <div class="social">
+            <div class="container">
+              <div class="boxes">
+                <div class="box">
+                  <img src="./assets/icons/missao.png">
+                  <h4>Missão</h4>
+                  <p>A nossa missão é fornecer para o cliente dados valiosos sobre o seu negócio
+                    , através de uma dashboard ao qual o usuário pode tomar decisões estratégicas sobre
+                    como o seu negócio está sendo gerido e como ele pode melhorar.</p>
+                </div>
+                <div class="box">
+                  <img src="./assets/icons/visao-compartilhada.png">
+                  <h4>Visão</h4>
+                  <p>Nossa abordagem estratégica
+                    transforma a gestão de layouts comerciais, tornando-a mais
+                    dinâmica e lucrativa. Nossas tecnologias ajudam empresas a
+                    maximizar sua visibilidade, impactando positivamente o mercado.</p>
+                </div>
+                <div class="box">
+                  <img src="./assets/icons/valor.png">
+                  <h4>Valores</h4>
+                  <p>Valorizamos e priorizamos sempre o cliente, acreditamos que o cliente é a chave
+                    para uma boa gestão de negócio, buscando entender como a nossa solução pode ajudar na sua tomada de
+                    decisão </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <div class="container">
+        <p>Sua solução varejista!</p>
+        <img src="./assets/img/logo_black.png" alt="">
+        <p>Copyright © 2024 Space Sense</p>
+      </div>
+      <div class="section-contato">
+        <h2>Contato</h2>
+        <div class="contato-info">
+          <span><img src="./assets/icons/gps.png" alt="">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP,
+            01414-001</span>
+          <span><img src="./assets/icons/o-email.png" alt="">contato@spacesense.com</span>
+          <span><img src="./assets/icons/phone.png" alt="">(11) 98765-4321</span>
+        </div>
+      </div>
+    </div>
+  </body>
 
 </html>
-
 <script>
   function analisar() {
         //Declaração de variaveis
@@ -199,8 +202,7 @@
   function login() {
     window.location = "login.html"
   }
-
-  function cadastro() {
+  function cadastrar() {
     window.location = "cadastro.html"
   }
 </script>

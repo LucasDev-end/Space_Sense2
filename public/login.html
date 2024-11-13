@@ -3,16 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/loginCadastro.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+
     <title>Space Sense | Página de Login</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/loginCadastro.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./assets/img/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!--Header-->
+
     <div class="sobrepor-login">
         <div class="header-login">
             <div class="container-login">
@@ -34,7 +41,6 @@
             </div>
         </div>
 
-        <!-- CONTEÚDO DA PÁGINA -->
         <div class="login">
             <div class="container">
                 <div class="card card-login">
@@ -43,11 +49,11 @@
                         <div class="container">
                             <div class="campo">
                                 <span>Email:</span>
-                                <input type="text" id="ipt_email" placeholder="email@gmail.com">
+                                <input type="text" id="email_input" placeholder="email@gmail.com">
                             </div>
                             <div class="campo">
                                 <span>Senha:</span>
-                                <input type="text" id="ipt_senha" placeholder="********">
+                                <input type="text" id="senha_input" placeholder="********">
                             </div>
 
                             <button onclick="entrar()">Entrar</button>
@@ -60,39 +66,49 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
-<script>
-    function entrar() {
-        var email = ipt_email.value;
-        var senha = ipt_senha.value;
-        var tamanho_senha = senha.length;
 
+<script>
+
+
+    function entrar() {
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            div_mensagem.innerHTML = "Preencha todos os campos para prosseguir";
+            return false;
+        }
+        
         var mensagem = "";
         var verifica_num_tmp;
+        var tamanho_senha = senhaVar.length;
 
         var emailVálido = false;
         var senhaVálida = true;
 
         div_mensagem.innerHTML = '';
-        if (email.includes('.') && email.includes('@')) {
-            if (!(email.indexOf('.') == (email.indexOf('@') + 1))) {
+        if (emailVar.includes('.') && emailVar.includes('@')) {
+            if (!(emailVar.indexOf('.') == (emailVar.indexOf('@') + 1))) {
                 emailVálido = true;
             }
         }
 
-        if (senha.toUpperCase() == senha && senha.toLowerCase() == senha) {
+        if (senhaVar.toUpperCase() == senhaVar && senhaVar.toLowerCase() == senhaVar) {
             senhaVálida = false;
         } else {
 
-            if (senha.toLowerCase() == senha) {
+            if (senhaVar.toLowerCase() == senhaVar) {
                 senhaVálida = false;
             } else {
                 senhaVálida = true;
             }
 
-            if (senha.toUpperCase() == senha) {
+            if (senhaVar.toUpperCase() == senhaVar) {
                 senhaVálida = false;
             } else {
                 senhaVálida = true;
@@ -106,7 +122,7 @@
         }
 
         for (var i = 0; i < tamanho_senha; i++) {
-            verifica_num_tmp = Number(senha[i]);
+            verifica_num_tmp = Number(senhaVar[i]);
             if (!isNaN(verifica_num_tmp)) {
                 i = tamanho_senha;
             } else {
@@ -115,13 +131,13 @@
 
         }
 
-        if (senha.includes('!') || senha.includes('"') || senha.includes('#') || senha.includes('$') ||
-            senha.includes('%') || senha.includes('&') || senha.includes("'") || senha.includes('(') || senha.includes(')')
-            || senha.includes('*') || senha.includes('+') || senha.includes(',') || senha.includes('-') || senha.includes('.')
-            || senha.includes('/') || senha.includes(':') || senha.includes(';') || senha.includes('<') || senha.includes('<')
-            || senha.includes('=') || senha.includes('>') || senha.includes('?') || senha.includes('@') || senha.includes('[')
-            || senha.includes('\\') || senha.includes(']') || senha.includes('^') || senha.includes('_') || senha.includes('`')
-            || senha.includes('`') || senha.includes('{') || senha.includes('|') || senha.includes('}') || senha.includes('~')
+        if (senhaVar.includes('!') || senhaVar.includes('"') || senhaVar.includes('#') || senhaVar.includes('$') ||
+            senhaVar.includes('%') || senhaVar.includes('&') || senhaVar.includes("'") || senhaVar.includes('(') || senhaVar.includes(')')
+            || senhaVar.includes('*') || senhaVar.includes('+') || senhaVar.includes(',') || senhaVar.includes('-') || senhaVar.includes('.')
+            || senhaVar.includes('/') || senhaVar.includes(':') || senhaVar.includes(';') || senhaVar.includes('<') || senhaVar.includes('<')
+            || senhaVar.includes('=') || senhaVar.includes('>') || senhaVar.includes('?') || senhaVar.includes('@') || senhaVar.includes('[')
+            || senhaVar.includes('\\') || senhaVar.includes(']') || senhaVar.includes('^') || senhaVar.includes('_') || senhaVar.includes('`')
+            || senhaVar.includes('`') || senhaVar.includes('{') || senhaVar.includes('|') || senhaVar.includes('}') || senhaVar.includes('~')
         ) {
             senhaVálida = true;
         } else {
@@ -133,55 +149,56 @@
         } else if (!emailVálido && senhaVálida) {
             div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email inválido</span>`;
         }
-
         if (emailVálido && senhaVálida) {
-            console.log("FORM LOGIN: ", email);
-            console.log("FORM SENHA: ", senha);
-
+            
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+    
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    emailServer: email,
-                    senhaServer: senha
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
-
+    
                 if (resposta.ok) {
                     console.log(resposta);
-                    div_mensagem.innerHTML = `<span style='color:green'; 'font-weight:bold';>Email e senha válidos</span>`;
-
+                    div_mensagem.innerHTML = `<span style='color:green'; 'font-weight:bold';>Email e Senha válidos</span>`;
+    
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.id;
-
+                        sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+    
                         setTimeout(function () {
-
-                            window.location = "./dashboard.html";
+                            window.location = "./dashboard/dashboard.html";
                         }, 1000); // apenas para exibir o loading
-
+    
                     });
-
+    
                 } else {
-
+    
                     console.log("Houve um erro ao tentar realizar o login!");
-
+    
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
                 }
-
+    
             }).catch(function (erro) {
                 console.log(erro);
             })
-
+    
             return false;
         }
     }
+
 </script>
