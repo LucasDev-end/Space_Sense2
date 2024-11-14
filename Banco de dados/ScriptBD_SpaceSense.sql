@@ -28,8 +28,8 @@ nome varchar(80),
 telefone varchar(16),
 email varchar(100),
 senha varchar(50),
-fkEmpresa,
-FOREIGN KEY (fkEmpresa) REFERENCES empresa(id)
+fkUnidade,
+FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
 );
 
 create table setor ( -- CRIAÇÃO DA TABELA 'SETOR'
