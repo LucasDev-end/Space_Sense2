@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/setores.css">
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <script src="../js/sessao.js"></script>
+
     <title>Space Sense | Setores</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="container">
         <div class="navbar">
             <div class="user">
@@ -19,7 +21,7 @@
                     <div class="foto">
                         <img src="../assets/icons/imgPerfil.png">
                     </div>
-                    <h3>Olá, Boas Vindas!</h3>
+                    <h3>Olá, Boas Vindas <span id="b_usuario">usuário</span>!</h3>
                 </div>
             </div>
             <div class="box">

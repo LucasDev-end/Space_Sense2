@@ -6,15 +6,17 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <script src="../js/sessao.js"></script>
     <title>Space Sense | DashBoard</title>
 </head>
-<body>
+<body onload="validarSessao()">
     <div class="container">
         <div class="side">
             <div class="user">
                 <div class="line">
                     <div class="foto"><img src="../assets/icons/file.png"></div>
-                    <h3>Olá, Boas Vindas!</h3>
+                    <h3>Olá, Boas Vindas <span id="b_usuario">usuário</span>!</h3>
+                </h3>
                 </div>
             </div>
             <div class="box">
