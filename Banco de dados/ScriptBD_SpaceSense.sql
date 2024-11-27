@@ -1,13 +1,6 @@
 create database spacesense; -- CRIAÇÃO DO BANCO DE DADOS
 use spacesense; -- SELEÇÃO DO BANCO DE DADOS
 
-create table empresa (  -- CRIAÇÃO DA TABELA 'EMPRESA'
-id int primary key auto_increment,
-nome varchar(45),
-cnpj char(14),
-codigo_ativacao VARCHAR(50)
-);
-
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
 empresa varchar(45),
@@ -28,7 +21,7 @@ nome varchar(80),
 telefone varchar(16),
 email varchar(100),
 senha varchar(50),
-fkUnidade,
+fkUnidade int,
 FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
 );
 
@@ -49,13 +42,9 @@ references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 
 create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
 idMedicao int auto_increment,
-fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSensorMedicao foreign key (fkSensor)
 references sensor(idSensor), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
-constraint fkSetorMedicao foreign key (fkSetor)
-references setor(idSetor),
-constraint pkComposta primary key (idMedicao, fkSetor, fkSensor),
 distancia float,
 data_hora datetime
 );
