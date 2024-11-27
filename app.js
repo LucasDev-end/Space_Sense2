@@ -20,6 +20,8 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var empresasRouter = require("./src/routes/empresas");
+// crie o arquivo de rota da filtragem
+var filtragemRouter = require("./src/routes/filtragem");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +34,8 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/empresas", empresasRouter);
+// Apontando toda requisição /filtragem para o arquivo de rotas dele
+app.use("/filtragem", filtragemRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
