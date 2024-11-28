@@ -1,12 +1,19 @@
 create database spacesense; -- CRIAÇÃO DO BANCO DE DADOS
 use spacesense; -- SELEÇÃO DO BANCO DE DADOS
 
-create table empresa (  -- CRIAÇÃO DA TABELA 'EMPRESA'
-id int primary key auto_increment,
-nome varchar(45),
-cnpj char(14),
-codigo_ativacao VARCHAR(50)
+drop database spacesense;
+
+CREATE TABLE usuario (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50),
+	email VARCHAR(50),
+	telefone CHAR(11),
+	senha VARCHAR(50),
+	fkUnidade INT,
+	FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
 );
+
+select * from usuario;
 
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
@@ -21,16 +28,7 @@ bairro varchar(45),
 cep char(8),
 codigo_ativacao char(6)
 );
-
-create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
-idUsuario int primary key auto_increment,
-nome varchar(80),
-telefone varchar(16),
-email varchar(100),
-senha varchar(50),
-fkUnidade,
-FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
-);
+select * from unidade;
 
 create table setor ( -- CRIAÇÃO DA TABELA 'SETOR'
 idSetor int primary key auto_increment,
@@ -40,25 +38,58 @@ references unidade(idUnidade), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 categoria varchar(45)
 );
 
+SELECT * FROM setor;
+
 create table sensor (  -- CRIAÇÃO DA TABELA 'SENSOR'
 idSensor int primary key auto_increment,
 fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSetorSensor foreign key (fkSetor)
 references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
-
+select * from sensor;
 create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
-idMedicao int auto_increment,
-fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
+idMedicao int primary key auto_increment,
 fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSensorMedicao foreign key (fkSensor)
 references sensor(idSensor), -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
-constraint fkSetorMedicao foreign key (fkSetor)
-references setor(idSetor),
-constraint pkComposta primary key (idMedicao, fkSetor, fkSensor),
 distancia float,
 data_hora datetime
 );
+
+SELECT * FROM medicao;
+TRUNCATE TABLE medicao;
+
+-- Setor 1
+INSERT INTO medicao (fkSensor, distancia, data_hora) VALUES
+(1, 11.2, '2024-11-25 08:30:00'),
+(2, 20.5, '2024-11-26 08:35:00'),
+(3, 15.8, '2024-11-27 08:40:00'),
+(4, 39.0, '2024-11-28 08:45:00'),
+(5, 22.1, '2024-11-29 08:50:00'),
+(6, 13.9, '2024-11-30 08:55:00'),
+(7, 24.3, '2024-12-01 09:00:00');
+
+-- Setor 2
+INSERT INTO medicao (fkSensor, distancia, data_hora) VALUES
+(8, 91.2, '2024-12-02 08:30:00'),
+(9, 80.5, '2024-12-03 08:35:00'),
+(10, 15.8, '2024-12-04 08:40:00'),
+(11, 29.0, '2024-12-05 08:45:00'),
+(12, 12.1, '2024-12-06 08:50:00'),
+(13, 53.9, '2024-12-07 08:55:00'),
+(14, 64.3, '2024-12-08 09:00:00');
+
+-- Setor 3
+INSERT INTO medicao (fkSensor, distancia, data_hora) VALUES
+(15, 11.2, '2024-12-09 08:30:00'),
+(16, 20.5, '2024-12-10 08:35:00'),
+(17, 15.8, '2024-12-11 08:40:00'),
+(18, 39.0, '2024-12-12 08:45:00'),
+(19, 22.1, '2024-12-13 08:50:00'),
+(20, 43.9, '2024-12-14 08:55:00'),
+(21, 10, '2024-12-15 09:00:00');
+
+SELECT * FROM unidade;
 
 insert into unidade values
 (default, 'Assaí Atacadista', 06057223000171, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020, '1A2B3C'),
@@ -68,15 +99,6 @@ insert into unidade values
 (default, 'Pão de Açúcar', 47508411000156, 'Av. Regente Feijó', 1425, null, 'São Paulo', 'São Paulo', 'Anália Franco', 03342000, '456DEF'),
 (default, 'Pão de Açúcar', 47508411000156, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200, '789GHI'),
 (default, 'Mercado da Economia', 12345678000190, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567, 'ABC123');
-
-insert into usuario values
-(default, 'Lorenzo Almeida', 11987654321, 'lorenzoalmeida@assai.com', 'Ass4i123!', 1),
-(default, 'Sofia Ribeiro', 11998765432, 'sofiaribeiro@assai.com', '@Ssai098', 2),
-(default, 'Breno Santos', 11912345678, 'bruno.santos@chama.com', 'Ch4ma@123', 3),
-(default, 'Carla Martins', 11923456789, 'carlam@chama.com', 'Chama035!', 4),
-(default, 'Flávio Costa', 11934567890, 'flaviocosta@paoacucar.com', 'P4od3açucar', 5),
-(default, 'Ana Oliveira', 11945678901, 'anaoliver@paoacucar.com', 'PaodeAcucar123#', 6),
-(default, 'Mariana Pires', 11956789012, 'mariana.pires1997@email.com', 'M4rian4&', 7);
 
 insert into setor values
 (default, 1, 'Açougue'),
@@ -285,3 +307,37 @@ insert into sensor values
 (default, 67),
 (default, 68),
 (default, 68);
+
+CREATE VIEW vw_usuario_unidade
+AS
+SELECT usuario.nome AS usuario ,usuario.email AS 'Email',unidade.empresa AS 'Nome da Unidade',unidade.logradouro as 'Logradouro',
+unidade.numero AS 'Número', unidade.cep AS 'CEP' FROM usuario JOIN unidade ON usuario.fkUnidade = unidade.idUnidade;
+
+SELECT * FROM vw_usuario_unidade WHERE usuario = 'Lucas';
+
+CREATE VIEW vw_sensor_setor
+AS
+SELECT sensor.idSensor,setor.categoria,distancia AS 'Fluxo de Pessoas', DAYNAME(data_hora) AS 'Dia da Semana' FROM medicao 
+JOIN sensor ON medicao.fkSensor = sensor.idSensor JOIN setor ON sensor.fkSetor = setor.idSetor ORDER BY idSensor;
+
+SELECT * FROM vw_sensor_setor;
+
+CREATE VIEW vw_semana
+AS
+    SELECT distancia, DAYNAME(data_hora), 
+        CASE
+        WHEN DAYNAME(data_hora) = 'Monday' THEN 'Segunda'
+        WHEN DAYNAME(data_hora) = 'Tuesday' THEN 'Terça'
+        WHEN DAYNAME(data_hora) = 'Wednesday' THEN 'Quarta'
+        WHEN DAYNAME(data_hora) = 'Thursday' THEN 'Quinta'
+        WHEN DAYNAME(data_hora) = 'Friday' THEN 'Sexta'
+        WHEN DAYNAME(data_hora) = 'Saturday' THEN 'Sábado'
+        WHEN DAYNAME(data_hora) = 'Sunday' THEN 'Domingo'
+        ELSE 'Nenhum Dia Popular'
+        END AS Dia
+FROM medicao;
+
+SELECT * FROM vw_semana;
+
+SELECT * FROM vw_semana ORDER BY distancia DESC LIMIT 1;
+SELECT MAX(distancia) FROM vw_semana;

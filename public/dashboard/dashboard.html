@@ -76,9 +76,9 @@
                         </div>
                         <div class="kpi-num">
                             <div class="titulo">
-                                <h2 >Mês mais popular:</h2>
+                                <h2>Dia mais popular:</h2>
                             </div>
-                            <span>DEZEMBRO</span>
+                            <span id="diaPopular"></span>
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,20 @@
 </body>
 </html>
 <script>
+    function exibirdiaPopular() {
+        fetch('/setores/exibirDiaPopular').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const fluxo = data[0];
+                    const spandiaPopular = document.getElementById('diaPopular');
+
+                    spandiaPopular.innerHTML = fluxo.Dia;
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
 
 const labels = [
         'Carnes',
@@ -121,6 +135,7 @@ const labels = [
             indexAxis: 'y',categoryPercentage: 1.0,barPercentage: 0.6,
         }
     };
+    exibirdiaPopular()
 </script>
 <script>
     const myChart = new Chart(

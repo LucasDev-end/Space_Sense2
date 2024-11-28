@@ -236,7 +236,7 @@ a span{
 }
 
 .grafico{
-    background-color: red;
+    background-color: #fff;
     width: 97%;
     height: 62vh;
     border-radius: var(--tamanho-border-radius);

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/setores.css">
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
     <script src="../js/sessao.js"></script>
 
     <title>Space Sense | Setores</title>
@@ -15,11 +15,11 @@
 
 <body onload="validarSessao()">
     <div class="container">
-        <div class="navbar">
+        <div class="side">
             <div class="user">
                 <div class="line">
                     <div class="foto">
-                        <img src="../assets/icons/imgPerfil.png">
+                        <img src="../assets/icons/file.png">
                     </div>
                     <h3>Olá, Boas Vindas <span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -75,124 +75,242 @@
 <script>
 
     // GRAFICO 1
+    function criarGrafico(labels, valores) {
+        const ctx = document.getElementById('myChart-grafico');
 
-    const labels = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro',
-    ];
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                datasets: [{
+                    label: 'Setor 01',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Setor 01',
-            backgroundColor: '#37ad74',
-            borderColor: '#37ad74',
-            data: [30, 45, 40, 58, 57, 60, 70, 65, 65, 35, 53, 59],
-        },
-        ]
-    };
+    function atualizarGrafico() {
+        fetch("/setores/listar").then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            maintainAspectRatio: false, 
-            responsive: true
-        }
-    };
+                    const labels = [];
+                    const valores = [];
+
+                    for (let i = 0; i < data.length; i++) {
+                        const fluxo = data[i].fluxo;
+                        const dia = data[i].dia;
     
-    const myChart = new Chart(
-        document.getElementById('myChart-grafico'),
-        config
-    );
+                        labels.push(dia);
+                        valores.push(fluxo);
+                    }
+                    criarGrafico(labels, valores);
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
+    // Gráfico 02
+    function criarGrafico2(labels, valores) {
+        const ctx = document.getElementById('myChart-grafico2');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                datasets: [{
+                    label: 'Setor 02',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', 
+                        '#e68a2e', 
+                        '#6d9788',
+                        '#a68c69', 
+                        '#e84d5b', 
+                        '#2f2f4d',
+                        '#220114', 
+                        '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
+    function atualizarGrafico2() {
+        fetch("/setores/listarGrafico2").then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+
+                    const labels = [];
+                    const valores = [];
+
+                    for (let i = 0; i < data.length; i++) {
+                        const fluxo = data[i].fluxo;
+                        const dia = data[i].dia;
     
-    // GRAFICO 2
-    const labels2 = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro',
-    ];
-
-    const data2 = {
-        labels: labels2,
-        datasets: [{
-            label: 'Setor 02',
-            backgroundColor: '#c40000',
-            borderColor: '#c40000',
-            data: [50, 71, 68, 60, 56, 46, 53, 34, 44, 28, 25, 20],
-        },
-        ]
-    };
-    const config2 = {
-        type: 'line',
-        data: data2,
-        options: {
-            maintainAspectRatio: false, 
-            responsive: true
-        }
-    };
-
-    const myChart2 = new Chart(
-        document.getElementById('myChart-grafico2'),
-        config2
-    );
+                        labels.push(dia);
+                        valores.push(fluxo);
+                    }
+                    criarGrafico2(labels, valores);
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
 
     // GRAFICO 3
-    const labels3 = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro',
-    ];
+function criarGrafico3(labels, valores) {
+        const ctx = document.getElementById('myChart-grafico3');
 
-    const data3 = {
-        labels: labels3,
-        datasets: [{
-            label: 'Setor 03',
-            backgroundColor: '#ddd05e',
-            borderColor: '#ddd05e',
-            data: [39, 35, 37, 39, 40, 45, 47, 50, 51, 35, 30, 40],
-        },
-        ]
-    };
-    const config3 = {
-        type: 'line',
-        data: data3,
-        options: {
-            maintainAspectRatio: false, 
-            responsive: true
-        }
-    };
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                datasets: [{
+                    label: 'Setor 03',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
+    function atualizarGrafico3() {
+        fetch("/setores/listarGrafico3").then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
 
-    const myChart3 = new Chart(
-        document.getElementById('myChart-grafico3'),
-        config3
-    );
+                    const labels = [];
+                    const valores = [];
+
+                    for (let i = 0; i < data.length; i++) {
+                        const fluxo = data[i].fluxo;
+                        const dia = data[i].dia;
+    
+                        labels.push(dia);
+                        valores.push(fluxo);
+                    }
+                    criarGrafico3(labels, valores);
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+    atualizarGrafico();
+    atualizarGrafico2();
+    atualizarGrafico3();
 </script>
