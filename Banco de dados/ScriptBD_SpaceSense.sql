@@ -1,20 +1,6 @@
 create database spacesense; -- CRIAÇÃO DO BANCO DE DADOS
 use spacesense; -- SELEÇÃO DO BANCO DE DADOS
 
-drop database spacesense;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	telefone CHAR(11),
-	senha VARCHAR(50),
-	fkUnidade INT,
-	FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
-);
-
-select * from usuario;
-
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
 empresa varchar(45),
@@ -28,7 +14,18 @@ bairro varchar(45),
 cep char(8),
 codigo_ativacao char(6)
 );
+
 select * from unidade;
+
+create table usuario (  -- CRIAÇÃO DA TABELA 'USUARIO'
+idUsuario int primary key auto_increment,
+nome varchar(80),
+telefone varchar(16),
+email varchar(100),
+senha varchar(50),
+fkUnidade int,
+FOREIGN KEY (fkUnidade) REFERENCES unidade(idUnidade)
+);
 
 create table setor ( -- CRIAÇÃO DA TABELA 'SETOR'
 idSetor int primary key auto_increment,
