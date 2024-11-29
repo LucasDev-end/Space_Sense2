@@ -8,7 +8,7 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3300;
 
 // habilita ou desabilita a inserção de dados no banco de dados
-const HABILITAR_OPERACAO_INSERIR = false;
+const HABILITAR_OPERACAO_INSERIR = true;
 
 // função para comunicação serial
 const serial = async (
@@ -18,17 +18,17 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
          {
-            host: '127.0.0.1',
-            user: 'sensor',
-            password: 'Sptech#2024',
-            database: 'sensores',
+            host: '',
+            user: 'spacesense',
+            password: '',
+            database: 'spacesense',
             port: 3307
         }
     ).promise();
 
     // lista as portas seriais disponíveis e procura pelo Arduino
     const portas = await serialport.SerialPort.list();
-    const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == '0001');
+    const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
     if (!portaArduino) {
         throw new Error('O arduino não foi encontrado em nenhuma porta serial');
     }
@@ -63,7 +63,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO medida (sensor_digital) VALUES (?)',
+                'INSERT INTO medicao (distancia) VALUES (?)',
                 [sensorDigital]
             );
             console.log("valores inseridos no banco: ", sensorDigital);
