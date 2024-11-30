@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Space Sense | Página de Login</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/loginCadastro.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./assets/img/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="../js/sessao.js"></script>
+
+</head>
+
+<body>
+
+    <!--Header-->
+
+    <div class="sobrepor-login">
+        <div class="header-login">
+            <div class="container-login">
+                <img src="./assets/img/logo.png" alt="Logo da Empresa" class="img-logo">
+                <ul class="navbar">
+                    <li class="agora">
+                        <a href="index.html">Início</a>
+                    </li>
+                    <li>
+                        <a href="index.html#simulador">Simulador</a>
+                    </li>
+                    <li>
+                        <a href="index.html#servico">Serviços</a>
+                    </li>
+                    <li>
+                        <a href="index.html#about">Sobre Nós</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="login">
+            <div class="container">
+                <div class="card card-login">
+                    <h5>Login</h5>
+                    <div class="formulario">
+                        <div class="container">
+                            <div class="campo">
+                                <span>Email:</span>
+                                <input type="text" id="email_input" placeholder="email@gmail.com">
+                            </div>
+                            <div class="campo">
+                                <span>Senha:</span>
+                                <input type="text" id="senha_input" placeholder="********">
+                            </div>
+
+                            <button onclick="entrar()">Entrar</button>
+                            <span class="possui_conta">Não possui uma conta? <a href="cadastro.html">Cadastre-se
+                                    aqui</a></span>
+                            <div id="div_mensagem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+
+    function entrar() {
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            div_mensagem.innerHTML = "Preencha todos os campos para prosseguir";
+            return false;
+        }
+        
+        var mensagem = "";
+        var verifica_num_tmp;
+        var tamanho_senha = senhaVar.length;
+
+        var emailVálido = false;
+        var senhaVálida = true;
+
+        div_mensagem.innerHTML = '';
+        if (emailVar.includes('.') && emailVar.includes('@')) {
+            if (!(emailVar.indexOf('.') == (emailVar.indexOf('@') + 1))) {
+                emailVálido = true;
+            }
+        }
+
+        if (senhaVar.toUpperCase() == senhaVar && senhaVar.toLowerCase() == senhaVar) {
+            senhaVálida = false;
+        } else {
+
+            if (senhaVar.toLowerCase() == senhaVar) {
+                senhaVálida = false;
+            } else {
+                senhaVálida = true;
+            }
+
+            if (senhaVar.toUpperCase() == senhaVar) {
+                senhaVálida = false;
+            } else {
+                senhaVálida = true;
+            }
+        }
+
+        if (tamanho_senha < 8) {
+            senhaVálida = false;
+        } else {
+            senhaVálida = true;
+        }
+
+        for (var i = 0; i < tamanho_senha; i++) {
+            verifica_num_tmp = Number(senhaVar[i]);
+            if (!isNaN(verifica_num_tmp)) {
+                i = tamanho_senha;
+            } else {
+                senhaVálida = false;
+            }
+
+        }
+
+        if (senhaVar.includes('!') || senhaVar.includes('"') || senhaVar.includes('#') || senhaVar.includes('$') ||
+            senhaVar.includes('%') || senhaVar.includes('&') || senhaVar.includes("'") || senhaVar.includes('(') || senhaVar.includes(')')
+            || senhaVar.includes('*') || senhaVar.includes('+') || senhaVar.includes(',') || senhaVar.includes('-') || senhaVar.includes('.')
+            || senhaVar.includes('/') || senhaVar.includes(':') || senhaVar.includes(';') || senhaVar.includes('<') || senhaVar.includes('<')
+            || senhaVar.includes('=') || senhaVar.includes('>') || senhaVar.includes('?') || senhaVar.includes('@') || senhaVar.includes('[')
+            || senhaVar.includes('\\') || senhaVar.includes(']') || senhaVar.includes('^') || senhaVar.includes('_') || senhaVar.includes('`')
+            || senhaVar.includes('`') || senhaVar.includes('{') || senhaVar.includes('|') || senhaVar.includes('}') || senhaVar.includes('~')
+        ) {
+            senhaVálida = true;
+        } else {
+            senhaVálida = false;
+        }
+
+        if (emailVálido && !senhaVálida) {
+            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Senha inválida</span>`;
+        } else if (!emailVálido && senhaVálida) {
+            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email inválido</span>`;
+        }
+        if (emailVálido && senhaVálida) {
+            
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+    
+            fetch("/usuarios/autenticarFuncionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+    
+                if (resposta.ok) {
+                    console.log(resposta);
+                    div_mensagem.innerHTML = `<span style='color:green'; 'font-weight:bold';>Email e Senha válidos</span>`;
+    
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+    
+                        setTimeout(function () {
+                            window.location = "./bobia.html";
+                        }, 1000); // apenas para exibir o loading
+    
+                    });
+    
+                } else {
+    
+                    console.log("Houve um erro ao tentar realizar o login!");
+    
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+    
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    
+            return false;
+        }
+    }
+
+</script>
