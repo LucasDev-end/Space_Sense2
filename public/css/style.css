@@ -1,14 +1,40 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #63B1BC;
+    background-image: linear-gradient(to right, #1F2A44, #ED145B);
     margin: 0;
     padding: 0;
 }
 
-#container {
+.container {
     width: 80%;
     margin: 50px auto;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-image: linear-gradient(to right, #84fff7, rgb(61, 253, 253));
+    border-radius: 20px;
+    width: 50%;
+}
+
+.topo-card {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img {
+    height: 80px;
+    width: 80px;
+}
+
+.base-card {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -22,18 +48,22 @@ textarea[type="text"] {
     width: 400px;
 }
 
-select,
+/* select,
 button {
     padding: 8px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 button {
     background-color: #ED145B;
     color: #FFFFFF;
     border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 50px;
+    width: 50%;
 }
 
 button:hover {
