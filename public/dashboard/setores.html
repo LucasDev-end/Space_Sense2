@@ -38,10 +38,10 @@
             </div>
         </div>
         <div class="aglomerado">
-            <div class="titulo">
-                <h1>Fluxo Anual dos Setores</h1>
-            </div>
             <div class="banner">
+                <div class="titulo">
+                    <h1>Fluxo Semanal dos Setores</h1>
+                </div>
                 <div class="card" style="border-left: 50px solid #37ad74">
                     <div class="nome-setor">
                         <span>Carnes</span>
@@ -64,6 +64,22 @@
                     </div>
                     <div class="grafico-limpeza">
                         <canvas id="myChart-grafico3"></canvas>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 50px solid #386dbd;">
+                    <div class="nome-setor">
+                        <span>Bebidas</span>
+                    </div>
+                    <div class="grafico-limpeza">
+                        <canvas id="myChart-grafico4"></canvas>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 50px solid #ff4a4a;">
+                    <div class="nome-setor">
+                        <span>Congelados</span>
+                    </div>
+                    <div class="grafico-limpeza">
+                        <canvas id="myChart-grafico5"></canvas>
                     </div>
                 </div>
             </div>
@@ -310,7 +326,161 @@ function criarGrafico3(labels, valores) {
             }
         }).catch(erro => console.error(erro));
     }
+
+    function criarGrafico4(labels, valores) {
+        const ctx = document.getElementById('myChart-grafico4');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                datasets: [{
+                    label: 'Setor 03',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
+    function atualizarGrafico4() {
+        fetch("/setores/listarGrafico4").then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+
+                    const labels = [];
+                    const valores = [];
+
+                    for (let i = 0; i < data.length; i++) {
+                        const fluxo = data[i].fluxo;
+                        const dia = data[i].dia;
+    
+                        labels.push(dia);
+                        valores.push(fluxo);
+                    }
+                    criarGrafico4(labels, valores);
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
+    function criarGrafico5(labels, valores) {
+        const ctx = document.getElementById('myChart-grafico5');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                datasets: [{
+                    label: 'Setor 03',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 14,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
+    function atualizarGrafico5() {
+        fetch("/setores/listarGrafico5").then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+
+                    const labels = [];
+                    const valores = [];
+
+                    for (let i = 0; i < data.length; i++) {
+                        const fluxo = data[i].fluxo;
+                        const dia = data[i].dia;
+    
+                        labels.push(dia);
+                        valores.push(fluxo);
+                    }
+                    criarGrafico5(labels, valores);
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
+    }
     atualizarGrafico();
     atualizarGrafico2();
     atualizarGrafico3();
+    atualizarGrafico4();
+    atualizarGrafico5();
 </script>

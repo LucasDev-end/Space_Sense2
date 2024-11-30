@@ -12,6 +12,12 @@ router.get("/listarGrafico2", function (req, res) {
 router.get("/listarGrafico3", function (req, res) {
     setorController.listarGrafico3(req, res);
 });
+router.get("/listarGrafico4", function (req, res) {
+    setorController.listarGrafico4(req, res);
+});
+router.get("/listarGrafico5", function (req, res) {
+    setorController.listarGrafico5(req, res);
+});
 router.get("/exibirDiaPopular", function (req, res) {
     setorController.exibirDiaPopular(req, res);
 });

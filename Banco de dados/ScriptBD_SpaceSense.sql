@@ -43,7 +43,9 @@ fkSetor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA
 constraint fkSetorSensor foreign key (fkSetor)
 references setor(idSetor) -- CONFIGURAÇÃO DA CHAVE ESTRANGEIRA
 );
+
 select * from sensor;
+
 create table medicao ( -- CRIAÇÃO DA TABELA 'MEDIÇÃO'
 idMedicao int primary key auto_increment,
 fkSensor int, -- CRIAÇÃO DA CHAVE ESTRANGEIRA

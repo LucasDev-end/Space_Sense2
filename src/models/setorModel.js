@@ -24,6 +24,22 @@ function listarGrafico3() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function listarGrafico4() {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucaoSql = `
+        SELECT distancia as fluxo,DAYNAME(data_hora) as dia from medicao WHERE idMedicao >= 15 and idMedicao <= 21;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function listarGrafico5() {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucaoSql = `
+        SELECT distancia as fluxo,DAYNAME(data_hora) as dia from medicao WHERE idMedicao >= 15 and idMedicao <= 21;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 function exibirDiaPopular(){
     var instrucaoSql = 
     `
@@ -47,5 +63,7 @@ module.exports = {
     listar,
     listarGrafico2,
     listarGrafico3,
+    listarGrafico4,
+    listarGrafico5,
     exibirDiaPopular
 }
