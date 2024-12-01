@@ -85,7 +85,7 @@
             div_mensagem.innerHTML = "Preencha todos os campos para prosseguir";
             return false;
         }
-        
+
         var mensagem = "";
         var verifica_num_tmp;
         var tamanho_senha = senhaVar.length;
@@ -152,10 +152,10 @@
             div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email inválido</span>`;
         }
         if (emailVálido && senhaVálida) {
-            
+
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
-    
+
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: {
@@ -167,38 +167,43 @@
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
-    
                 if (resposta.ok) {
                     console.log(resposta);
                     div_mensagem.innerHTML = `<span style='color:green'; 'font-weight:bold';>Email e Senha válidos</span>`;
-    
+
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
+
+                        if (!json.unidade || json.unidade === 'null') {
+                            div_mensagem.innerHTML = `<span style='color:red'; 'font-weight:bold';>Email e Senha inválidos</span>`;
+                            return false;
+                        }
+
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.id;
                         sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-    
+
                         setTimeout(function () {
                             window.location = "./dashboard/dashboard.html";
                         }, 1000); // apenas para exibir o loading
-    
+
                     });
-    
+
                 } else {
-    
+
                     console.log("Houve um erro ao tentar realizar o login!");
-    
+
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
                 }
-    
+
             }).catch(function (erro) {
                 console.log(erro);
             })
-    
+
             return false;
         }
     }

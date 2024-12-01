@@ -57,11 +57,19 @@
     height: 100vh;
     width: 100%;
 }
+.sobrepor-login2 {
+    background: linear-gradient(135deg, #7a4ef9, #502ff6);
+    height: 100vh;
+    width: 100%;
+}
 
 .container-login {
     display: flex;
     justify-content: center;
     color: #ffffff;
+}
+.container-login2{
+    text-align: center;
 }
 
 .img-logo {
