@@ -95,29 +95,29 @@
 </html>
 <script>
     function exibirSetorEmAlta() {
-        fetch('/dashboard/exibirSetorEmAlta', {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((dadosAlta) => {
-                    var spanSetorAlta = documento.getElementById("span_SetorAlta")
+        fetch('/dash/exibirSetorEmAlta').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const setor = data[0];
+                    const spanSetorAlta = document.getElementById('span_SetorAlta');
 
-                    spanSetorAlta.innerHTML = dadosAlta[0].fluxo;
-                })
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO ${resposta}`);
-            })
+                    spanSetorAlta.innerHTML = setor.fluxo;
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
     }
     function exibirSetorEmBaixa() {
-        fetch('/dashboard/exibirSetorEmAlta', {
+        fetch('/dash/exibirSetorEmBaixa', {
             method: "GET",
         })
             .then(function (resposta) {
-                resposta.json().then((dadosAlta) => {
-                    var spanSetorAlta = documento.getElementById("span_SetorAlta")
+                resposta.json().then((data) => {
+                    var setor = data[0];
+                    var spanSetorBaixa = documento.getElementById("span_SetorBaixo")
 
-                    spanSetorAlta.innerHTML = dadosAlta[0].fluxo;
+                    spanSetorBaixa.innerHTML = setor.fluxo;
                 })
             })
             .catch(function (resposta) {

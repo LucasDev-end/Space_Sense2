@@ -5,7 +5,13 @@ function exibirSetorEmAlta(req, res) {
         res.status(200).json(resultado);
     })
 }
+function exibirSetorEmBaixa(req, res) {
+    dashModel.exibirSetorEmBaixa().then((resultado) => {
+        res.status(200).json(resultado);
+    })
+}
 
 module.exports = {
-    exibirSetorEmAlta
+    exibirSetorEmAlta,
+    exibirSetorEmBaixa
 }
