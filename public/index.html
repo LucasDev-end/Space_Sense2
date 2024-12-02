@@ -52,23 +52,23 @@
         <div class="boxSimulador">
           <div class="formulario card">
             <div class="container">
-              <div id="div_resultado"><span id="resultado">Preencha os campos ao lado...</span></div>
+              <div id="div_resultado"><span id="resultado">Preencha o campo ao lado...</span></div>
             </div>
           </div>
           <div class="formulario">
             <div class="container">
               <div class="campo">
-                <span>Quantos corredores seu supermercado possui?</span>
-                <input id="input_corredoresTotais" type="text" placeholder="Ex: 20">
+                <span>Quanto você gasta com a operação do seu comércio anualmente?</span>
+                <input id="input_gastoOperacional" type="text" placeholder="Ex: 20">
               </div>
-              <div class="campo">
+              <!-- <div class="campo">
                 <span>Em quantos corredores você deseja instalar?</span>
                 <input id="input_corredoresInstalados" type="text" placeholder="Ex: 13">
               </div>
               <div class="campo">
                 <span>Qual seu faturamento mensal?</span>
                 <input id="input_lucroMensal" type="number" placeholder="Ex: 25000">
-              </div>
+              </div> -->
               <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
             </div>
           </div>
@@ -164,40 +164,20 @@
 <script>
   function analisar() {
         //Declaração de variaveis
-        var corredoresTotais = Number(input_corredoresTotais.value);
-        var corredoresInstalados = Number(input_corredoresInstalados.value);
-        var lucro = Number(input_lucroMensal.value)
-        var porcLucro = (corredoresInstalados * 0.15) / corredoresTotais
+        var gastoOperacional = Number(input_gastoOperacional.value);
+        // var corredoresInstalados = Number(input_corredoresInstalados.value);
+        // var lucro = Number(input_lucroMensal.value)
+        // var porcLucro = (corredoresInstalados * 0.15) / corredoresTotais
 
-        if (input_corredoresTotais.value == ``) {
-            alert(`Digite a quantidade de corredores totais`)
-            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
-        }
-        else if (input_corredoresInstalados.value == ``) {
-            alert(`Digite a quantidade de corredores para instalar`)
-            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
-        }
-        else if (input_lucroMensal.value == ``) {
-            alert(`Digite o lucro`)
-            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
-        }
-        else if (corredoresInstalados > corredoresTotais) {
-            alert(`O valor de corredores que você deseja instalar é maior ao número total de corredores`)
-            div_resultado.innerHTML = `<span style="color:red;">ERRO</span>`
+        if (gastoOperacional == '' || gastoOperacional <= 0) {
+            // alert(`Digite um valor válido`)
+           div_resultado.innerHTML = `<span style="color:red;">ERRO! Digite um valor válido.</span>`
+        } else {
+          var economiaOperacional = 0.20 * gastoOperacional;
+          var valorFinal = gastoOperacional - economiaOperacional;
 
-
+          div_resultado.innerHTML = `<span style="color:green">${gastoOperacional}<br> ${economiaOperacional} <br> ${valorFinal}<span>`
         }
-        else if (corredoresInstalados == corredoresTotais) {
-
-            div_resultado.innerHTML = `Seu lucro aumentará em até 33%, chegando em R$${lucro + (lucro * 0.33)} mensais.`
-
-        }
-        else if (corredoresInstalados < corredoresTotais) {
-            div_resultado.innerHTML = `Seu lucro aumentará em até <span style="color: green">${porcLucro * 100}%,</span> chegando em <b>R$${lucro + (lucro * porcLucro)}</b> mensais.<br><br>`
-            div_resultado.innerHTML += `Caso instalasse em todos os corredores, seu lucro aumentaria em até <span style="color: green">15%,</span> chegando em <b>R$${lucro + (lucro * 0.15)}</b> mensais.`
-        }
-
-        //Validações de campo vazio e campos irregulares
   }
 
   function login() {
