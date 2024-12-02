@@ -24,13 +24,13 @@
             <a href="#">Inicial</a>
           </li>
           <li>
-            <a href="simulador.html">Simulador</a>
+            <a href="#simulador">Simulador</a>
           </li>
           <li>
             <a href="login.html">Serviços</a>
           </li>
-          <li>
-            <a href="cadastro.html">Sobre nós</a>
+          <li>  
+            <a href="#about">Sobre nós</a>
           </li>
         </ul>
         <button class="botao" onclick="login()">Login</button>
@@ -61,15 +61,8 @@
                 <span>Quanto você gasta com a operação do seu comércio anualmente?</span>
                 <input id="input_gastoOperacional" type="text" placeholder="Ex: 20">
               </div>
-              <!-- <div class="campo">
-                <span>Em quantos corredores você deseja instalar?</span>
-                <input id="input_corredoresInstalados" type="text" placeholder="Ex: 13">
-              </div>
-              <div class="campo">
-                <span>Qual seu faturamento mensal?</span>
-                <input id="input_lucroMensal" type="number" placeholder="Ex: 25000">
-              </div> -->
-              <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button>
+              <button class="botaoCadastro" onclick="analisar()">Calcular métricas</button><br><br>
+              <span>Você sabia que comércios que utilizam tecnologia para observar o fluxo dos seus clientes podem diminuir em até 20% seus custos operacionais?</span>
             </div>
           </div>
         </div>
@@ -165,9 +158,6 @@
   function analisar() {
         //Declaração de variaveis
         var gastoOperacional = Number(input_gastoOperacional.value);
-        // var corredoresInstalados = Number(input_corredoresInstalados.value);
-        // var lucro = Number(input_lucroMensal.value)
-        // var porcLucro = (corredoresInstalados * 0.15) / corredoresTotais
 
         if (gastoOperacional == '' || gastoOperacional <= 0) {
             // alert(`Digite um valor válido`)
@@ -176,7 +166,10 @@
           var economiaOperacional = 0.20 * gastoOperacional;
           var valorFinal = gastoOperacional - economiaOperacional;
 
-          div_resultado.innerHTML = `<span style="color:green">${gastoOperacional}<br> ${economiaOperacional} <br> ${valorFinal}<span>`
+          div_resultado.innerHTML = `<span style="color:black">Com a nossa solução você poderá alcançar os seguintes resultados:</span><br><br>
+          <span style="color:black">Custo operacional atual: </span><span style="color:red">R$${gastoOperacional}</span><br> 
+            <span style="color:black">Economia com a nossa solução: </span><span style="color:green">R$${economiaOperacional}</span> <br> 
+             <span style="color:black">Custo operacional com a nossa solução: </span><span style="color:green">R$${valorFinal}</span>`
         }
   }
 
