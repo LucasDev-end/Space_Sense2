@@ -17,12 +17,12 @@ const serial = async (
 
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
-         {
+        {
             host: 'localhost',
-            user: 'spacesense',
+            user: 'SpaceSense',
             password: 'SPTech#2024',
             database: 'spacesense',
-            port: 3306
+            port: 3307
         }
     ).promise();
 
@@ -40,7 +40,6 @@ const serial = async (
             baudRate: SERIAL_BAUD_RATE
         }
     );
-    
 
     // evento quando a porta serial é aberta
     arduino.on('open', () => {
@@ -61,12 +60,17 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-            // este insert irá inserir os dados na tabela "medida"
-            await poolBancoDados.execute(
-                'INSERT INTO medicao (distancia) VALUES (?)',
-                [sensorDigital]
-            );
-            console.log("valores inseridos no banco: ", sensorDigital);
+            if (sensorDigital > 50 || sensorDigital == 0) {
+                console.log("Valor inválido")
+            } else {
+                // este insert irá inserir os dados na tabela "medida"
+                await poolBancoDados.execute(
+                    'INSERT INTO medicao (distancia) VALUES (?)',
+                    [sensorDigital]
+                );
+                console.log("valores inseridos no banco: ", sensorDigital);
+
+            }
 
         }
 
