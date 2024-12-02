@@ -42,15 +42,10 @@
                             <h2>Setor com<strong style="color: #37ad74;"> MAIOR</strong> Fluxo</h2>
                         </div>
                         <div class="kpi-num" style="background-color: #37ad74;">
-<<<<<<< HEAD
                             <span id="span_SetorAlta"></span>
-=======
-                            Carnes
->>>>>>> b201b0b2df1d4794cb7e55eaf154b2268a8f7747
                         </div>
                         <div class="kpi-sub-texto" style="background-color: #37ad74;">
-                            <h4>5.872</h4>
-                            <span class="seta-cima"></span>
+                            <span class="span_SetorBaixo"></span>
                         </div>
                     </div>
                     <div class="box-kpi">
@@ -58,7 +53,7 @@
                             <h2>Setor com<strong style="color: #eb6767;"> MENOR</strong> Fluxo</h2>
                         </div>
                         <div class="kpi-num" style="color: #ffffff; background-color: #eb6767;">
-                            Bebidas
+                            <span class="span_SetorBaixo"></span>
                         </div>
                         <div class="kpi-sub-texto" style="color: #ffffff; background-color: #eb6767;">
                             <h4>1.505</h4>
@@ -82,9 +77,9 @@
                         </div>
                         <div class="kpi-num">
                             <div class="titulo">
-                                <h2 >Mês mais popular:</h2>
+                                <h2 >Dia mais popular:</h2>
                             </div>
-                            <span>DEZEMBRO</span>
+                            <span id="diaPopular"></span>
                         </div>
                     </div>
                 </div>
@@ -114,8 +109,23 @@
                 console.log(`#ERRO ${resposta}`);
             })
     }
+    function exibirSetorEmBaixa() {
+        fetch('/dashboard/exibirSetorEmAlta', {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((dadosAlta) => {
+                    var spanSetorAlta = documento.getElementById("span_SetorAlta")
 
-    function exibirdiaPopular() {
+                    spanSetorAlta.innerHTML = dadosAlta[0].fluxo;
+                })
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO ${resposta}`);
+            })
+    }
+
+    function exibirDiaPopular() {
         fetch('/setores/exibirDiaPopular').then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
@@ -160,7 +170,7 @@
             indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
         }
     };
-    exibirdiaPopular()
+    exibirDiaPopular()
 </script>
 <script>
     const myChart = new Chart(
