@@ -17,7 +17,6 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var medidasRouter = require("./src/routes/medidas");
 var setoresRouter = require("./src/routes/setores");
 var empresasRouter = require("./src/routes/empresas");
 // crie o arquivo de rota da filtragem
@@ -31,7 +30,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/medidas", medidasRouter);
 app.use("/setores", setoresRouter);
 app.use("/empresas", empresasRouter);
 // Apontando toda requisição /filtragem para o arquivo de rotas dele

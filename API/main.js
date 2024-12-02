@@ -55,15 +55,16 @@ const serial = async (
 
         // armazena os valores dos sensores nos arrays correspondentes
         // valoresSensorDigital.push(sensorAnalogico13);
-        valoresSensorDigital.push(sensorDigital);
-
+        
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-
+            
             if (sensorDigital > 50 || sensorDigital == 0) {
                 console.log("Valor inválido")
             } else {
                 // este insert irá inserir os dados na tabela "medida"
+                valoresSensorDigital.push(sensorDigital);
+                
                 await poolBancoDados.execute(
                     'INSERT INTO medicao (distancia) VALUES (?)',
                     [sensorDigital]
