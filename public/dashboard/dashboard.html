@@ -146,17 +146,15 @@
             if (resposta.ok) {
                 resposta.json().then(data => {
 
-
-
                     for (var i = 0; i < data.length; i++) {
                         var categoriaAtual = data[i].categoria;
                         var fluxoAtual = data[i].fluxo;
-                        
+
                     }
                     const labels = [
                         categoriaAtual
                     ];
-
+                    
                     const data = {
                         labels: labels,
                         datasets: [{
@@ -166,8 +164,8 @@
                                 'rgb(101, 166, 250)',
                                 'rgb(126, 128, 231)',
                                 'rgb(155, 87, 204)',],
-                            data: [fluxoAtual],
-                        }
+                                data: [fluxoAtual],
+                            }
                         ]
                     };
 
@@ -179,6 +177,10 @@
                             indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
                         }
                     };
+                    const myChart = new Chart(
+                        document.getElementById('myChart-grafico'),
+                        config
+                    );
                 });
             } else {
                 console.error("Erro!");
@@ -186,13 +188,11 @@
         }).catch(erro => console.error(erro));
     }
 
+    exibirGraficoDash()
     exibirDiaPopular()
     exibirSetorEmAlta()
     exibirSetorEmBaixa()
 </script>
 <script>
-    const myChart = new Chart(
-        document.getElementById('myChart-grafico'),
-        config
-    );
+
 </script>
