@@ -69,7 +69,7 @@ const serial = async (
             } else {
                 // este insert irá inserir os dados na tabela "medida"
                 valoresSensorDigital.push(sensorDigital);
-console.log(dataAtual)
+
                 await poolBancoDados.execute(
                     `INSERT INTO medicao (distancia, data_hora) VALUES (?, '${dataAtual}')`,
                     [sensorDigital]
@@ -128,11 +128,11 @@ const servidor = (
     );
 })();
 
-function formatarData(data){
+function formatarData(data) {
     console.log(data)
-   var ano = data.getFullYear();
-   var mes = data.getMonth() + 1;
-   var dia = data.getDate();   
+    var ano = data.getFullYear();
+    var mes = data.getMonth() + 1;
+    var dia = data.getDate();
 
     return `${ano}-${mes}-${dia}`;
 

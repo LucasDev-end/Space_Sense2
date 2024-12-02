@@ -61,7 +61,7 @@
                     </div>
                     <div class="box-kpi">
                         <div class="titulo">
-                            <h2 >Dia <span style="color: #eff18c;"> MAIS</span> movimentado</h2>
+                            <h2>Dia <span style="color: #eff18c;"> MAIS</span> movimentado</h2>
                         </div>
                         <div class="kpi-num" style="color: #2F5F98; background-color: #eff18c;">
                             Sabado
@@ -76,7 +76,7 @@
                         </div>
                         <div class="kpi-num">
                             <div class="titulo">
-                                <h2 >Dia mais popular:</h2>
+                                <h2>Dia mais popular:</h2>
                             </div>
                             <span id="diaPopular"></span>
                         </div>
@@ -105,7 +105,7 @@
                     span_NumeroAlta.innerHTML = setor.fluxo;
                 });
             } else {
-                console.error("Erro ao carregar os gêneros!");
+                console.error("Erro!");
             }
         }).catch(erro => console.error(erro));
     }
@@ -121,7 +121,7 @@
                     span_NumeroBaixo.innerHTML = setor.fluxo;
                 });
             } else {
-                console.error("Erro ao carregar os gêneros!");
+                console.error("Erro!");
             }
         }).catch(erro => console.error(erro));
     }
@@ -136,41 +136,56 @@
                     spandiaPopular.innerHTML = fluxo.Dia;
                 });
             } else {
-                console.error("Erro ao carregar os gêneros!");
+                console.error("Erro!");
             }
         }).catch(erro => console.error(erro));
     }
 
-    const labels = [
-        'Carnes',
-        'Bebidas',
-        'Congelados',
-        'Hortifruti',
-        'Limpeza',
-    ];
+    function exibirGraficoDash() {
+        fetch('/dash/exibirGraficoDash').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Fluxo',
-            backgroundColor: ['rgb(000, 202, 220)',
-                'rgb(73, 195, 251)',
-                'rgb(101, 166, 250)',
-                'rgb(126, 128, 231)',
-                'rgb(155, 87, 204)',],
-            data: [13451, 11839, 10463, 10338, 8692],
-        }
-        ]
-    };
 
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            // define a direcao do grafico (horizontal)
-            indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
-        }
-    };
+
+                    for (var i = 0; i < data.length; i++) {
+                        var categoriaAtual = data[i].categoria;
+                        var fluxoAtual = data[i].fluxo;
+                        
+                    }
+                    const labels = [
+                        categoriaAtual
+                    ];
+
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Fluxo',
+                            backgroundColor: ['rgb(000, 202, 220)',
+                                'rgb(73, 195, 251)',
+                                'rgb(101, 166, 250)',
+                                'rgb(126, 128, 231)',
+                                'rgb(155, 87, 204)',],
+                            data: [fluxoAtual],
+                        }
+                        ]
+                    };
+
+                    const config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                            // define a direcao do grafico (horizontal)
+                            indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
+                        }
+                    };
+                });
+            } else {
+                console.error("Erro!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
     exibirDiaPopular()
     exibirSetorEmAlta()
     exibirSetorEmBaixa()
