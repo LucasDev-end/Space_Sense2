@@ -42,10 +42,10 @@
                             <h2>Setor com<strong style="color: #37ad74;"> MAIOR</strong> Fluxo</h2>
                         </div>
                         <div class="kpi-num" style="background-color: #37ad74;">
-                            <span id="span_SetorAlta"></span>
+                            <span id="span_NumeroAlta"></span>
                         </div>
                         <div class="kpi-sub-texto" style="background-color: #37ad74;">
-                            <span class="span_SetorBaixo"></span>
+                            <span id="span_SetorAlta"></span>
                         </div>
                     </div>
                     <div class="box-kpi">
@@ -53,11 +53,10 @@
                             <h2>Setor com<strong style="color: #eb6767;"> MENOR</strong> Fluxo</h2>
                         </div>
                         <div class="kpi-num" style="color: #ffffff; background-color: #eb6767;">
-                            <span class="span_SetorBaixo"></span>
+                            <span id="span_NumeroBaixo"></span>
                         </div>
                         <div class="kpi-sub-texto" style="color: #ffffff; background-color: #eb6767;">
-                            <h4>1.505</h4>
-                            <span class="seta-baixo"></span>
+                            <span id="span_SetorBaixo"></span>
                         </div>
                     </div>
                     <div class="box-kpi">
@@ -100,8 +99,10 @@
                 resposta.json().then(data => {
                     const setor = data[0];
                     const spanSetorAlta = document.getElementById('span_SetorAlta');
+                    const span_NumeroAlta = document.getElementById('span_NumeroAlta');
 
                     spanSetorAlta.innerHTML = setor.categoria;
+                    span_NumeroAlta.innerHTML = setor.fluxo;
                 });
             } else {
                 console.error("Erro ao carregar os gêneros!");
@@ -114,8 +115,10 @@
                 resposta.json().then(data => {
                     const setor = data[0];
                     const spanSetorBaixa = document.getElementById('span_SetorBaixo');
+                    const span_NumeroBaixo = document.getElementById('span_NumeroBaixo');
 
                     spanSetorBaixa.innerHTML = setor.categoria;
+                    span_NumeroBaixo.innerHTML = setor.fluxo;
                 });
             } else {
                 console.error("Erro ao carregar os gêneros!");
