@@ -10,6 +10,11 @@ const SERVIDOR_PORTA = 3300;
 // habilita ou desabilita a inserção de dados no banco de dados
 const HABILITAR_OPERACAO_INSERIR = true;
 
+// DATA ATUAL
+var dataAtual = new Date();
+//var dataFormatada = dataAtual.toLocaleDateString();
+dataAtual = formatarData(dataAtual);
+
 // função para comunicação serial
 const serial = async (
     valoresSensorDigital,
@@ -55,18 +60,18 @@ const serial = async (
 
         // armazena os valores dos sensores nos arrays correspondentes
         // valoresSensorDigital.push(sensorAnalogico13);
-        
+
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            
+
             if (sensorDigital > 50 || sensorDigital == 0) {
                 console.log("Valor inválido")
             } else {
                 // este insert irá inserir os dados na tabela "medida"
                 valoresSensorDigital.push(sensorDigital);
-                
+console.log(dataAtual)
                 await poolBancoDados.execute(
-                    'INSERT INTO medicao (distancia) VALUES (?)',
+                    `INSERT INTO medicao (distancia, data_hora) VALUES (?, '${dataAtual}')`,
                     [sensorDigital]
                 );
                 console.log("valores inseridos no banco: ", sensorDigital);
@@ -122,3 +127,13 @@ const servidor = (
         valoresSensorDigital
     );
 })();
+
+function formatarData(data){
+    console.log(data)
+   var ano = data.getFullYear();
+   var mes = data.getMonth() + 1;
+   var dia = data.getDate();   
+
+    return `${ano}-${mes}-${dia}`;
+
+}

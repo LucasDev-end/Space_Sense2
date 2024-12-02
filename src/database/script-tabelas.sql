@@ -317,10 +317,20 @@ SELECT * FROM vw_usuario_unidade WHERE usuario = 'Lucas';
 
 CREATE VIEW vw_sensor_setor
 AS
-SELECT sensor.idSensor,setor.categoria,distancia AS 'Fluxo de Pessoas', DAYNAME(data_hora) AS 'Dia da Semana' FROM medicao 
+SELECT sensor.idSensor, setor.categoria, distancia, DAYNAME(data_hora) AS 'Dia da Semana' FROM medicao 
 JOIN sensor ON medicao.fkSensor = sensor.idSensor JOIN setor ON sensor.fkSetor = setor.idSetor ORDER BY idSensor;
 
 SELECT * FROM vw_sensor_setor;
+
+-- KPI 1 (EM ALTA)
+SELECT categoria, COUNT(distancia) AS fluxo FROM vw_sensor_setor
+	GROUP BY categoria
+	ORDER BY fluxo DESC LIMIT 1;
+
+-- KPI 3 (EM BAIXA)
+SELECT categoria, COUNT(distancia) AS fluxo FROM vw_sensor_setor
+	GROUP BY categoria
+	ORDER BY fluxo LIMIT 1;
 
 CREATE VIEW vw_semana
 AS
