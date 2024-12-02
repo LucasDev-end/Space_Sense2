@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="../js/sessao.js"></script>
     <title>Space Sense | DashBoard</title>
 </head>
+
 <body onload="validarSessao()">
     <div class="container">
         <div class="side">
@@ -16,7 +18,7 @@
                 <div class="line">
                     <div class="foto"><img src="../assets/icons/file.png"></div>
                     <h3>Olá, Boas Vindas <span id="b_usuario">usuário</span>!</h3>
-                </h3>
+                    </h3>
                 </div>
             </div>
             <div class="box">
@@ -61,7 +63,7 @@
                     </div>
                     <div class="box-kpi">
                         <div class="titulo">
-                            <h2 >Setor em<span> Baixa</span></h2>
+                            <h2>Setor em<span> Baixa</span></h2>
                         </div>
                         <div class="kpi-num" style="color: #2F5F98; background-color: #eff18c;">
                             788
@@ -82,14 +84,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="grafico"><h2>Popularidade Geral ao Mês</h2>
-                    <canvas id="myChart-grafico" style="width: 3px;"></canvas></div>
+                <div class="grafico">
+                    <h2>Popularidade Geral ao Mês</h2>
+                    <canvas id="myChart-grafico" style="width: 3px;"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 <script>
+    function exibirAlta() {
+        fetch('/dashboard/exibirSetorEmAlta', {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((dadosAlta) => {
+
+                })
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO ${resposta}`);
+            })
+    }
+
     function exibirdiaPopular() {
         fetch('/setores/exibirDiaPopular').then(resposta => {
             if (resposta.ok) {
@@ -105,7 +124,7 @@
         }).catch(erro => console.error(erro));
     }
 
-const labels = [
+    const labels = [
         'Carnes',
         'Bebidas',
         'Congelados',
@@ -116,15 +135,15 @@ const labels = [
     const data = {
         labels: labels,
         datasets: [{
-        label: 'Fluxo',
-        backgroundColor: ['rgb(000, 202, 220)',
-        'rgb(73, 195, 251)',
-        'rgb(101, 166, 250)',
-        'rgb(126, 128, 231)',
-        'rgb(155, 87, 204)',],
-        data: [13451, 11839, 10463,10338, 8692],
+            label: 'Fluxo',
+            backgroundColor: ['rgb(000, 202, 220)',
+                'rgb(73, 195, 251)',
+                'rgb(101, 166, 250)',
+                'rgb(126, 128, 231)',
+                'rgb(155, 87, 204)',],
+            data: [13451, 11839, 10463, 10338, 8692],
         }
-    ]
+        ]
     };
 
     const config = {
@@ -132,14 +151,14 @@ const labels = [
         data: data,
         options: {
             // define a direcao do grafico (horizontal)
-            indexAxis: 'y',categoryPercentage: 1.0,barPercentage: 0.6,
+            indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
         }
     };
     exibirdiaPopular()
 </script>
 <script>
     const myChart = new Chart(
-      document.getElementById('myChart-grafico'),
-      config
+        document.getElementById('myChart-grafico'),
+        config
     );
 </script>
