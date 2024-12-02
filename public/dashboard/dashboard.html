@@ -101,7 +101,7 @@
                     const setor = data[0];
                     const spanSetorAlta = document.getElementById('span_SetorAlta');
 
-                    spanSetorAlta.innerHTML = setor.fluxo;
+                    spanSetorAlta.innerHTML = setor.categoria;
                 });
             } else {
                 console.error("Erro ao carregar os gêneros!");
@@ -109,20 +109,18 @@
         }).catch(erro => console.error(erro));
     }
     function exibirSetorEmBaixa() {
-        fetch('/dash/exibirSetorEmBaixa', {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((data) => {
-                    var setor = data[0];
-                    var spanSetorBaixa = documento.getElementById("span_SetorBaixo")
+        fetch('/dash/exibirSetorEmBaixa').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const setor = data[0];
+                    const spanSetorBaixa = document.getElementById('span_SetorBaixo');
 
-                    spanSetorBaixa.innerHTML = setor.fluxo;
-                })
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO ${resposta}`);
-            })
+                    spanSetorBaixa.innerHTML = setor.categoria;
+                });
+            } else {
+                console.error("Erro ao carregar os gêneros!");
+            }
+        }).catch(erro => console.error(erro));
     }
 
     function exibirDiaPopular() {
