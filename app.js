@@ -21,6 +21,8 @@ var setoresRouter = require("./src/routes/setores");
 var empresasRouter = require("./src/routes/empresas");
 // crie o arquivo de rota da filtragem
 var filtragemRouter = require("./src/routes/filtragem");
+var dashRouter = require("./src/routes/dash");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,6 +36,8 @@ app.use("/setores", setoresRouter);
 app.use("/empresas", empresasRouter);
 // Apontando toda requisição /filtragem para o arquivo de rotas dele
 app.use("/filtragem", filtragemRouter);
+app.use("/dash", dashRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`
