@@ -42,7 +42,7 @@
                             <h2>Setor em<strong> Alta</strong></h2>
                         </div>
                         <div class="kpi-num" style="background-color: #37ad74;">
-                            5.872
+                            <span id="span_SetorAlta"></span>
                         </div>
                         <div class="kpi-sub-texto" style="background-color: #37ad74;">
                             <h4>Carnes</h4>
@@ -95,13 +95,15 @@
 
 </html>
 <script>
-    function exibirAlta() {
+    function exibirSetorEmAlta() {
         fetch('/dashboard/exibirSetorEmAlta', {
             method: "GET",
         })
             .then(function (resposta) {
                 resposta.json().then((dadosAlta) => {
+                    var spanSetorAlta = documento.getElementById("span_SetorAlta")
 
+                    spanSetorAlta.innerHTML = dadosAlta[0].fluxo;
                 })
             })
             .catch(function (resposta) {
