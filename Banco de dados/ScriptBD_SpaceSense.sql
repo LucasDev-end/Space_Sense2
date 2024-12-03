@@ -1,10 +1,15 @@
-DROP DATABASE IF EXISTS spacesense;
+DROP DATABASE spacesense;
 create database spacesense; -- CRIAÇÃO DO BANCO DE DADOS
 use spacesense; -- SELEÇÃO DO BANCO DE DADOS
 
+create table empresa(
+idEmpresa int primary key auto_increment,
+razaoSocial varchar(45)
+);
+
 create table unidade (  -- CRIAÇÃO DA TABELA 'UNIDADE'
 idUnidade int primary key auto_increment,
-empresa varchar(45),
+nome varchar(45),
 cnpj_empresa char(14),
 logradouro varchar(50),
 numero int,
@@ -13,7 +18,10 @@ cidade varchar(45),
 estado varchar(45),
 bairro varchar(45),
 cep char(8),
-codigo_ativacao char(6)
+fkEmpresa int,
+codigo varchar(45),
+constraint fkEmpresaUnidade foreign key (fkEmpresa)
+						references empresa(idEmpresa)
 );
 
 select * from unidade;
@@ -61,14 +69,21 @@ TRUNCATE TABLE medicao;
 
 SELECT * FROM unidade;
 
+insert into empresa values
+(default, 'Assaí Atacadista'),
+(default, 'Chama Supermercados'), 
+(default, 'Pão de Açúcar'),
+(default, 'Mercado da Economia');
+
 insert into unidade values
-(default, 'Assaí Atacadista', 06057223000171, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020, '1A2B3C'),
-(default, 'Assaí Atacadista', 06057223000171, 'Rua Manilha', 42, null, 'São Paulo', 'São Paulo', 'Vila Carrão', 03445050, '4D5E6F'),
-(default, 'Chama Supermercados', 67624577000145, 'Av. Waldemar Carlos Pereira', 76, null, 'São Paulo', 'São Paulo', 'Vila Dalila', 03533000, '7G8H9I'),
-(default, 'Chama Supermercados', 67624577000145, 'Av. Osvaldo Valle Cordeiro', 152, null, 'São Paulo', 'São Paulo', 'Jardim Brasília', 03584000, '123ABC'),
-(default, 'Pão de Açúcar', 47508411000156, 'Av. Regente Feijó', 1425, null, 'São Paulo', 'São Paulo', 'Anália Franco', 03342000, '456DEF'),
-(default, 'Pão de Açúcar', 47508411000156, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200, '789GHI'),
-(default, 'Mercado da Economia', 12345678000190, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567, 'ABC123');
+(default, 'Unidade Aricanduva', 06057223000171, 'Avenida Aricanduva', 5555, null, 'São Paulo', 'São Paulo', 'Jardim Marília', 03523020, 1, '1A2B3C'),
+(default, 'Unidade Manilha', 06057223000171, 'Rua Manilha', 42, null, 'São Paulo', 'São Paulo', 'Vila Carrão', 03445050, 1, '456DEF'),
+(default, 'Unidade Carlos Pereira', 67624577000145, 'Av. Waldemar Carlos Pereira', 76, null, 'São Paulo', 'São Paulo', 'Vila Dalila', 03533000, 2, 'ABC123'),
+(default, 'Unidade Valle Cordeiro', 67624577000145, 'Av. Osvaldo Valle Cordeiro', 152, null, 'São Paulo', 'São Paulo', 'Jardim Brasília', 03584000, 2, '789GHI'),
+(default, 'Unidade Regente Feijó', 47508411000156, 'Av. Regente Feijó', 1425, null, 'São Paulo', 'São Paulo', 'Anália Franco', 03342000, 3, 'CDF852'),
+(default, 'Unidade Francisco Morato', 47508411000156, 'Av. Francisco Morato', 2385, null, 'São Paulo', 'São Paulo', 'Vila Sônia', 05520200, 3, '741QAZ'),
+(default, 'Unidade Flores', 12345678000190, 'Rua das Flores', 21, 'Praça das rosas', 'São Paulo', 'São Paulo', 'Vila das Artes', 01234567, 4, '951RDZ');
+
 
 insert into setor values
 (default, 1, 'Açougue'),

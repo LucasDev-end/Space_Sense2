@@ -7,7 +7,9 @@ function buscarPorId(id) {
 }
 
 function listar() {
-  var instrucaoSql = `SELECT idUnidade, empresa, cnpj_empresa, codigo_ativacao FROM unidade`;
+  console.log(instrucaoSql)
+
+  var instrucaoSql = `SELECT idUnidade,  nome,  cnpj_empresa,  logradouro,  numero,  complemento,  cidade,  estado,  bairro,  cep,  fkEmpresa,  codigo FROM unidade`;
 
   return database.executar(instrucaoSql);
 }

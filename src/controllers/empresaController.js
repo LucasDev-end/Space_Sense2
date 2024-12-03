@@ -9,6 +9,7 @@ function buscarPorCnpj(req, res) {
 }
 
 function listar(req, res) {
+  console.log("aqui")
   empresaModel.listar().then((resultado) => {
     res.status(200).json(resultado);
   });
