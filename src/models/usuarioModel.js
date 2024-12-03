@@ -27,6 +27,7 @@ function cadastrar(nome, email, telefone, senha, fkUnidade) {
     var instrucaoSql = `
         INSERT INTO usuario (nome, email,telefone, senha, fkUnidade) VALUES ('${nome}', '${email}', '${telefone}','${senha}', '${fkUnidade}');
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
