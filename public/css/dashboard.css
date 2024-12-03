@@ -151,7 +151,7 @@ a span{
     border-radius: var(--tamanho-border-radius);
 }
 .kpi{
-    width: 97%;
+    width: 98%;
     height: 23vh;
     display: flex;
     align-items: flex-start;

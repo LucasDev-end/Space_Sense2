@@ -17,9 +17,15 @@ function exibirGraficoDash(req, res) {
         res.status(200).json(resultado);
     })
 }
+function exibirMedia(req, res) {
+    dashModel.exibirMedia().then((resultado) => {
+        res.status(200).json(resultado);
+    })
+}
 
 module.exports = {
     exibirSetorEmAlta,
     exibirSetorEmBaixa,
-    exibirGraficoDash
+    exibirGraficoDash,
+    exibirMedia
 }

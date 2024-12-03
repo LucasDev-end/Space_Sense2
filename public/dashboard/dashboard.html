@@ -36,6 +36,7 @@
         </div>
         <div class="dashboard">
             <div class="grafico-esquerda">
+                <h1 style="margin-bottom: 20px; color: #fff;" >Movimento de Pessoas em Setores</h1>
                 <div class="kpi">
                     <div class="box-kpi" onclick="trocargrafico(2)" id="alta">
                         <div class="titulo">
@@ -45,7 +46,7 @@
                             <span id="span_NumeroAlta"></span>
                         </div>
                         <div class="kpi-sub-texto" style="background-color: #37ad74;">
-                            <span id="span_SetorAlta"></span>
+                            <span id="span_SetorAlta" style="font-size: 30px;"></span>
                         </div>
                     </div>
                     <div class="box-kpi">
@@ -56,18 +57,18 @@
                             <span id="span_NumeroBaixo"></span>
                         </div>
                         <div class="kpi-sub-texto" style="color: #ffffff; background-color: #eb6767;">
-                            <span id="span_SetorBaixo"></span>
+                            <span id="span_SetorBaixo" style="font-size: 30px;"></span>
                         </div>
                     </div>
                     <div class="box-kpi">
                         <div class="titulo">
-                            <h2>Dia <span style="color: #eff18c;"> MAIS</span> movimentado</h2>
+                            <h2>Média <span style="color: #eff18c;"> Geral</span></h2>
                         </div>
                         <div class="kpi-num" style="color: #2F5F98; background-color: #eff18c;">
-                            Sabado
+                            <span id="media"></span>
                         </div>
-                        <div class="kpi-sub-texto" style="color: #2F5F98; background-color: #eff18c;">
-                            <h4>10.397</h4>
+                        <div class="kpi-sub-texto" style="color: #2F5F98; background-color: #eff18c; font-size: 30px;">
+                            Todos os Setores
                         </div>
                     </div>
                     <div class="box-kpi-mes">
@@ -83,7 +84,7 @@
                     </div>
                 </div>
                 <div class="grafico">
-                    <h2>Popularidade Geral ao Mês</h2>
+                    <h2>Fluxo de Pessoas Mensal</h2>
                     <canvas id="myChart-grafico" style="width: 3px;"></canvas>
                 </div>
             </div>
@@ -93,6 +94,62 @@
 
 </html>
 <script>
+    var categoria = []
+    var fluxo = []
+    var labels = [];
+    var valores = [];
+    const ctx = document.getElementById('myChart-grafico');
+
+    var grafico = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [""],
+                datasets: [{
+                    label: 'Fluxo',
+                    data: [0],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 24,
+                            },
+                        },
+                    }
+                }
+            }
+        });
     function exibirSetorEmAlta() {
         fetch('/dash/exibirSetorEmAlta').then(resposta => {
             if (resposta.ok) {
@@ -108,8 +165,13 @@
                 console.error("Erro!");
             }
         }).catch(erro => console.error(erro));
-    }
+    } 
+    var exibicaoDinamicaSetorAlta = setInterval(() => {exibirSetorEmAlta(); console.log("Primeira KPI dinâmica")}, 1000)
+    var exibicaoDinamicaSetorBaixa = setInterval(() => {exibirSetorEmBaixa(); console.log("Segunda KPI dinâmica")}, 1000)
+    var exibirDinamicaMedia = setInterval(exibirMedia, 1000)
+
     function exibirSetorEmBaixa() {
+        
         fetch('/dash/exibirSetorEmBaixa').then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
@@ -119,6 +181,28 @@
 
                     spanSetorBaixa.innerHTML = setor.categoria;
                     span_NumeroBaixo.innerHTML = setor.fluxo;
+                });
+            } else {
+                console.error("Erro!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
+    function exibirMedia() {
+        
+        fetch('/dash/exibirMedia').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const span_Media = document.getElementById('media');
+                    
+                    var soma = 0;
+                    var resultado = 0;
+
+                    for(var i = 0; i < data.length; i++){
+                        soma += data[i].fluxo;
+                    }
+                    resultado = soma / data.length;
+                    span_Media.innerHTML = resultado.toFixed(0);
                 });
             } else {
                 console.error("Erro!");
@@ -141,57 +225,99 @@
         }).catch(erro => console.error(erro));
     }
 
-    function exibirGraficoDash() {
-        fetch('/dash/exibirGraficoDash').then(resposta => {
+    function criarGrafico(labels, valores) {
+        
+
+        grafico = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Fluxo',
+                    data: valores,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#211c33', '#e68a2e', '#6d9788',
+                        '#a68c69', '#e84d5b', '#2f2f4d',
+                        '#220114', '#9fd9b3'
+                    ],
+                    borderColor: 'black',
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: ['black'],
+                            font: {
+                                size: 24,
+                            },
+                        },
+                    }
+                }
+            }
+        });
+    }
+
+    function atualizarGrafico() {
+        fetch("/dash/exibirGraficoDash").then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
 
+                    labels = [];
+                    valores = [];
+
                     for (var i = 0; i < data.length; i++) {
-                        var categoriaAtual = data[i].categoria;
-                        var fluxoAtual = data[i].fluxo;
 
+                        categoria = data[i].categoria;
+                        fluxo = data[i].fluxo
+
+                        labels.push(categoria);
+                        valores.push(fluxo)
                     }
-                    const labels = [
-                        categoriaAtual
-                    ];
-                    
-                    const data = {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Fluxo',
-                            backgroundColor: ['rgb(000, 202, 220)',
-                                'rgb(73, 195, 251)',
-                                'rgb(101, 166, 250)',
-                                'rgb(126, 128, 231)',
-                                'rgb(155, 87, 204)',],
-                                data: [fluxoAtual],
-                            }
-                        ]
-                    };
-
-                    const config = {
-                        type: 'bar',
-                        data: data,
-                        options: {
-                            // define a direcao do grafico (horizontal)
-                            indexAxis: 'y', categoryPercentage: 1.0, barPercentage: 0.6,
-                        }
-                    };
-                    const myChart = new Chart(
-                        document.getElementById('myChart-grafico'),
-                        config
-                    );
+                    if (grafico) {
+                        console.log("Valores do gráficos: ", valores)
+                        console.log("Labels do gráficos: ", labels)
+                        grafico.data.datasets[0].data = valores
+                        grafico.data.labels = labels
+                        grafico.update()
+                    } else {
+                        criarGrafico(labels, valores);
+                    }
                 });
             } else {
-                console.error("Erro!");
+                console.error("Erro ao carregar os gêneros!");
             }
         }).catch(erro => console.error(erro));
-    }
+    } 
+    var atualizaoGrafico = setInterval(() => {atualizarGrafico(); console.log("Intervalo está definido")}, 1000);
 
-    exibirGraficoDash()
+    atualizarGrafico()
     exibirDiaPopular()
     exibirSetorEmAlta()
     exibirSetorEmBaixa()
+    exibirMedia()
 </script>
 <script>
 

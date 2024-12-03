@@ -2,9 +2,7 @@ var database = require("../database/config");
 
 function exibirSetorEmAlta() {
     var instrucaoSql = `
-    SELECT categoria, COUNT(distancia) AS fluxo FROM vw_sensor_setor
-	GROUP BY categoria
-	ORDER BY fluxo DESC LIMIT 1;
+    SELECT * FROM vw_setor_alta;
     `;
 
     return database.executar(instrucaoSql);
@@ -12,18 +10,23 @@ function exibirSetorEmAlta() {
 
 function exibirSetorEmBaixa() {
     var instrucaoSql = `
-    SELECT categoria, COUNT(distancia) AS fluxo FROM vw_sensor_setor
-	GROUP BY categoria
-	ORDER BY fluxo LIMIT 1;
+    SELECT * FROM vw_setor_baixa;
     `;
+
+    return database.executar(instrucaoSql);
+}
+function exibirMedia(){
+    var instrucaoSql = 
+    `
+    SELECT * FROM vw_media;
+    `
 
     return database.executar(instrucaoSql);
 }
 
 function exibirGraficoDash() {
     var instrucaoSql = `
-    SELECT categoria, COUNT(distancia) AS fluxo FROM vw_sensor_setor
-	GROUP BY categoria;
+    SELECT * FROM vw_dash;
     `;
 
     return database.executar(instrucaoSql);
@@ -32,5 +35,6 @@ function exibirGraficoDash() {
 module.exports = {
     exibirSetorEmAlta,
     exibirSetorEmBaixa,
-    exibirGraficoDash
+    exibirGraficoDash,
+    exibirMedia
 }

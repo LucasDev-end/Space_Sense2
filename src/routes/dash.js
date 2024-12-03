@@ -14,5 +14,8 @@ router.get("/exibirSetorEmBaixa", function (req, res) {
 router.get("/exibirGraficoDash", function (req, res) {
     dashController.exibirGraficoDash(req, res);
 })
+router.get("/exibirMedia", function (req, res) {
+    dashController.exibirMedia(req, res);
+})
 
 module.exports = router;

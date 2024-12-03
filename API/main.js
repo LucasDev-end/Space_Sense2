@@ -24,10 +24,10 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             host: 'localhost',
-            user: 'SpaceSense',
-            password: 'SPTech#2024',
+            user: 'root',
+            password: 'Helrick@34231',
             database: 'spacesense',
-            port: 3307
+            port: 3306
         }
     ).promise();
 
@@ -57,7 +57,7 @@ const serial = async (
 
         const valores = data.split(';');
         const sensorDigital = parseInt(valores[0]);
-
+        const aleatorioSensor = Math.ceil(Math.random() * 14);
         // armazena os valores dos sensores nos arrays correspondentes
         // valoresSensorDigital.push(sensorAnalogico13);
 
@@ -71,9 +71,10 @@ const serial = async (
                 valoresSensorDigital.push(sensorDigital);
 
                 await poolBancoDados.execute(
-                    `INSERT INTO medicao (distancia, data_hora) VALUES (?, '${dataAtual}')`,
-                    [sensorDigital]
+                    `INSERT INTO medicao (fkSensor,distancia, data_hora) VALUES (?, ?, '${dataAtual}')`,
+                    [aleatorioSensor,sensorDigital]
                 );
+                console.log("valores do sensor inserido no banco: ", aleatorioSensor);
                 console.log("valores inseridos no banco: ", sensorDigital);
 
             }
