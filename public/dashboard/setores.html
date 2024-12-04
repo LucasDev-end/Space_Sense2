@@ -40,7 +40,31 @@
         <div class="aglomerado">
             <div class="banner">
                 <div class="titulo">
-                    <h1>Fluxo Semanal dos Setores</h1>
+                    <h1>Movimentação Setorial: Análise da Última Semana</h1>
+                </div>
+                <div class="kpi kpi-setor1">
+                    <div class="box-kpi-mes">
+                        <div class="titulo">
+                            <h2><span>&nbsp;</span></h2>
+                        </div>
+                        <div class="kpi-num">
+                            <div class="titulo">
+                                <h2>Dia mais Popular da Semana:</h2>
+                            </div>
+                            <span id="diaPopular"></span>
+                        </div>
+                    </div>
+                    <div class="box-kpi-mes">
+                        <div class="titulo">
+                            <h2><span>&nbsp;</span></h2>
+                        </div>
+                        <div class="kpi-num">
+                            <div class="titulo">
+                                <h2>Dia menos Popular da Semana:</h2>
+                            </div>
+                            <span id="diaMenosPopular"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="card" style="border-left: 50px solid #37ad74">
                     <div class="nome-setor">
@@ -82,7 +106,7 @@
                         <canvas id="myChart-grafico5"></canvas>
                     </div>
                 </div>
-                <div class="card" style="border-left: 50px solid #ff4a4a;">
+                <div class="card" style="border-left: 50px solid #f6eee0;">
                     <div class="nome-setor">
                         <span>Cereais</span>
                     </div>
@@ -90,7 +114,7 @@
                         <canvas id="myChart-grafico6"></canvas>
                     </div>
                 </div>
-                <div class="card" style="border-left: 50px solid #ff4a4a;">
+                <div class="card" style="border-left: 50px solid #ffad08;">
                     <div class="nome-setor">
                         <span>Padaria</span>
                     </div>
@@ -105,6 +129,36 @@
 
 </html>
 <script>
+     function exibirDiaPopular() {
+        fetch('/setores/exibirDiaPopular').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const fluxo = data[0];
+                    const spandiaPopular = document.getElementById('diaPopular');
+
+                    spandiaPopular.innerHTML = fluxo.Dia;
+                });
+            } else {
+                console.error("Erro!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
+    function exibirDiaMenosPopular() {
+        fetch('/setores/exibirDiaMenosPopular').then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(data => {
+                    const fluxo = data[0];
+                    const spandiaMenosPopular = document.getElementById('diaMenosPopular');
+
+                    spandiaMenosPopular.innerHTML = fluxo.Dia;
+                });
+            } else {
+                console.error("Erro!");
+            }
+        }).catch(erro => console.error(erro));
+    }
+
  function criarGrafico(labels, valores) {
         const ctx = document.getElementById('myChart-grafico');
 
@@ -158,12 +212,10 @@
             }
         });
     }
-
     function atualizarGrafico() {
         fetch("/setores/listar").then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
-
                     const labels = [];
                     const valores = [];
 
@@ -349,7 +401,7 @@ function criarGrafico3(labels, valores) {
             data: {
                 labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
                 datasets: [{
-                    label: 'Setor 03',
+                    label: 'Setor 04',
                     data: valores,
                     borderWidth: 1,
                     backgroundColor: [
@@ -425,7 +477,7 @@ function criarGrafico3(labels, valores) {
             data: {
                 labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
                 datasets: [{
-                    label: 'Setor 03',
+                    label: 'Setor 05',
                     data: valores,
                     borderWidth: 1,
                     backgroundColor: [
@@ -500,7 +552,7 @@ function criarGrafico3(labels, valores) {
             data: {
                 labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
                 datasets: [{
-                    label: 'Setor 03',
+                    label: 'Setor 06',
                     data: valores,
                     borderWidth: 1,
                     backgroundColor: [
@@ -546,7 +598,7 @@ function criarGrafico3(labels, valores) {
         });
     }
     function atualizarGrafico6() {
-        fetch("/setores/listarGrafico5").then(resposta => {
+        fetch("/setores/listarGrafico6").then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
 
@@ -575,7 +627,7 @@ function criarGrafico3(labels, valores) {
             data: {
                 labels: ['Segunda','Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
                 datasets: [{
-                    label: 'Setor 03',
+                    label: 'Setor 07',
                     data: valores,
                     borderWidth: 1,
                     backgroundColor: [
@@ -621,7 +673,7 @@ function criarGrafico3(labels, valores) {
         });
     }
     function atualizarGrafico7() {
-        fetch("/setores/listarGrafico5").then(resposta => {
+        fetch("/setores/listarGrafico7").then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(data => {
 
@@ -649,5 +701,6 @@ function criarGrafico3(labels, valores) {
     atualizarGrafico5();
     atualizarGrafico6();
     atualizarGrafico7();
-
+    exibirDiaPopular();
+    exibirDiaMenosPopular();
 </script>

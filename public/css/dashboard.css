@@ -155,10 +155,10 @@ a span{
     height: 23vh;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .kpi .box-kpi{
-    width: 21%;
+    width: 30%;
 }
 
 .box-kpi .titulo{
@@ -182,7 +182,7 @@ a span{
 }
 
 .kpi .box-kpi-mes{
-    width: 28%;
+    width: 40%;
     height: 20vh;
 }
 .kpi .box-kpi-mes .kpi-num{

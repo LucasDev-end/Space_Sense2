@@ -36,7 +36,7 @@
         </div>
         <div class="dashboard">
             <div class="grafico-esquerda">
-                <h1 style="margin-bottom: 20px; color: #fff;" >Movimento de Pessoas em Setores</h1>
+                <h1 style="margin-bottom: 20px; color: #fff;" >Análise de Tráfego Mensal</h1>
                 <div class="kpi">
                     <div class="box-kpi" onclick="trocargrafico(2)" id="alta">
                         <div class="titulo">
@@ -71,20 +71,9 @@
                             Todos os Setores
                         </div>
                     </div>
-                    <div class="box-kpi-mes">
-                        <div class="titulo">
-                            <h2><span>&nbsp;</span></h2>
-                        </div>
-                        <div class="kpi-num">
-                            <div class="titulo">
-                                <h2>Dia mais popular:</h2>
-                            </div>
-                            <span id="diaPopular"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="grafico">
-                    <h2>Fluxo de Pessoas Mensal</h2>
+                    <h2>Fluxo por Setor</h2>
                     <canvas id="myChart-grafico" style="width: 3px;"></canvas>
                 </div>
             </div>
@@ -109,9 +98,9 @@
                     data: [0],
                     borderWidth: 1,
                     backgroundColor: [
-                        '#211c33', '#e68a2e', '#6d9788',
-                        '#a68c69', '#e84d5b', '#2f2f4d',
-                        '#220114', '#9fd9b3'
+                        '#37ad74', '#c40000', '#ddd05e',
+                        '#386dbd', '#ff4a4a', '#f6eee0',
+                        '#ffad08'
                     ],
                     borderColor: 'black',
                 }]
@@ -210,21 +199,6 @@
         }).catch(erro => console.error(erro));
     }
 
-    function exibirDiaPopular() {
-        fetch('/setores/exibirDiaPopular').then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(data => {
-                    const fluxo = data[0];
-                    const spandiaPopular = document.getElementById('diaPopular');
-
-                    spandiaPopular.innerHTML = fluxo.Dia;
-                });
-            } else {
-                console.error("Erro!");
-            }
-        }).catch(erro => console.error(erro));
-    }
-
     function criarGrafico(labels, valores) {
         
 
@@ -314,7 +288,6 @@
     var atualizaoGrafico = setInterval(() => {atualizarGrafico(); console.log("Intervalo está definido")}, 1000);
 
     atualizarGrafico()
-    exibirDiaPopular()
     exibirSetorEmAlta()
     exibirSetorEmBaixa()
     exibirMedia()

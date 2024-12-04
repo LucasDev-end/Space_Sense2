@@ -65,8 +65,60 @@ function listarGrafico5(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+function listarGrafico6(req, res) {
+    setorModel.listarGrafico6().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function listarGrafico7(req, res) {
+    setorModel.listarGrafico7().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 function exibirDiaPopular(req, res) {
     setorModel.exibirDiaPopular().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function exibirDiaMenosPopular(req, res) {
+    setorModel.exibirDiaMenosPopular().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function exibirDia(req, res) {
+    setorModel.exibirDia().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -85,5 +137,9 @@ module.exports = {
     listarGrafico3,
     listarGrafico4,
     listarGrafico5,
-    exibirDiaPopular
+    listarGrafico6,
+    listarGrafico7,
+    exibirDiaPopular,
+    exibirDiaMenosPopular,
+    exibirDia
 }

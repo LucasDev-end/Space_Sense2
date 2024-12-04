@@ -116,3 +116,7 @@ text-align: center;
 .suporte a:hover{
     text-decoration: underline;    
 }
+.kpi-setor1{
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
